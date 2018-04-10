@@ -1,0 +1,139 @@
+.mg-business {
+    margin: 10px auto 30px auto;
+
+    .cart-list {
+        width: 100%;
+        // table-layout: fixed;
+
+        thead {
+            border-bottom: #eee 2px solid;
+        }
+
+        tr {
+            th, td {
+                padding: 8px;
+
+                &.product-remove {
+                    width: 30px;
+                }
+                &.product-thumbnail {
+                    width: 30px;
+                }
+
+                a.remove {
+                    display: block;
+                    width: 24px;
+                    height: 24px;
+                    font-size: 15px !important;
+                    line-height: 19px !important;
+                    border-radius: 100%;
+                    color: #ccc;
+                    font-weight: bold;
+                    text-align: center;
+                    border: 2px solid #ccc;
+                }
+
+                ul#shipping_method {
+                    margin: 0;
+                    padding: 0;
+
+                    li {
+                        list-style: none;
+                    }
+                }
+            }
+        }
+
+        input[type=number] {
+            width: 50px;
+            padding: 5px 10px;
+            text-align: right;
+        }
+    }
+
+    .check-btn {
+        margin: 10px 0;
+    }
+
+    .coupon {
+        margin: 10px 0;
+    }
+
+    .checkout-thumbnail {
+        font-size: 30px;
+        text-align: center;
+        padding: 30px 0;
+
+        ul {
+            padding: 0;
+            margin: 0;
+
+            li {
+                list-style: none;
+                display: inline;
+                color: #A7B5BB;
+                padding: 20px;
+
+                &.active {
+                    color: #636B6F;
+                }
+            }
+        }
+    }
+
+    ul.shipping-method-list {
+        margin: 0;
+        padding: 0;
+        float: right;
+
+        li {
+            list-style: none;
+        }
+    }
+
+    .payment-gateway {
+        box-sizing: border-box;
+        padding: 15px;
+        border: #bbb solid 2px;
+        margin-bottom: 20px;
+
+        .table {
+            box-sizing: border-box;
+        }
+    }
+
+    .payment-methods {
+
+        .form-group {
+
+            input[type=radio] {
+                margin:  6px 10px;
+            }
+            label {
+                margin: 0;
+                padding: 10px;
+                border: #bbb 2px solid;
+                width: 100%;
+            }
+            p {
+                margin: 10px 10px 10px 20px;
+            }
+        }
+    }
+
+    .shipping-form {
+        // margin-top: 40px;
+    }
+
+    .cvs-btn {
+        cursor: pointer;
+        display: inline-block;
+        margin: 10px 10px 10px 0;
+        opacity: 0.8;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

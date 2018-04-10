@@ -1,0 +1,212 @@
+.about-banner {
+    width: 100%;
+    // margin-top: 20px;
+    display: inline-block;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    h1 {
+        color: white;
+        text-shadow: 2px 2px 12px rgba(0,0,0,0.5);
+        text-align: center;
+        margin: 200px 0;
+    }
+}
+.about-text-contain {
+    padding: 50px 10px;
+
+    h2, h3 {
+        text-align: center;
+    }
+
+    p {
+        font-size: 130%;
+        line-height: 200%;
+        text-indent:2em;
+    }
+}
+.timeline-container {
+    position: relative;
+    display: inline-grid;
+    padding: 50px 10px;
+
+    .timeline-top-dot {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border: #aaa thin solid;
+        top: 0;
+        left: 50%;
+        margin-left: -10px;
+        background: white;
+        z-index: 1;
+        border-radius: 50%;
+    }
+
+    .timeline-string {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 1px;
+        background: #ccc;
+        left: 50%;
+    }
+    .timeline {
+        // border: #ccc solid thin;
+        padding: 5px;
+
+        .step-image {
+            // border: #ccc solid thin;
+            width: 50%;
+            padding: 10px;
+
+            img {
+                width: 100%;
+                box-shadow: 2px 2px 12px -2px rgba(0, 0, 0, 0.3);
+            }
+        }
+        .step-context {
+            border: #eee solid thin;
+            width: 48%;
+            margin: 1%;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 12px -2px rgba(0, 0, 0, 0.3);
+            p {
+                font-size: 130%;
+                line-height: 200%;
+                text-indent:2em;
+            }
+        }
+
+        &:nth-child(odd) {
+            .step-image {
+                float: right;
+            }
+            .step-context {
+                float: left;
+            }
+        }
+        &:nth-child(even) {
+            .step-image {
+                float: left;
+            }
+            .step-context {
+                float: right;
+            }
+        }
+    }
+}
+
+.about-album {
+    position: relative;
+
+    .img-box {
+        img {
+            height: 500px;
+            width: auto;
+        }
+        .text-box {
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+            right: 15px;
+            padding: 10px 15px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            font-size: 16px;
+            a {
+                color: white;
+                text-decoration: none;
+            }
+        }
+    }
+
+}
+
+.about-logo-section {
+    // padding: 100px 0;
+    text-align: center;
+
+    img {
+        width: 75%;
+        margin: 0 auto;
+    }
+
+    .logo-gallery {
+        text-align: center;
+
+        .logo-img {
+        }
+    }
+    .about-context {
+        padding: 50px 20px;
+        margin-top: 10px;
+        font-size: 20px;
+        font-weight: lighter;
+        text-align: left;
+    }
+}
+
+.certificate-section {
+    border-top: #f1f1f1 3px solid;
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+    .certificate-list {
+        border-bottom: #f1f1f1 2px solid;
+        tr {
+
+            td {
+                font-size: 20px;
+                padding: 10px;
+
+                img {
+                    width: 30px;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+
+    .tab-content {
+        padding: 20px;
+    }
+
+    ul.nav-tabs {
+        border-bottom: none;
+
+        li {
+            border: none;
+            width: 20%;
+            text-align: center;
+
+            a {
+                transition: all .2s ease-in-out;
+                text-decoration: none;
+
+                &:hover {
+                    border-radius: 5px;
+                    background-color: $brand-primary;
+                    color: white;
+                    box-shadow: 2px 2px 12px -2px rgba(0, 0, 0, 0.6);
+                }
+            }
+
+            &.active {
+                a {
+                    border-radius: 5px;
+                    background-color: $brand-primary;
+                    color: white;
+                    box-shadow: 2px 2px 12px -2px rgba(0, 0, 0, 0.6);
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+
+}

@@ -1,0 +1,32 @@
+.ch-product-form {
+
+    a {
+        cursor: pointer;
+    }
+    .pruduct-image {
+        padding: 10px;
+        position: relative;
+
+        .remove-pruduct-image {
+            position: absolute;
+            border-radius: 50%;
+            padding: 1px 6px;
+            font-size: 1px;
+            top: 0px;
+            right: 0px;
+            display: none;
+        }
+
+        &:hover {
+            .remove-pruduct-image {
+                display: block;
+            }
+        }
+    }
+    .ch-product-title, .ch-product-description {
+        margin-bottom: 10px;
+    }
+    .ch-social-image {
+        
+    }
+}
