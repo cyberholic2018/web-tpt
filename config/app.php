@@ -191,8 +191,7 @@ return [
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
 
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
-        Kennychou3896\Allpay2in1\AllpayServiceProvider::class,
-        // eddy7697\EcpayAllInOne\ECPayServiceProvider::class,
+        Eddy7697\Ecpay2in1\Ecpay2in1ServiceProvider::class,
 
         Laravel\Scout\ScoutServiceProvider::class,
         Yab\MySQLScout\Providers\MySQLScoutServiceProvider::class,
@@ -249,8 +248,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
-        'Allpay' => Kennychou3896\Allpay2in1\Facade\Allpay::class,
-        // 'ECPay' => eddy7697\EcpayAllInOne\Facade\ECPay::class,
+        'Ecpay' => Eddy7697\Ecpay2in1\Facades\Ecpay::class,
 
         'PublicServiceProvider' => App\Services\PublicServiceProvider::class,
         'AddressInfo' => App\Services\AddressInfo::class,

@@ -11,7 +11,7 @@
         "gloudemans/shoppingcart": "^2.4",
         "htmlmin/htmlmin": "^5.0",
         "intervention/image": "^2.4",
-        "kennychou3896/allpay2in1": "dev-master",
+        "eddy7697/ecpay2in1": "dev-master",
         "laravel/framework": "5.4.*",
         "laravel/scout": "^3.0",
         "laravel/socialite": "^3.0",
