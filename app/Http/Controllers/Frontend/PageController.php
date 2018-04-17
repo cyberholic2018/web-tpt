@@ -20,9 +20,8 @@ class PageController extends Controller
 
         // $album = json_decode($meta->index_album);
         return view('index', [
-            // 'album' => $album,
-            'isThumbShow' => false,
-            'thumb' => null
+            // 'isThumbShow' => false,
+            // 'thumb' => null
         ]);
     }
 

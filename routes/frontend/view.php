@@ -4,22 +4,49 @@
 /**
  * INDEX
  */
-Route::get('/', 'Frontend\PageController@index');
+Route::get('/', function () {
+    return view('index');
+});
+Route::get('/about', function () {
+    return view('web.about');
+});
+Route::get('/contact', function () {
+    return view('web.contact');
+});
+Route::get('/partner', function () {
+    return view('web.partner');
+});
+Route::get('/product', function () {
+    return view('web.product');
+});
+Route::get('/productDetail/{id}', function ($id) {
+    return view('web.productDetail', [
+        'id' => $id
+    ]);
+});
+Route::get('/news', function () {
+    return view('web.product');
+});
+Route::get('/newsDetail/{id}', function ($id) {
+    return view('web.newsDetail', [
+        'id' => $id
+    ]);
+});
 
 /**
  * about
  */
- Route::group(['prefix' => 'about'], function()
- {
-     Route::get('/', 'Frontend\PageController@about')->name('about');
-     Route::get('/professional', 'Frontend\PageController@professional')->name('professional');
-     Route::get('/certificate', 'Frontend\PageController@certificate')->name('certificate');
-     Route::get('/cordyceps', 'Frontend\PageController@cordyceps')->name('cordyceps');
-     Route::get('/isaria', 'Frontend\PageController@isaria')->name('isaria');
-     Route::get('/privacy', 'Frontend\PageController@privacy')->name('privacy');
-     Route::get('/notice', 'Frontend\PageController@notice')->name('notice');
-     Route::get('/store', 'Frontend\PageController@store')->name('store');
- });
+ // Route::group(['prefix' => 'about'], function()
+ // {
+ //     Route::get('/', 'Frontend\PageController@about')->name('about');
+ //     Route::get('/professional', 'Frontend\PageController@professional')->name('professional');
+ //     Route::get('/certificate', 'Frontend\PageController@certificate')->name('certificate');
+ //     Route::get('/cordyceps', 'Frontend\PageController@cordyceps')->name('cordyceps');
+ //     Route::get('/isaria', 'Frontend\PageController@isaria')->name('isaria');
+ //     Route::get('/privacy', 'Frontend\PageController@privacy')->name('privacy');
+ //     Route::get('/notice', 'Frontend\PageController@notice')->name('notice');
+ //     Route::get('/store', 'Frontend\PageController@store')->name('store');
+ // });
 
 /**
  * PRODUCT
