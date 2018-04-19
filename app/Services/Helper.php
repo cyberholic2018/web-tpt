@@ -22,4 +22,12 @@ class Helper
 
         return $thumbPath;
     }
+
+    static function rc()
+    {
+        $colors = array('6C74FF', '5FF1FF', '579DE8', '8B51E8', 'E563FF');
+        $colorsLength = count ($colors);
+
+        return $colors[rand(0, $colorsLength - 1)];
+    }
 }

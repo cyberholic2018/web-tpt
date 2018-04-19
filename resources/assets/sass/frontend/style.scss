@@ -15,8 +15,86 @@ input::-webkit-inner-spin-button {
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
 .hide-overflow {
     overflow: hidden;
+}
+
+.scroll-down-btn {
+    position: absolute;
+    text-align: center;
+    top: 75%;
+    left: 50%;
+    margin-left: -35px;
+    width: 70px;
+    height: 70px;
+    z-index: 20;
+}
+
+.scroll-down-btn .arrow {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    margin-left: -20px;
+    width: 40px;
+    height: 40px;
+    border-style: solid;
+    border-width: thin;
+    border-color: rgba(0, 0, 0, 0) #fff #fff rgba(0, 0, 0, 0);
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    animation: arrow .8s infinite;
+    -webkit-animation: arrow .8s infinite;
+    -moz-animation: arrow .8s infinite;
+    -ms-animation: arrow .8s infinite;
+    -o-animation: arrow .8s infinite;
+}
+
+.scroll-down-btn .text {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    margin-left: -33px;
+    color: #fff;
+    width: 70px;
+    letter-spacing: 4px;
+    text-align: center;
+    animation: arrow .8s infinite;
+    -webkit-animation: arrow .8s infinite;
+    -moz-animation: arrow .8s infinite;
+    -ms-animation: arrow .8s infinite;
+    -o-animation: arrow .8s infinite;
+}
+
+@-webkit-keyframes arrow {
+    0% {top: 0px;}
+    50% {top: 10px;}
+    100% {top: 0px;}
+}
+
+@-moz-keyframes arrow {
+    0% {top: 0px;}
+    50% {top: 10px;}
+    100% {top: 0px;}
+}
+
+@-ms-keyframes arrow {
+    0% {top: 0px;}
+    50% {top: 10px;}
+    100% {top: 0px;}
+}
+
+@-o-keyframes arrow {
+    0% {top: 0px;}
+    50% {top: 10px;}
+    100% {top: 0px;}
 }
 
 .loading-bar {
@@ -42,22 +120,70 @@ input::-webkit-inner-spin-button {
 
 #side-bar-btn {
     position: fixed;
-    height: 50px;
-    width: 30px;
-    top: 50%;
-    transform: translateY(-50%);
-    border: none;
-    background: rgba(255,255,255,0.5);
-    box-shadow: 2px 2px 12px -2px rgba(0,0,0,0.3);
+    height: 45px;
+    width: 45px;
+    top: 0;
+    left: 0;
+    z-index: 99999999;
+    border-right: rgba(0,0,0,0.2) solid 2px;
+    border-bottom: rgba(0,0,0,0.2) solid 2px;
+    border-top: none;
+    border-left: none;
+    // transform: translateY(-50%);
+    background: rgba(255,255,255,0.7);
+    // box-shadow: 2px 2px 12px -2px rgba(0,0,0,0.3);
     transition: all .2s ease-in-out;
     outline: none;
 
     &:hover {
-        box-shadow: 2px 2px 12px 2px rgba(0,0,0,0.3);
+        // box-shadow: 2px 2px 12px 2px rgba(0,0,0,0.1);
     }
 
     span {
         position: absolute;
+        width: 70%;
+        height: 1px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        background-color: rgba(0,0,0,0.3);
+        transition: all .3s ease-in-out;
+
+        &:nth-child(1) {
+            top: 25%;
+        }
+        &:nth-child(2) {
+            top: 50%;
+        }
+        &:nth-child(3) {
+            top: 75%;
+        }
+    }
+
+    &.active {
+        span {
+            position: absolute;
+            // width: 70%;
+            height: 1px;
+            left: 50%;
+            // transform: translateX(-50%) translateY(-50%);
+            background-color: rgba(0,0,0,0.3);
+
+            &:nth-child(1) {
+                width: 70%;
+                transform: translateX(-50%) translateY(-50%) rotate(45deg);
+                top: 50%;
+            }
+            &:nth-child(2) {
+                width: 0;
+                transform: translateX(-50%) translateY(-50%);
+                top: 50%;
+            }
+            &:nth-child(3) {
+                width: 70%;
+                transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+                top: 50%;
+            }
+        }
     }
 }
 
@@ -122,7 +248,7 @@ input::-webkit-inner-spin-button {
         }
 
         ul {
-            transform: translateY(10%);
+            // transform: translateY(10%);
             margin: 0;
             padding: 30px;
 
@@ -772,3 +898,26 @@ table.product-comment {
         display: none;
     }
 }
+
+// ::-webkit-scrollbar {
+//     width: 10px;
+//     height: 10px;
+// } /* this targets the default scrollbar (compulsory) */
+//
+// ::-webkit-scrollbar-track {
+//       background-color: rgba(0, 0, 0, 0);
+// } /* the new scrollbar will have a flat appearance with the set background color */
+//
+// ::-webkit-scrollbar-thumb {
+//       background-color: rgba(0, 0, 0, 0.2);
+// } /* this will style the thumb, ignoring the track */
+//
+// ::-webkit-scrollbar-button {
+//     width: 0;
+//     height: 0;
+//       background-color: #7c2929;
+// } /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+//
+// ::-webkit-scrollbar-corner {
+//       background-color: black;
+// } /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */

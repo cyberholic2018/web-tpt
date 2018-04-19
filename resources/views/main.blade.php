@@ -57,6 +57,8 @@
         {{-- 頁面選單 --}}
         <button id="side-bar-btn">
             <span></span>
+            <span></span>
+            <span></span>
         </button>
 
         <div class="menu-panel">
@@ -65,41 +67,41 @@
             </div>
             <div class="menu-section hide">
                 <div class="site-logo">
-                    <img src="/img/tpt-logo.png" alt="{{ SiteMetaView::title() }}" title="{{ SiteMetaView::title() }}">
+                    <a href="/"><img src="/img/tpt-logo.png" alt="{{ SiteMetaView::title() }}" title="{{ SiteMetaView::title() }}"></a>                    
                 </div>
 
 
                 <ul>
                     <li>
-                        <a href="#">
+                        <a href="{{url('/about')}}">
                             <span>關於帕太</span>
                             <br>
                             About POWERTECH
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('/news')}}">
                             <span>最新消息</span>
                             <br>
                             News & Infomation
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('/product')}}">
                             <span>產品介紹</span>
                             <br>
                             Product Infomation
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('/partner')}}">
                             <span>合作夥伴</span>
                             <br>
                             Our Partners
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('/contact')}}">
                             <span>聯絡我們</span>
                             <br>
                             Contact Us
@@ -108,7 +110,7 @@
                 </ul>
                 <br><br><br>
 
-                <button type="button" name="button" id="close-menu">test</button>
+                {{-- <button type="button" name="button" id="close-menu">test</button> --}}
             </div>
         </div>
 

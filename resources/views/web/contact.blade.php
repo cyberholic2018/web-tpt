@@ -35,6 +35,7 @@ section.numbertwo .col-md-12.col-tittle {
 text-align: center;
 font-size: 25px;
 margin-top: 30px;
+margin-bottom: 20px;
 }
 section.numbertwo .col-md-12.col-button {
 text-align: center;
@@ -95,11 +96,14 @@ width: 100%;
 margin: 10px auto;
 text-align: left;
 }
+
 section.numbersix .col-md-12.col-tel .contact-table {
-margin-top: 30px;
-left: 50%;
+margin: 30px auto 0 auto;
+width: 100%;
+max-width: 600px;
+/* left: 50%;
 right: 50%;
-transform: translateX(-50%);
+transform: translateX(-50%); */
 }
 section.numbersix .col-md-12.col-tel .contact-table span {
 color: red;
@@ -131,7 +135,7 @@ font-size: 10px;
 @section('content')
 
   <div>
-    <div class="container-fluid"><img src="https://dummyimage.com/1920x600/000/fff" alt=""/></div>
+    <div class="container-fluid"><img src="https://dummyimage.com/1920x600/{{Helper::rc()}}/fff" alt=""/></div>
   </div>
   <section class="numbertwo">
     <div class="container-fluid">
@@ -201,11 +205,15 @@ font-size: 10px;
       </div>
       <div class="row">
         <div class="col-md-12 col-list">
-          <ul>
-            <li>※謝謝您對我們的支持與肯定，為了提供您更好的服務，敬請留下您寶貴的建議，我們將盡快回復您。</li>
-            <li>※我們的上班時間為週一至週五09:00~18:00，我們將於收到您的來信後立即回覆您。</li>
-            <li>※客服信箱：service@tpt.com.tw</li>
-          </ul>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <ul style="padding-left: 20px">
+                      <li>※謝謝您對我們的支持與肯定，為了提供您更好的服務，敬請留下您寶貴的建議，我們將盡快回復您。</li>
+                      <li>※我們的上班時間為週一至週五09:00~18:00，我們將於收到您的來信後立即回覆您。</li>
+                      <li>※客服信箱：service@tpt.com.tw</li>
+                    </ul>
+                </div>
+            </div>
         </div>
       </div>
       <div class="row">

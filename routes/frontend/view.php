@@ -25,7 +25,7 @@ Route::get('/productDetail/{id}', function ($id) {
     ]);
 });
 Route::get('/news', function () {
-    return view('web.product');
+    return view('web.news');
 });
 Route::get('/newsDetail/{id}', function ($id) {
     return view('web.newsDetail', [
