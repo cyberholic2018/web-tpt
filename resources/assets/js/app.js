@@ -6,9 +6,9 @@
  */
 
 require('./bootstrap');
-require('jquery-lazyload');
-require('jquery-bar-rating');
+
 require('slick-carousel');
+
 window.Vue = require('vue');
 
 /**

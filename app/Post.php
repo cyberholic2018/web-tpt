@@ -3,12 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
-    use Searchable;
-
     protected $table = 'posts';
 
     /**
@@ -23,6 +20,7 @@ class Post extends Model
         'title',
         'category',
         'content',
+        'locale',
         'featureImage',
         'seoTitle',
         'seoKeyword',
@@ -32,14 +30,6 @@ class Post extends Model
         'schedulePost',
         'scheduleDelete'
     ];
-
-    /**
-     * get index
-     */
-    public function searchableAs()
-    {
-        return 'posts_index';
-    }
 
     /**
      * The attributes that should be hidden for arrays.

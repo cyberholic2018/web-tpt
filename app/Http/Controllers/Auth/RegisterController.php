@@ -4,13 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\SocialProvider;
 use App\User;
-use App\Bonus;
+use App\Traits\CaptchaTrait;
 use App\Http\Controllers\Controller;
 use App\Services\PublicServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Socialite;
-use Log;
 
 class RegisterController extends Controller
 {
@@ -33,21 +32,17 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/';
+    protected $publicServiceProvider;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(PublicServiceProvider $publicServiceProvider)
     {
         $this->middleware('guest');
-
-        try {
-            $this->defaultPoint = Bonus::all()->first()['defaultPoint'];
-        } catch (\Exception $e) {
-            $this->defaultPoint = 25;
-        }
+        $this->publicServiceProvider = $publicServiceProvider;
     }
 
     /**
@@ -62,7 +57,6 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            // 'g-recaptcha-response' => 'required|captcha',
         ]);
     }
 
@@ -74,19 +68,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        try {
-            $defaultPoint = Bonus::all()->first()['defaultPoint'];
-        } catch (\Exception $e) {
-            $defaultPoint = 25;
-        }
-
         return User::create([
-            'guid' => PublicServiceProvider::generateGuid(),
+            'guid' => $this->publicServiceProvider->generateGuid(),
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'point' => $defaultPoint,
-            'role' => 'NORMAL',
+            'role' => $data['role'],
             'level' => 'VIP'
         ]);
     }
@@ -102,16 +89,6 @@ class RegisterController extends Controller
     }
 
     /**
-     * Redirect the user to the facebook authentication page.
-     *
-     * @return Response
-     */
-    public function redirectToGoogleProvider()
-    {
-        return Socialite::driver('google')->redirect();
-    }
-
-    /**
      * Obtain the user information from facebook.
      *
      * @return Response
@@ -124,81 +101,25 @@ class RegisterController extends Controller
         }
         catch(\Exception $e)
         {
-            Log::error($e);
             return redirect('/');
         }
 
         $socialProvider = SocialProvider::where('provider_id', $socialUser->getId())->first();
 
-        Log::info($socialUser->getId());
-        Log::info($socialProvider);
-
         if(!$socialProvider)
         {
             $user = User::Create([
-                'guid' =>PublicServiceProvider::generateGuid(),
+                'guid' => $this->publicServiceProvider->generateGuid(),
                 'email' => $socialUser->getEmail(),
                 'name' => $socialUser->getName(),
                 'socialUser' => true,
-                'point' => $this->defaultPoint,
-                'role' => 'NORMAL',
+                'role' => 'ADMIN',
                 'level' => 'NORMAL'
             ]);
 
             $user->socialProviders()->create([
                 'provider_id' => $socialUser->getId(),
                 'provider' => 'facebook'
-            ]);
-        }
-        else
-        {
-            $user = $socialProvider->user;
-        }
-
-        auth()->login($user);
-
-        return redirect('/');
-    }
-
-    /**
-     * Obtain the user information from facebook.
-     *
-     * @return Response
-     */
-    public function handleGoogleProviderCallback()
-    {
-        try
-        {
-            $socialUser = Socialite::driver('google')->user();
-        }
-        catch(\Exception $e)
-        {
-            Log::error($e);
-            return redirect('/');
-        }
-
-        $socialProvider = SocialProvider::where('provider_id', $socialUser->getId())->first();
-
-        // return json_encode($socialUser);
-
-        Log::info($socialUser->getId());
-        Log::info($socialProvider);
-
-        if(!$socialProvider)
-        {
-            $user = User::Create([
-                'guid' =>PublicServiceProvider::generateGuid(),
-                'email' => $socialUser->getEmail(),
-                'name' => $socialUser->getName(),
-                'socialUser' => true,
-                'point' => $this->defaultPoint,
-                'role' => 'NORMAL',
-                'level' => 'NORMAL'
-            ]);
-
-            $user->socialProviders()->create([
-                'provider_id' => $socialUser->getId(),
-                'provider' => 'google'
             ]);
         }
         else

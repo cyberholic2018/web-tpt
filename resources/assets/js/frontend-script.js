@@ -46,7 +46,7 @@ $(function () {
 		return false;
 	});
 
-    $('img').lazyload();
+    // $('img').lazyload();
 
     $('.nav-btn').click(function () {
         $('.nav-btn').toggleClass('open');

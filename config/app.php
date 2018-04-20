@@ -191,10 +191,6 @@ return [
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
 
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
-        Eddy7697\Ecpay2in1\Ecpay2in1ServiceProvider::class,
-
-        Laravel\Scout\ScoutServiceProvider::class,
-        Yab\MySQLScout\Providers\MySQLScoutServiceProvider::class,
 
     ],
 
@@ -248,16 +244,18 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
-        'Ecpay' => Eddy7697\Ecpay2in1\Facades\Ecpay::class,
 
-        'PublicServiceProvider' => App\Services\PublicServiceProvider::class,
-        'AddressInfo' => App\Services\AddressInfo::class,
-        'ProductView' => App\Services\ProductView::class,
+
         'SiteMetaView' => App\Services\SiteMetaView::class,
-        'CategoryView' => App\Services\CategoryView::class,
-        'Helper' => App\Services\Helper::class,
-        'UserView' => App\Services\UserView::class,
+        'PublicServiceProvider' => App\Services\PublicServiceProvider::class,
+        'PartnerView' => App\Services\PartnerView::class,
+        'ProductView' => App\Services\ProductView::class,
         'PostView' => App\Services\PostView::class,
+        'CategoryView' => App\Services\CategoryView::class,
+        'ContentView' => App\Services\ContentView::class,
+        'PageView' => App\Services\PageView::class,
+        'ithome' => App\Services\ithome::class,
+        'Helper' => App\Services\Helper::class,
 
     ],
 

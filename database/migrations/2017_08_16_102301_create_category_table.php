@@ -18,9 +18,8 @@ class CreateCategoryTable extends Migration
             $table->string('guid');
             $table->string('title');
             $table->string('type');
+            $table->string('locale');
             $table->string('parentId')->nullable();
-            $table->longtext('description')->nullable();
-            $table->string('featureImage')->nullable();
             $table->timestamps();
         });
     }

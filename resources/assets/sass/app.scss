@@ -8,13 +8,15 @@
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
+// @import "~slick-carousel/slick/slick.scss"; 
+
 // 管理者全域樣式
-@import "backend/style";
+@import "admin/style";
+// 管理者頁面樣式
+@import "admin/administrator/style";
 // 商品管理頁面樣式
-@import "backend/product/style";
+@import "admin/product/style";
 // 文章管理頁面樣式
-@import "backend/post/style";
+@import "admin/post/style";
 // 商業邏輯管理頁面樣式
-@import "backend/business/style";
-// 訂單管理
-@import "backend/order/style";
+@import "admin/business/style";

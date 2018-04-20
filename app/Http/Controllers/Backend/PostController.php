@@ -19,14 +19,16 @@ class PostController extends Controller
 
     public function __construct()
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
+        $flag = $request->all()['flag'];
+        $order = $request->all()['order'];
         if (Auth::user()->role == 'ADMIN') {
-            return $posts = DB::table('posts')->paginate(15);
+            return $posts = DB::table('posts')->orderBy($flag, $order)->paginate(15);
         }
     }
 
@@ -75,18 +77,6 @@ class PostController extends Controller
                 $category = $data['category'];
             }
 
-            if ($data['schedulePost'] == null) {
-                $schedulePost = '1900-01-01 00:00:01';
-            } else {
-                $schedulePost = $data['schedulePost'];
-            }
-
-            if ($data['scheduleDelete'] == null) {
-                $scheduleDelete = '3000-12-31 23:59:59';
-            } else {
-                $scheduleDelete = $data['scheduleDelete'];
-            }
-
             switch ($data['isPublish']) {
                 case 'true':
                     $isPublish = 1;
@@ -97,7 +87,7 @@ class PostController extends Controller
             }
 
             $createPost = Post::create([
-                'guid' => str_random(42),
+                'guid' => str_random(40),
                 'author' => $creatorGuid,
                 'authorName' => $creator,
                 'title' => $data['title'],
@@ -105,12 +95,13 @@ class PostController extends Controller
                 'content' => $data['content'],
                 'featureImage' => $data['featureImage'],
                 'seoTitle' => $data['seoTitle'],
+                'locale' => $data['locale'],
                 'seoKeyword' => $data['seoKeyword'],
                 'socialImage' => $data['socialImage'],
                 'seoDescription' => $data['seoDescription'],
                 'isPublish' => $isPublish,
-                'schedulePost'=> $schedulePost,
-                'scheduleDelete' => $scheduleDelete
+                'schedulePost'=> $data['schedulePost'],
+                'scheduleDelete' => $data['scheduleDelete']
             ]);
 
             if ($createPost) {
@@ -124,8 +115,6 @@ class PostController extends Controller
             $status = 425;
             $message = 'Permission denied.';
         }
-
-        // Post::all()->searchable();
 
         return response()->json([ 'status' => $status, 'message' => $message ], $status);
     }
@@ -167,18 +156,6 @@ class PostController extends Controller
                 $category = $data['category'];
             }
 
-            if ($data['schedulePost'] == null) {
-                $schedulePost = '1900-01-01 00:00:01';
-            } else {
-                $schedulePost = $data['schedulePost'];
-            }
-
-            if ($data['scheduleDelete'] == null) {
-                $scheduleDelete = '3000-12-31 23:59:59';
-            } else {
-                $scheduleDelete = $data['scheduleDelete'];
-            }
-
             switch ($data['isPublish']) {
                 case 'true':
                     $isPublish = 1;
@@ -195,11 +172,12 @@ class PostController extends Controller
                 'featureImage' => $data['featureImage'],
                 'seoTitle' => $data['seoTitle'],
                 'seoKeyword' => $data['seoKeyword'],
+                'locale' => $data['locale'],
                 'socialImage' => $data['socialImage'],
                 'seoDescription' => $data['seoDescription'],
                 'isPublish' => $isPublish,
-                'schedulePost'=> $schedulePost,
-                'scheduleDelete' => $scheduleDelete
+                'schedulePost'=> $data['schedulePost'],
+                'scheduleDelete' => $data['scheduleDelete']
             ]);
 
             if ($updatePost) {
@@ -214,8 +192,6 @@ class PostController extends Controller
             $message = 'Permission denied.';
         }
 
-        // Post::all()->searchable();
-
         return response()->json([ 'status' => $status, 'message' => $message ], $status);
     }
 
@@ -227,9 +203,19 @@ class PostController extends Controller
             Post::where('guid', $data[$i])->delete();
         }
 
-        // Post::all()->searchable();
-
         return response()->json([ 'status' => 200, 'message' => '文章刪除成功' ], 200);
+    }
+
+    /**
+     *
+     */
+    public function searchPosts(Request $request, $keyword)
+    {
+        $flag = $request->all()['flag'];
+        $order = $request->all()['order'];
+        if (Auth::user()->role == 'ADMIN') {
+            return Post::where('title', 'like', '%'.$keyword.'%')->orderBy($flag, $order)->paginate(15);
+        }
     }
 
     /**

@@ -9,10 +9,6 @@ window._ = require('lodash');
 try {
     window.$ = window.jQuery = require('jquery');
 
-    // require('jquery-ui');
-
-    // require('jquery.fancytree');
-
     require('bootstrap-sass');
 } catch (e) {}
 

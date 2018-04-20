@@ -42,7 +42,8 @@ class MetaController extends Controller
 
     public function editMeta(Request $request)
     {
-        $meta = SiteMeta::all()->first()->update($request->all());
+        // return $request->all()['other'];
+        $meta = SiteMeta::first()->update($request->all());
 
         if ($meta) {
             $status = 200;
@@ -54,5 +55,10 @@ class MetaController extends Controller
         }
 
         return response()->json([ 'status' => $status, 'message' => $message, 'data' => $meta ], $status);
+    }
+
+    public function test()
+    {
+        return 'qwer';
     }
 }

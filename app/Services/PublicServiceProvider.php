@@ -4,9 +4,9 @@ namespace App\Services;
 
 class PublicServiceProvider
 {
-    static function generateGuid()
+    public static function generateGuid()
     {
-        $characters = '01234567890123456789012345678901234567890123456789abcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdef';
+        $characters = '01234567890123456789012345678901234567890123456789abcdefghijklmnopqrstuvwxyz';
         $charactersLength = strlen($characters);
         $randomString0 = '';
         $randomString1 = '';
@@ -29,13 +29,5 @@ class PublicServiceProvider
             $randomString4 .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString0 . '-' . $randomString1 . '-' . $randomString2 . '-' . $randomString3 . '-' . $randomString4;
-    }
-
-    static function exception($message)
-    {
-        return view('frontend.exception', [
-            'isThumbShow' => false,
-            'message' => $message,
-        ]);
     }
 }

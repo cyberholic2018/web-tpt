@@ -20,7 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->boolean('socialUser')->default(false);
-            $table->boolean('subscriptable')->default(false);
             $table->string('role')->nullable();
             $table->string('level')->nullable();
             $table->string('status')->default('ACTIVE');

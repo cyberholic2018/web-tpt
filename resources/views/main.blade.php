@@ -44,13 +44,13 @@
         </div>
         @unless (Auth::guest())
             @if (Auth::user()->role == 'ADMIN')
-                <div class="container-fluid admin-bar">
+                {{-- <div class="container-fluid admin-bar">
                     <div class="row">
                         <div class="col-md-12">
                             <a href="/cyberholic-system/admin">後台入口</a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             @endif
         @endunless
 
@@ -67,7 +67,7 @@
             </div>
             <div class="menu-section hide">
                 <div class="site-logo">
-                    <a href="/"><img src="/img/tpt-logo.png" alt="{{ SiteMetaView::title() }}" title="{{ SiteMetaView::title() }}"></a>                    
+                    <a href="/"><img src="/img/tpt-logo.png" alt="{{ SiteMetaView::title() }}" title="{{ SiteMetaView::title() }}"></a>
                 </div>
 
 

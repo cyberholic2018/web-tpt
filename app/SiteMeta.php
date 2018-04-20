@@ -13,9 +13,7 @@ class SiteMeta extends Model
         'keyword',
         'description',
         'shortcut',
-        'pageTopContent',
-        'pageTopLink',
-        'pageTopButton',
+        'other',
         'index_album'
     ];
 

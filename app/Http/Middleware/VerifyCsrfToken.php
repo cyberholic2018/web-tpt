@@ -12,10 +12,6 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        '/cvs_map_callback',
-        '/ecpay-return',
-        '/logistics-return',
-        '/payment_info',
-        '/mailtest',
+        //
     ];
 }

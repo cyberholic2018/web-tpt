@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use App\Services\PublicServiceProvider;
 use App\User;
 use App\Post;
 use Auth;
@@ -20,34 +21,58 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __construct()
+    protected $publicServiceProvider;
+
+    public function __construct(PublicServiceProvider $publicServiceProvider)
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
+        $this->publicServiceProvider = $publicServiceProvider;
     }
 
-    // 取得管理者帳號列表
+
+    public function index()
+    {
+
+    }
+
     public function getAdminList()
     {
         if (Auth::user()->role == 'ADMIN') {
             return $users = DB::table('users')
                     ->where('role', 'ADMIN')->paginate(15);
         } else {
-            return response()->json([ 'status' => 401, 'message' => 'Permission denied, you are not the administrator.' ], 401);
+            # code...
         }
+
     }
 
-    // 取得一般使用者列表
     public function getNormalList()
     {
         if (Auth::user()->role == 'ADMIN') {
             return $users = DB::table('users')
                     ->where('role', 'NORMAL')->paginate(15);
         } else {
-            return response()->json([ 'status' => 401, 'message' => 'Permission denied, you are not the administrator.' ], 401);
+            # code...
         }
+
     }
 
-    // 建立後台使用者帳號
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $data = $request->all();
@@ -65,14 +90,13 @@ class AdminController extends Controller
                 'role' => 'ADMIN',
                 'level' => 'NORMAL',
                 'password' => bcrypt($data['password']),
-                'guid' => str_random(42)
+                'guid' => $this->publicServiceProvider->generateGuid()
             ]);
         } else {
-            return response()->json([ 'status' => 401, 'message' => 'Permission denied, you are not the administrator.' ], 401);
+            abort(401);
         }
     }
 
-    // 建立一般使用者帳號
     public function createNormalUser(Request $request)
     {
         $data = $request->all();
@@ -90,14 +114,13 @@ class AdminController extends Controller
                 'role' => 'ADMIN',
                 'level' => 'NORMAL',
                 'password' => bcrypt($data['password']),
-                'guid' => str_random(42)
+                'guid' => $this->publicServiceProvider->generateGuid()
             ]);
         } else {
-            return response()->json([ 'status' => 401, 'message' => 'Permission denied, you are not the administrator.' ], 401);
+            abort(401);
         }
     }
 
-    // 重設管理者密碼
     public function resetPassword(Request $request)
     {
         $data = $request->all();
@@ -135,7 +158,6 @@ class AdminController extends Controller
         return response()->json([ 'status' => $status, 'message' => $message ], $status);
     }
 
-    // 刪除管理者
     public function deleteAdmin(Request $request)
     {
         $guid = $request->all();
@@ -154,7 +176,6 @@ class AdminController extends Controller
         return response()->json([ 'status' => $status, 'message' => $message ], $status);
     }
 
-    // 產生測試資料 - 一般使用者
     public function generateDumyNormalUser()
     {
         for ( $i=0 ; $i<100 ; $i++ ) {
@@ -164,7 +185,7 @@ class AdminController extends Controller
                 'role' => 'NORMAL',
                 'level' => 'NORMAL',
                 'password' => bcrypt('111111'),
-                'guid' => str_random(42)
+                'guid' => $this->publicServiceProvider->generateGuid()
             ]);
         }
 
@@ -173,7 +194,6 @@ class AdminController extends Controller
                 ->get();
     }
 
-    // 產生測試資料 - 後台使用者 (最高權限)
     public function generateDumyAdminUser()
     {
         for ( $i=0 ; $i<10 ; $i++ ) {
@@ -183,7 +203,7 @@ class AdminController extends Controller
                 'role' => 'ADMIN',
                 'level' => 'NORMAL',
                 'password' => bcrypt('111111'),
-                'guid' => str_random(42)
+                'guid' => $this->publicServiceProvider->generateGuid()
             ]);
         }
 
@@ -192,7 +212,6 @@ class AdminController extends Controller
                 ->get();
     }
 
-    // 產生測試資料 - 文章
     public function generateDumyPost()
     {
         $author = Auth::user()->guid;
@@ -202,7 +221,7 @@ class AdminController extends Controller
             Post::create([
                 'author' => $author,
                 'authorName' => $authorName,
-                'guid' => str_random(42),
+                'guid' => $this->publicServiceProvider->generateGuid(),
                 'title' => 'this is dumy post'.$i,
                 'content' => 'this is dumy content '.$i.'.<br>'.'this is dumy content '.$i.'.<br>'.'this is dumy content '.$i.'.<br>'.'this is dumy content '.$i.'.<br>'.'this is dumy content '.$i.'.<br>'.'this is dumy content '.$i.'.<br>'
             ]);
@@ -211,5 +230,50 @@ class AdminController extends Controller
         return $users = DB::table('posts')
                 ->where('author', $author)
                 ->get();
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

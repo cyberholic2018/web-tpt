@@ -6,18 +6,18 @@ use App\Product;
 
 class ProductView
 {
-    static function all()
+    public static function all()
     {
-        return 'test';
-    }
-
-    public static function getPopularProducts()
-    {
-        return Product::inRandomOrder()->take(4)->get();
+        return Product::paginate(15);
     }
 
     public static function getByCategory($category)
     {
-        return Product::where('category', $category)->get();
+        return Product::where('category', $category)->paginate(3);
+    }
+
+    public static function get($guid)
+    {
+        return Product::where('guid', $guid)->first();
     }
 }

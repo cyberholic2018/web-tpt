@@ -18,16 +18,25 @@ class CategoryController extends Controller
 
     public function __construct()
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
     }
 
-    // 取得所有分類
+
     public function index()
     {
         return Category::all();
     }
 
-    // 依照類型取得類別列表
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
     public function getCategory(Request $request)
     {
         $data = $request->all();
@@ -35,15 +44,22 @@ class CategoryController extends Controller
         return Category::where('type', $data['type'])->get();
     }
 
-    // 新增類別
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
+        // $data = $request->all();
         $data = [
             'title' => $request->all()['categoryName'],
             'parentId' => $request->all()['categoryParent'],
             'type' => $request->all()['type'],
-            'description' => $request->all()['description'],
+            'locale' => $request->all()['locale'],
             'featureImage' => $request->all()['featureImage'],
+            'description' => $request->all()['description'],
         ];
 
         $validator = Validator::make($data, [
@@ -54,33 +70,19 @@ class CategoryController extends Controller
             $data['parentId'] = null;
         }
 
-        try {
-            $category = Category::create([
-                'guid' => str_random(42),
-                'title' => $data['title'],
-                'parentId' => $data['parentId'],
-                'type' => $data['type'],
-                'description' => $data['description'],
-                'featureImage' => $data['featureImage'],
-            ]);
+        Category::create([
+            'guid' => str_random(40),
+            'title' => $data['title'],
+            'parentId' => $data['parentId'],
+            'type' => $data['type'],
+            'locale' => $data['locale'],
+            'featureImage' => $data['featureImage'],
+            'description' => $data['description']
+        ]);
 
-            $status = 200;
-            $message = 'Create category success.';
-            $data = $category;
-        } catch (\Exception $e) {
-            $status = 200;
-            $message = 'Create category fail.';
-            $data = null;
-        }
-
-        return response()->json([
-            'status' => $status,
-            'message' => $message,
-            'data' => $data
-        ], $status);
+        return response()->json([ 'status' => 200, 'message' => '建立類別成功' ], 200);
     }
 
-    // 刪除類別
     public function deleteCategory(Request $request)
     {
         $guid = $request->all()['category'];
@@ -90,21 +92,81 @@ class CategoryController extends Controller
 
         if ($deleteRow) {
             $status = 200;
-            $message = 'Delete category success.';
+            $message = '類別刪除成功';
         } else {
             $status = 404;
-            $message = 'Category not found.';
+            $message = '找不到類別';
         }
 
         return response()->json([ 'status' => $status, 'message' => $message ], $status);
     }
 
-    // 更新類別
     public function updateCategory(Request $request)
     {
         $data = $request->all();
+        $category = Category::where('guid', $data['category']);
 
-        return Category::where('guid', $data['category'])
-                ->update(['title' => $data['name']]);
+        try {
+            $category->update([
+                'title' => $data['name'],
+                'parentId' => $data['parentId'],
+                'locale' => $data['locale'],
+                'featureImage' => $data['featureImage'],
+                'description' => $data['description']
+            ]);
+
+            $status = 200;
+            $message = '類別編輯成功';
+        } catch (Exception $e) {
+            $status = 500;
+            $message = $e;
+        }
+
+        return response()->json([ 'status' => $status, 'message' => $message ], $status);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

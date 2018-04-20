@@ -19,10 +19,8 @@ class CreateSiteMetaTable extends Migration
             $table->string('keyword')->nullable();
             $table->longtext('description')->nullable();
             $table->string('shortcut')->nullable();
-            $table->longtext('pageTopContent')->nullable();
-            $table->longtext('pageTopLink')->nullable();
-            $table->longtext('pageTopButton')->nullable();
             $table->longtext('index_album')->nullable();
+            $table->longtext('other')->nullable();
             $table->timestamps();
         });
     }

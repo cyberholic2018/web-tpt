@@ -6,28 +6,18 @@ use App\Post;
 
 class PostView
 {
-    static function all()
+    public static function all($locale)
     {
-        return Post::paginate(15);
+        return Post::where('locale', $locale)->paginate(15);
     }
 
-    public static function get($guid)
+    public static function news($locale)
     {
-        return Post::where('guid', $guid)->first();
+        return Post::where('locale', $locale)->where('category', 'news')->paginate(15);
     }
 
-    public static function getNewestPosts()
+    public static function success($locale)
     {
-        return Post::take(4)->get();
-    }
-
-    public static function getPopularProducts()
-    {
-        return Product::inRandomOrder()->take(4)->get();
-    }
-
-    public static function getByCategory($category)
-    {
-        return Product::where('category', $category)->get();
+        return Post::where('locale', $locale)->where('category', 'success')->paginate(15);
     }
 }

@@ -18,8 +18,9 @@ class Category extends Model
         'title',
         'parentId',
         'type',
-        'featureImage',
+        'locale',
         'description',
+        'featureImage'
     ];
 
     /**

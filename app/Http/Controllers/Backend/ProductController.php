@@ -21,9 +21,11 @@ class ProductController extends Controller
         // $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $data = Product::paginate(15);
+        $flag = $request->all()['flag'];
+        $order = $request->all()['order'];
+        $data = Product::orderBy($flag, $order)->paginate(15);
         $productData = array();
 
         if (Auth::user()->role == 'ADMIN') {
@@ -44,8 +46,53 @@ class ProductController extends Controller
                     'discountedPrice' => $data[$i]['discountedPrice'],
                     'isPublish' => $data[$i]['isPublish'],
                     'quantity' => $data[$i]['quantity'],
-                    'rate' => $data[$i]['rate'],
-                    'Temperature' => $data[$i]['Temperature'],
+                    'locale' => $data[$i]['locale'],
+                    'reserveStatus' => $data[$i]['reserveStatus'],
+                    'rule' => $data[$i]['rule'],
+                    'scheduleDelete' => $data[$i]['scheduleDelete'],
+                    'schedulePost' => $data[$i]['schedulePost'],
+                    'serialNumber' => $data[$i]['serialNumber'],
+                    'status' => $data[$i]['status'],
+                    'title' => $data[$i]['title']
+                ]);
+            }
+
+            $status = 200;
+            $message = 'Get product information success.';
+        } else {
+            $status = 425;
+            $message = 'Permission denied.';
+            $data = null;
+        }
+        return $data;
+    }
+
+    public function searchProducts(Request $request, $keyword)
+    {
+        $flag = $request->all()['flag'];
+        $order = $request->all()['order'];
+        $data = Product::where('title', 'like', '%'.$keyword.'%')->orderBy($flag, $order)->paginate(15);
+        $productData = array();
+
+        if (Auth::user()->role == 'ADMIN') {
+            for ($i=0; $i < count($data) ; $i++) {
+                if ($data[$i]['category'] == null) {
+                    $category = null;
+                } else {
+                    $category = Category::where('guid', $data[$i]['category'])->get()[0]->title;
+                }
+
+                array_push($productData, [
+                    'guid' => $data[$i]['guid'],
+                    'featureImage' => $data[$i]['featureImage'],
+                    'authorName' => $data[$i]['authorName'],
+                    'category' => $category,
+                    'created_at' => $data[$i]['created_at'],
+                    'price' => $data[$i]['price'],
+                    'discountedPrice' => $data[$i]['discountedPrice'],
+                    'isPublish' => $data[$i]['isPublish'],
+                    'quantity' => $data[$i]['quantity'],
+                    'locale' => $data[$i]['locale'],
                     'reserveStatus' => $data[$i]['reserveStatus'],
                     'rule' => $data[$i]['rule'],
                     'scheduleDelete' => $data[$i]['scheduleDelete'],
@@ -175,49 +222,68 @@ class ProductController extends Controller
                     break;
             }
 
-            try {
-                $createProduct = Product::create([
-                    'guid' => str_random(42),
-                    'title' => $data['title'],
-                    'serialNumber' => $data['serialNumber'],
-                    'quantity' => $data['quantity'],
-                    'author' => $creatorGuid,
-                    'authorName' => $creator,
-                    'category' => $category,
-                    'featureImage' => $data['featureImage'],
-                    'album' => $data['album'],
-                    'status' => $data['status'],
-                    'isPublish' => $isPublish,
-                    'reserveStatus' => $reserveStatus,
-                    // 'rule' => $data['rule'],
-                    'price' => $data['price'],
-                    'Temperature' => $data['Temperature'],
-                    'productInformation' => $data['productInformation'],
-                    'discountedPrice' => $data['discountedPrice'],
-                    'description' => $data['description'],
-                    'seoTitle' => $data['seoTitle'],
-                    'seoDescription' => $data['seoDescription'],
-                    'seoKeyword' => $data['seoKeyword'],
-                    'shortDescription' => $data['shortDescription'],
-                    'socialImage' => $data['socialImage'],
-                    'schedulePost'=> $data['schedulePost'],
-                    'scheduleDelete' => $data['scheduleDelete']
-                ]);
+            $createProduct = Product::create([
+                'guid' => str_random(40),
+                'title' => $data['title'],
+                'serialNumber' => $data['serialNumber'],
+                'quantity' => $data['quantity'],
+                'author' => $creatorGuid,
+                'authorName' => $creator,
+                'category' => $category,
+                'featureImage' => $data['featureImage'],
+                'album' => $data['album'],
+                'status' => $data['status'],
+                'isPublish' => $isPublish,
+                'reserveStatus' => $reserveStatus,
+                'locale' => $data['locale'],
+                'price' => $data['price'],
+                'productInformation' => $data['productInformation'],
+                'discountedPrice' => $data['discountedPrice'],
+                'description' => $data['description'],
+                'seoTitle' => $data['seoTitle'],
+                'seoDescription' => $data['seoDescription'],
+                'seoKeyword' => $data['seoKeyword'],
+                'shortDescription' => $data['shortDescription'],
+                'socialImage' => $data['socialImage'],
+                'schedulePost'=> $data['schedulePost'],
+                'scheduleDelete' => $data['scheduleDelete']
+            ]);
 
+            if ($createProduct) {
                 $status = 200;
                 $message = 'Create product success.';
-            } catch (\Exception $e) {
-                $status = 500;
-                $message = $e;
+            } else {
+                $status = 423;
+                $message = 'Create product fail.';
             }
         } else {
             $status = 425;
             $message = 'Permission denied.';
         }
 
-        // Product::all()->searchable();
-
         return response()->json([ 'status' => $status, 'message' => $message ], $status);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**
@@ -250,42 +316,39 @@ class ProductController extends Controller
                     break;
             }
 
-            try {
-                $updateProduct = $postRow->update([
-                    'title' => $data['title'],
-                    'serialNumber' => $data['serialNumber'],
-                    'quantity' => $data['quantity'],
-                    'category' => $category,
-                    'featureImage' => $data['featureImage'],
-                    'album' => $data['album'],
-                    'status' => $data['status'],
-                    // 'rule' => $data['rule'],
-                    'price' => $data['price'],
-                    'productInformation' => $data['productInformation'],
-                    'discountedPrice' => $data['discountedPrice'],
-                    'Temperature' => $data['Temperature'],
-                    'description' => $data['description'],
-                    'seoTitle' => $data['seoTitle'],
-                    'seoDescription' => $data['seoDescription'],
-                    'seoKeyword' => $data['seoKeyword'],
-                    'shortDescription' => $data['shortDescription'],
-                    'socialImage' => $data['socialImage'],
-                    'schedulePost'=> $data['schedulePost'],
-                    'scheduleDelete' => $data['scheduleDelete']
-                ]);
+            $updateProduct = $postRow->update([
+                'title' => $data['title'],
+                'serialNumber' => $data['serialNumber'],
+                'quantity' => $data['quantity'],
+                'category' => $category,
+                'featureImage' => $data['featureImage'],
+                'album' => $data['album'],
+                'status' => $data['status'],
+                'locale' => $data['locale'],
+                'price' => $data['price'],
+                'productInformation' => $data['productInformation'],
+                'discountedPrice' => $data['discountedPrice'],
+                'description' => $data['description'],
+                'seoTitle' => $data['seoTitle'],
+                'seoDescription' => $data['seoDescription'],
+                'seoKeyword' => $data['seoKeyword'],
+                'shortDescription' => $data['shortDescription'],
+                'socialImage' => $data['socialImage'],
+                'schedulePost'=> $data['schedulePost'],
+                'scheduleDelete' => $data['scheduleDelete']
+            ]);
 
+            if ($updateProduct) {
                 $status = 200;
                 $message = 'Update product success.';
-            } catch (\Exception $e) {
-                $status = 500;
-                $message = $e;
+            } else {
+                $status = 423;
+                $message = 'Update product fail.';
             }
         } else {
             $status = 425;
             $message = 'Permission denied.';
         }
-
-        // Product::all()->searchable();
 
         return response()->json([ 'status' => $status, 'message' => $message ], $status);
     }
@@ -294,21 +357,11 @@ class ProductController extends Controller
     {
         $data = $request->all()['data'];
 
-        try {
-            for ($i=0; $i < count($data); $i++) {
-                Product::where('guid', $data[$i])->delete();
-            }
-
-            $status = 200;
-            $message = 'Delete Post success.';
-        } catch (\Exception $e) {
-            $status = 500;
-            $message = $e;
+        for ($i=0; $i < count($data); $i++) {
+            Product::where('guid', $data[$i])->delete();
         }
 
-        // Product::all()->searchable();
-
-        return response()->json([ 'status' => $status, 'message' => $message ], 200);
+        return response()->json([ 'status' => 200, 'message' => '文章刪除成功' ], 200);
     }
 
     /**

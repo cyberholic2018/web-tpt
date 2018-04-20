@@ -3,20 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Auth\Events\Registered;
-use App\Http\Requests;
-use Illuminate\Support\Facades\Redirect;
-use App\Product;
-use App\User;
-use App\Bonus;
-use App\Address;
 use App\Services\PublicServiceProvider;
+use App\User;
 use Auth;
 use Cart;
-use Mail;
-use Log;
-use Artisan;
 
 class HomeController extends Controller
 {
@@ -26,10 +16,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        // $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -38,7 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return redirect('dashboard/admin');
+        return redirect('cyberholic-system/page/managment');
     }
 
     public function createAdmin($value='')
@@ -59,46 +49,32 @@ class HomeController extends Controller
 
     }
 
-    public function test($value='')
+    public function getCurrentUser()
     {
-
-        return "Artisan::call('migrate')";
-        $product = Product::where('isPublish', 1)
-                    // ->where('schedulePost', '<', date('Y-m-d H:i:s'))
-                    // ->where('scheduleDelete', '>', date('Y-m-d H:i:s'))
-                    ->paginate(1);
-        // return json_encode($product);
-
-        return view('test', [
-            'title' => '123',
-            'shortcut' => '/',
-            'isThumbShow' => false,
-            'product' => $product,
-        ]);
-    }
-
-    public function testPost(Request $request)
-    {
-        if (Input::hasFile('files')){
-            $files = Input::file('files');
-            foreach ($files as $file) {
-                $file->move('uploads' , time().$file->getClientOriginalName());
-            }
-        } else {
-            echo 'Not Uploaded';
-        }
-    }
-
-    public function checkAuth()
-    {
-        $authStatus = array(
-            'auth' => Auth::check()
+        $user = array(
+            'name' => Auth::user()->name,
+            'email' => Auth::user()->email,
+            'guid' => Auth::user()->guid,
+            'isSocialUser' => Auth::user()->socialUser,
+            'status' => Auth::user()->status,
+            'level' => Auth::user()->level,
+            'point' => Auth::user()->point
         );
-        return $authStatus;
+        return $user;
     }
 
-    public function getAddress($guid)
-    {
-        return Address::where('owner', $guid)->first();
+    public function test() {
+        $cartArray = array();
+
+        foreach(Cart::content() as $row) {
+            array_push($cartArray, [
+                'id' => $row->name,
+                'rowId' => $row->rowId,
+                'qty' => $row->qty,
+                'price' => $row->price,
+                'total' => $row->total
+            ]);
+        }
+        return $cartArray;
     }
 }

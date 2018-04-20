@@ -17,16 +17,12 @@ use Illuminate\Support\Facades\Route;
 require_once "Auth.php";
 
 // backend's route
-Route::group(['prefix' => 'cyberholic-system', 'middleware' => 'auth', 'middleware' => 'role'], function()
+Route::group(['middleware' => 'auth'], function()
 {
-    require_once "backend/view.php";
+    require_once "backend-route.php";
 });
 
-require_once "backend/api.php";
-
 // frontend's route
-require_once "frontend/view.php";
-require_once "frontend/api.php";
-
+require_once "frontend-route.php";
 
 Route::get('/create_admin', 'HomeController@createAdmin');

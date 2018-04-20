@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Lang;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
@@ -55,18 +54,4 @@ class LoginController extends Controller
             // new rules here
         ]);
     }
-
-    /**
-     * Get the failed login response instance.
-     *
-     * @param \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    // protected function sendFailedLoginResponse(Request $request)
-    // {
-    //     return view('frontend.exception', [
-    //         'isThumbShow' => false,
-    //         'message' => Lang::get('auth.failed'),
-    //     ]);
-    // }
 }

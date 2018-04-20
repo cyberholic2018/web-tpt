@@ -47,34 +47,12 @@ class SiteMetaView
         try {
             return json_decode(SiteMeta::all()->first()['index_album']);
         } catch (\Exception $e) {
-            return json_decode(array());
+            return [];
         }
     }
 
-    public static function pageTopLink()
+    public static function other()
     {
-        try {
-            return SiteMeta::all()->first()['pageTopLink'];
-        } catch (\Exception $e) {
-            return json_decode(array());
-        }
-    }
-
-    public static function pageTopButton()
-    {
-        try {
-            return SiteMeta::all()->first()['pageTopButton'];
-        } catch (\Exception $e) {
-            return json_decode(array());
-        }
-    }
-
-    public static function pageTopContent()
-    {
-        try {
-            return SiteMeta::all()->first()['pageTopContent'];
-        } catch (\Exception $e) {
-            return json_decode(array());
-        }
+        return json_decode(SiteMeta::all()->first()['other']);
     }
 }

@@ -1,0 +1,105 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import "frontend/style";
+
+// @import "~slick-carousel/slick/slick.scss";
+
+body {
+    font-family: Microsoft JhengHei;
+    background: white;
+}
+
+.loading-bar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 99999;
+    background: white;
+
+    img {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -50px;
+        margin-top: -50px;
+    }
+}
+
+#nav-btn {
+    width: 40px;
+    height: 35px;
+    position: absolute;
+    top: 59%;
+    right: 20px;
+    margin-top: -25px;
+    z-index: 999;
+    display: none;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+
+    span {
+        display: block;
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background: #555;
+        opacity: 1;
+        left: 0;
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: 0.25s ease-in-out;
+        transition: 0.25s ease-in-out;
+
+        &:nth-child(1) {
+            top: 0;
+        }
+        &:nth-child(2), &:nth-child(3) {
+            top: 15px;
+        }
+        &:nth-child(4) {
+            top: 30px;
+        }
+    }
+
+    &.open {
+        top: 50%;
+        right: 15px;
+
+        span {
+            &:nth-child(1) {
+                top: 18px;
+                width: 0;
+                left: 50%;
+            }
+            &:nth-child(2) {
+                -webkit-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
+            &:nth-child(3) {
+                -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+            }
+            &:nth-child(4) {
+                top: 18px;
+                width: 0;
+                left: 50%;
+            }
+        }
+
+    }
+
+}

@@ -17,11 +17,11 @@ class CreateProductTable extends Migration
             $table->increments('id');
             $table->string('guid');
             $table->string('title');
+            $table->string('locale');
             $table->string('serialNumber')->nullable();
             $table->string('author');
             $table->string('authorName');
-            $table->integer('price');
-            $table->string('Temperature');
+            $table->integer('price')->nullable();
             $table->integer('discountedPrice')->nullable();
             $table->string('category')->nullable();
             $table->string('featureImage')->nullable();
