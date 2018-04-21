@@ -24,18 +24,29 @@ body {
 }
 
 section.numbertwo {
-  border-bottom: solid #d4d4d4;
   padding-top: 70px;
   padding-bottom: 70px;
 }
 
+section.numbertwo .tri {
+  border: solid 1px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 200px;
+  height: 150px;
+  background-color: white;
+  z-index: 999;
+  -webkit-transform: translateX(-85px) translateY(-15px) rotate(-45deg);
+          transform: translateX(-85px) translateY(-15px) rotate(-45deg);
+}
+
 section.numbertwo .img-responsive {
-  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 section.numberthree {
   padding-top: 15px;
-  border-bottom: solid #d4d4d4;
   color: #5c5c5c;
 }
 
@@ -72,7 +83,6 @@ section.numberthree .btn.btn-default {
 }
 
 section.numberfour {
-  border-bottom: solid #d4d4d4;
   color: #5c5c5c;
 }
 
@@ -97,7 +107,6 @@ section.numberfour .col-md-4.col-img {
 }
 
 section.numberfive {
-  border-bottom: solid #d4d4d4;
   color: #5c5c5c;
 }
 
@@ -171,6 +180,16 @@ section.numbersix .col-md-12.col-list {
   color: #e8e8e8;
 }
 
+.btn-contact {
+  background-color: #545454;
+  color: #e8e8e8;
+  width: 50%;
+  left: 50%;
+  right: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
 .col-md-12.col-tel {
   width: 100%;
   margin: 10px auto;
@@ -193,5 +212,12 @@ section.numbersix .col-md-12.col-list {
 
 .col-md-12.col-tel .contact-table tr textarea {
   width: 100%;
+}
+
+.col-md-12.col-copyright {
+  margin-top: 100px;
+  margin-bottom: 50px;
+  text-align: center;
+  font-size: 10px;
 }
 

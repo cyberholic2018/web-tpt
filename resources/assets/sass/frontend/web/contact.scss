@@ -41,7 +41,7 @@ body {
 }
 section {
 	&.numbertwo {
-		border-bottom: solid $color_quill_gray_approx;
+		// border-bottom: solid $color_quill_gray_approx;
 		color: $color_chicago_approx;
 		.col-md-12 {
 			&.col-tittle {
@@ -54,8 +54,7 @@ section {
 				text-align: center;
 				font-size: 25px;
 				background-color: $color_fuscous_gray_approx;
-				padding-top: 3px;
-				padding-bottom: 3px;
+				padding: 0px;
 				cursor: pointer;
 				ul {
 					border: none;
@@ -66,9 +65,10 @@ section {
 							color: $color_gray_nurse_approx;
 							background-color: $color_fuscous_gray_approx;
 							border: none;
+							margin: 0px;
 						}
 						&.active a {
-							border-bottom: solid 2px $color_orange_peel_approx;
+							background-color: $color_orange_peel_approx;
 						}
 					}
 				}
@@ -91,6 +91,7 @@ section {
 		}
 	}
 	&.numbersix {
+		margin-top: 80px;
 		text-align: center;
 		.col-md-12 {
 			&.col-tittle {
@@ -100,11 +101,17 @@ section {
 			}
 			&.col-list {
 				text-align: left;
+				margin-top: 20px;
 				padding-top: 3px;
 				padding-bottom: 3px;
 				line-height: 45px;
 				background-color: $color_fuscous_gray_approx;
 				color: $color_gray_nurse_approx;
+				ul{
+					li{
+						list-style: none;
+					}
+				}
 			}
 			&.col-tel {
 				width: 100%;
@@ -136,9 +143,9 @@ section {
 					transform: translateX(-50%);
 				}
 			}
-			&.col-bottom {
+			&.col-copyright {
 				margin-top: 100px;
-				margin-bottom: 150px;
+				margin-bottom: 50px;
 				text-align: center;
 				font-size: 10px;
 			}

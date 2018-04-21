@@ -34,7 +34,7 @@
 
       </div>
       <div class="row">
-        <div class="col-md-12 col-bottom">
+        <div class="col-md-12 col-copyright">
           <p class="small">COPYRIGHT © TAIWAN POWERTEK. ALL RIGHTS RESERVED. DESIGN BY CyberHolic</p>
         </div>
       </div>

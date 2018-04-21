@@ -17,7 +17,7 @@
     <div class="container-fluid"><img src="https://dummyimage.com/1920x600/{{Helper::rc()}}/fff" alt=""/></div>
   </div>
   <section class="numbertwo">
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
         <div class="col-md-12 col-tittle">
           <p>營運據點</p>
@@ -75,7 +75,7 @@
     </div>
   </section>
   <section class="numbersix">
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
         <div class="col-md-12 col-tittle">
           <p>聯絡我們</p>
@@ -145,7 +145,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12 col-bottom">
+        <div class="col-md-12 col-copyright">
           <p class="small">COPYRIGHT © TAIWAN POWERTEK. ALL RIGHTS RESERVED. DESIGN BY CyberHolic    </p>
         </div>
       </div>

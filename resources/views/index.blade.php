@@ -49,7 +49,10 @@
   <section class="numbertwo">
     <div class="container">
       <div class="row">
-        <div class="col-md-4 col-set" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/5FF1FF/fff" alt=""/></div>
+        <div class="col-md-4 col-set" data-aos="fade-up">
+          <h2 class="tri">成立宗旨</h2>
+          <img class="img-responsive" src="https://dummyimage.com/640x420/5FF1FF/fff" alt=""/>
+        </div>
         <div class="col-md-4 col-int" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/579DE8/fff" alt=""/></div>
         <div class="col-md-4 col-idea" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/8B51E8/fff" alt=""/></div>
         <div class="col-md-6 col-por" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/960x540/E563FF/fff" alt=""/></div>
@@ -146,7 +149,7 @@
             <div class="tab-pane fade in active" id="home">
               <div class="row">
                 <div class="col-md-12 col-map">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28968.13186951268!2d120.92452149999998!3d24.829109900000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8dfe1ebae1c22986!2z5paw56u55Y2X5a-u6IiK5ryB5riv!5e0!3m2!1szh-TW!2stw!4v1523373663161" width="100%" height="350" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.279221403041!2d121.63243311488944!3d25.058523643462177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x345d53515f76e2a1%3A0xbc512f562f7f4448!2zMjIx5paw5YyX5biC5rGQ5q2i5Y2A5aSn5ZCM6Lev5LiA5q61MjM36Jmf!5e0!3m2!1szh-TW!2stw!4v1524313135391" width="100%" height="350" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
                 </div>
               </div>
               <div class="row">
@@ -163,7 +166,7 @@
             <div class="tab-pane fade" id="menu1">
               <div class="row">
                 <div class="col-md-12 col-map">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28968.13186951268!2d120.92452149999998!3d24.829109900000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8dfe1ebae1c22986!2z5paw56u55Y2X5a-u6IiK5ryB5riv!5e0!3m2!1szh-TW!2stw!4v1523373663161" width="100%" height="350" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.279221403041!2d121.63243311488944!3d25.058523643462177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x345d53515f76e2a1%3A0xbc512f562f7f4448!2zMjIx5paw5YyX5biC5rGQ5q2i5Y2A5aSn5ZCM6Lev5LiA5q61MjM36Jmf!5e0!3m2!1szh-TW!2stw!4v1524313135391" width="100%" height="350" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
                 </div>
               </div>
               <div class="row">
@@ -243,11 +246,16 @@
               </tr>
               <tr>
                 <td colspan="2">
-                  <button class="btn btn-success" type="submit">送出</button>
+                  <button class="btn btn-contact" type="submit">送出</button>
                 </td>
               </tr>
             </table>
           </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 col-copyright">
+          <p class="small">COPYRIGHT © TAIWAN POWERTEK. ALL RIGHTS RESERVED. DESIGN BY CyberHolic    </p>
         </div>
       </div>
     </div>

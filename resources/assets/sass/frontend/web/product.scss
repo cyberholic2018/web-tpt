@@ -35,8 +35,8 @@ section {
 		font-size: 20px;
 		line-height: 30px;
 		padding: 80px;
-		padding-left: 150px;
-		padding-right: 150px;
+		padding-left: 200px;
+		padding-right: 200px;
 	}
 	&.numberthree {
 		text-align: center;
@@ -56,4 +56,10 @@ section {
 			margin-bottom: 10px;
 		}
 	}
+}
+.col-md-12.col-copyright {
+	margin-top: 100px;
+	margin-bottom: 50px;
+	text-align: center;
+	font-size: 10px;
 }
