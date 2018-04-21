@@ -41,19 +41,20 @@ section.numbertwo span {
   color: #f00060;
 }
 
-section.numbertwo .col-md-12.col-bottom {
+section.numbertwo .col-md-12.col-copyright {
   margin-top: 100px;
-  margin-bottom: 150px;
+  margin-bottom: 50px;
   text-align: center;
   font-size: 10px;
 }
 
 section.numbertwo .col-md-12.col-bigimg {
   margin-top: 80px;
+  margin-left: 70px;
 }
 
 section.numbertwo .word {
-  margin-top: 40px;
+  margin-top: 100px;
 }
 
 section.numbertwo .col-md-5.col-img {

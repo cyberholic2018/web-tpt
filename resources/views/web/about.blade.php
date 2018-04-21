@@ -13,7 +13,7 @@
     <div class="container-fluid"><img src="https://dummyimage.com/1920x600/{{Helper::rc()}}/fff" alt=""/></div>
   </div>
   <section class="numbertwo">
-    <div class="container-fluid">
+    <div class="container">
       <div class="row word">
         <div class="col-md-5 col-border">
           <hr/>
@@ -74,7 +74,7 @@
       <div class="row">
         <div class="col-md-12 col-bigimg"><img class="img-responsive" src="https://dummyimage.com/960x540/{{Helper::rc()}}/fff" alt=""/></div>
         <div class="row">
-          <div class="col-md-12 col-bottom">
+          <div class="col-md-12 col-copyright">
             <p class="small">COPYRIGHT © TAIWAN POWERTEK. ALL RIGHTS RESERVED. DESIGN BY CyberHolic    </p>
           </div>
         </div>

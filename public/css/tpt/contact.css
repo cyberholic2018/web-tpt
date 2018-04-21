@@ -24,7 +24,6 @@ body {
 }
 
 section.numbertwo {
-  border-bottom: solid #d4d4d4;
   color: #5c5c5c;
 }
 
@@ -39,8 +38,7 @@ section.numbertwo .col-md-12.col-button {
   text-align: center;
   font-size: 25px;
   background-color: #545454;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding: 0px;
   cursor: pointer;
 }
 
@@ -57,10 +55,11 @@ section.numbertwo .col-md-12.col-button ul li a {
   color: #e8e8e8;
   background-color: #545454;
   border: none;
+  margin: 0px;
 }
 
 section.numbertwo .col-md-12.col-button ul li.active a {
-  border-bottom: solid 2px #faa200;
+  background-color: #faa200;
 }
 
 section.numbertwo .col-md-12.col-map {
@@ -81,6 +80,7 @@ section.numbertwo .col-md-12.col-contact {
 }
 
 section.numbersix {
+  margin-top: 80px;
   text-align: center;
 }
 
@@ -92,11 +92,16 @@ section.numbersix .col-md-12.col-tittle {
 
 section.numbersix .col-md-12.col-list {
   text-align: left;
+  margin-top: 20px;
   padding-top: 3px;
   padding-bottom: 3px;
   line-height: 45px;
   background-color: #545454;
   color: #e8e8e8;
+}
+
+section.numbersix .col-md-12.col-list ul li {
+  list-style: none;
 }
 
 section.numbersix .col-md-12.col-tel {
@@ -133,9 +138,9 @@ section.numbersix .col-md-12.col-tel .btn-contact {
           transform: translateX(-50%);
 }
 
-section.numbersix .col-md-12.col-bottom {
+section.numbersix .col-md-12.col-copyright {
   margin-top: 100px;
-  margin-bottom: 150px;
+  margin-bottom: 50px;
   text-align: center;
   font-size: 10px;
 }

@@ -5,6 +5,9 @@ $color_fuscous_gray_approx: #545454;
 $color_gray_nurse_approx: #e8e8e8;
 $color_orange_peel_approx: #faa200;
 $red: red;
+$white: white;
+$color_fuscous_gray_approx: #545454;
+$color_gray_nurse_approx: #e8e8e8;
 
 //fonts
 $font_0: 微軟正黑體;
@@ -41,16 +44,28 @@ body {
 }
 section {
 	&.numbertwo {
-		border-bottom: solid $color_quill_gray_approx;
+		// border-bottom: solid $color_quill_gray_approx;
 		padding-top: 70px;
 		padding-bottom: 70px;
+		.tri{
+			border: solid 1px;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			width: 200px;
+			height: 150px;
+			background-color: $white;
+			z-index: 999;
+			transform: translateX(-85px) translateY(-15px) rotate(-45deg);
+		}
 		.img-responsive {
-			margin-top: 50px;
+			margin-bottom: 50px;
 		}
 	}
+
 	&.numberthree {
 		padding-top: 15px;
-		border-bottom: solid $color_quill_gray_approx;
+		// border-bottom: solid $color_quill_gray_approx;
 		color: $color_chicago_approx;
 		hr {
 			border-color: $color_quill_gray_approx;
@@ -80,7 +95,7 @@ section {
 		}
 	}
 	&.numberfour {
-		border-bottom: solid $color_quill_gray_approx;
+		// border-bottom: solid $color_quill_gray_approx;
 		color: $color_chicago_approx;
 		hr {
 			border-color: $color_quill_gray_approx;
@@ -100,7 +115,7 @@ section {
 		}
 	}
 	&.numberfive {
-		border-bottom: solid $color_quill_gray_approx;
+		// border-bottom: solid $color_quill_gray_approx;
 		color: $color_chicago_approx;
 		.col-md-12 {
 			&.col-tittle {
@@ -167,10 +182,20 @@ section {
 		}
 	}
 }
+.btn-contact {
+	background-color: $color_fuscous_gray_approx;
+	color: $color_gray_nurse_approx;
+	width: 50%;
+	left: 50%;
+	right: 50%;
+	//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+	transform: translateX(-50%);
+}
 .col-md-12.col-tel {
 	width: 100%;
 	margin: 10px auto;
 	text-align: left;
+
 	.contact-table {
 		margin: 10px auto 0 auto;
 		width: 100%;
@@ -187,4 +212,10 @@ section {
 			}
 		}
 	}
+}
+.col-md-12.col-copyright{
+    margin-top: 100px;
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 10px;
 }
