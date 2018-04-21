@@ -1,0 +1,59 @@
+//fonts
+$font_0: 微軟正黑體;
+
+//@extend-elements
+//original selectors
+//html, body
+%extend_1 {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	width: 100%;
+}
+
+
+* {
+	font-family: $font_0;
+	position: relative;
+	font-weight: 800;
+}
+html {
+	@extend %extend_1;
+}
+body {
+	@extend %extend_1;
+}
+.container-fluid {
+	padding: 0;
+	img {
+		height: 100%;
+		width: 100%;
+	}
+}
+section {
+	&.numbertwo {
+		font-size: 20px;
+		line-height: 30px;
+		padding: 80px;
+		padding-left: 150px;
+		padding-right: 150px;
+	}
+	&.numberthree {
+		text-align: center;
+		font-size: 20px;
+		font-weight: 600;
+		margin-bottom: 150px;
+		#a {
+			margin-top: 20px;
+		}
+		#b {
+			margin-top: 20px;
+		}
+		#c {
+			margin-top: 20px;
+		}
+		img {
+			margin-bottom: 10px;
+		}
+	}
+}

@@ -5,50 +5,10 @@
 
 @section('custom-style')
     <style media="screen">
-    @charset "UTF-8";
-* {
-font-family: 微軟正黑體;
-position: relative;
-font-weight: 800;
-}
 
-html, body {
-padding: 0;
-margin: 0;
-height: 100%;
-width: 100%;
-}
-
-.container-fluid {
-padding: 0;
-}
-.container-fluid img {
-height: 100%;
-width: 100%;
-}
-
-section.numbertwo {
-font-size: 20px;
-line-height: 30px;
-padding: 80px;
-padding-left: 150px;
-padding-right: 150px;
-}
-
-section.numberthree {
-text-align: center;
-font-size: 20px;
-font-weight: 600;
-margin-bottom: 150px;
-}
-section.numberthree #a, section.numberthree #b, section.numberthree #c {
-margin-top: 20px;
-}
-section.numberthree img {
-margin-bottom: 10px;
-}
 
     </style>
+    <link rel="stylesheet" href="/css/tpt/product.css">
 @endsection
 
 @section('content')

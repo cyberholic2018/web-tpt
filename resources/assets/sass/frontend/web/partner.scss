@@ -1,0 +1,47 @@
+//fonts
+$font_0: 微軟正黑體;
+
+//@extend-elements
+//original selectors
+//html, body
+%extend_1 {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	width: 100%;
+}
+
+
+@charset "UTF-8";
+* {
+	font-family: $font_0;
+	position: relative;
+	font-weight: 800;
+}
+html {
+	@extend %extend_1;
+}
+body {
+	@extend %extend_1;
+}
+.container-fluid {
+	padding: 0;
+	margin-bottom: 150px;
+	img {
+		height: 100%;
+		width: 100%;
+	}
+}
+section.numbertwo .col-md-4 {
+	&.col-set {
+		margin-top: 30px;
+	}
+	&.col-bottom {
+		margin-top: 30px;
+		left: 50%;
+		right: 50%;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateX(-50%);
+		margin-bottom: 100px;
+	}
+}

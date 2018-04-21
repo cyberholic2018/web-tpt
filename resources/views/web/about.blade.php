@@ -4,66 +4,7 @@
 @endsection
 
 @section('custom-style')
-    <style media="screen">
-    @charset "UTF-8";
-* {
-  font-family: 微軟正黑體;
-  position: relative;
-  font-weight: 800;
-}
-
-html, body {
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  width: 100%;
-}
-
-.container-fluid {
-  padding: 0;
-}
-.container-fluid img {
-  height: 100%;
-  width: 100%;
-}
-
-section.numbertwo {
-  margin-left: 50px;
-  margin-right: 50px;
-}
-section.numbertwo .col-tittle {
-  font-size: 25px;
-  text-align: center;
-}
-section.numbertwo hr {
-  border-color: #080808;
-}
-section.numbertwo span {
-  color: #F00060;
-}
-section.numbertwo .col-md-12.col-bottom {
-  margin-top: 100px;
-  margin-bottom: 150px;
-  text-align: center;
-  font-size: 10px;
-}
-section.numbertwo .col-md-5.col-img {
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
-section.numbertwo .col-md-7.col-p {
-  margin-top: 50px;
-  font-size: 18px;
-  line-height: 50px;
-}
-section.numbertwo .word {
-  margin-top: 40px;
-}
-section.numbertwo .col-md-12.col-bigimg {
-  margin-top: 80px;
-}
-
-    </style>
+    <link rel="stylesheet" href="/css/tpt/about.css">
 @endsection
 
 @section('content')

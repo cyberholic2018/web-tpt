@@ -29,7 +29,14 @@ var LiveReloadPlugin = require('webpack-livereload-plugin');
     .js('resources/assets/js/frontend-script.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .sass('resources/assets/sass/frontend.scss', 'public/css')
-    .sass('resources/assets/sass/frontend-style.scss', 'public/css');
+    .sass('resources/assets/sass/frontend-style.scss', 'public/css')
+    .sass('resources/assets/sass/frontend/web/about.scss', 'public/css/tpt')
+    .sass('resources/assets/sass/frontend/web/contact.scss', 'public/css/tpt')
+    .sass('resources/assets/sass/frontend/web/index.scss', 'public/css/tpt')
+    .sass('resources/assets/sass/frontend/web/news.scss', 'public/css/tpt')
+    .sass('resources/assets/sass/frontend/web/partner.scss', 'public/css/tpt')
+    .sass('resources/assets/sass/frontend/web/product.scss', 'public/css/tpt')
+    .sass('resources/assets/sass/frontend/web/product-detail.scss', 'public/css/tpt');
 
  // vue template
 
