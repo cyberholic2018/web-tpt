@@ -21,37 +21,20 @@
     <section class="numberthree">
       <div class="container">
         <div class="row" id="a">
-          <div class="col-md-4 col-set"><img class="img-responsive" src="https://dummyimage.com/640x420/{{Helper::rc()}}/fff" alt=""/>
-            <p>車載面板 - 後視鏡</p>
-          </div>
-          <div class="col-md-4 col-set"><img class="img-responsive" src="https://dummyimage.com/640x420/{{Helper::rc()}}/fff" alt=""/>
-            <p>車載面板 - 儀表板</p>
-          </div>
-          <div class="col-md-4 col-set"><img class="img-responsive" src="https://dummyimage.com/640x420/{{Helper::rc()}}/fff" alt=""/>
-            <p>車載面板 - 影音裝置</p>
-          </div>
+            @foreach (ProductView::all() as $key => $value)
+                <a href="/productDetail/{{$value->id}}">
+                    <div class="col-md-4 col-set">
+                        <img class="img-responsive" src="{{$value->featureImage}}" alt=""/>
+                        <p>{{$value->title}}</p>
+                    </div>
+                </a>
+
+            @endforeach
         </div>
-        <div class="row" id="b">
-          <div class="col-md-4 col-set"><img class="img-responsive" src="https://dummyimage.com/640x420/{{Helper::rc()}}/fff" alt=""/>
-            <p>手持POS面板</p>
-          </div>
-          <div class="col-md-4 col-set"><img class="img-responsive" src="https://dummyimage.com/640x420/{{Helper::rc()}}/fff" alt=""/>
-            <p>POS設備面板</p>
-          </div>
-          <div class="col-md-4 col-set"><img class="img-responsive" src="https://dummyimage.com/640x420/{{Helper::rc()}}/fff" alt=""/>
-            <p>醫療面板</p>
-          </div>
-        </div>
-        <div class="row" id="c">
-          <div class="col-md-4 col-set"><img class="img-responsive" src="https://dummyimage.com/640x420/{{Helper::rc()}}/fff" alt=""/>
-            <p>HMI人機互動面板</p>
-          </div>
-          <div class="col-md-4 col-set"><img class="img-responsive" src="https://dummyimage.com/640x420/{{Helper::rc()}}/fff" alt=""/>
-            <p>WIFI設備面板</p>
-          </div>
-          <div class="col-md-4 col-set"><img class="img-responsive" src="https://dummyimage.com/640x420/{{Helper::rc()}}/fff" alt=""/>
-            <p>車載面板 - 後視鏡</p>
-          </div>
+        <div class="row">
+            <div class="ocl-md-12">
+                {{ProductView::all()}}
+            </div>
         </div>
       </div>
     </section>

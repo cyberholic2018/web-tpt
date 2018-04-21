@@ -22,3 +22,17 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Post::class, function (Faker\Generator $faker) {
+
+    return [
+        'guid' => str_random(42),
+        'author' => str_random(42),
+        'authorName' => $faker->name,
+        'title' => $faker->sentence,
+        'content' => $faker->text,
+        'locale' => 'zh-TW',
+        'featureImage' => 'https://dummyimage.com/1920x600/'.Helper::rc().'/fff',
+        'isPublish' => true,
+    ];
+});

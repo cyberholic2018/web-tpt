@@ -8,7 +8,7 @@ class ProductView
 {
     public static function all()
     {
-        return Product::paginate(15);
+        return Product::paginate(9);
     }
 
     public static function getByCategory($category)
@@ -18,6 +18,6 @@ class ProductView
 
     public static function get($guid)
     {
-        return Product::where('guid', $guid)->first();
+        return Product::where('id', $guid)->first();
     }
 }

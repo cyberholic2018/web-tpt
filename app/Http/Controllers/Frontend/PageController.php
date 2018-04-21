@@ -270,15 +270,11 @@ class PageController extends Controller
         $meta = SiteMeta::all()->first();
         $post = Post::where('guid', $guid)->first();
 
-        if ($post['locale'] == App::getLocale()) {
-            return view('newsPage', [
-                'title' => $meta->title,
-                'shortcut' => $meta->shortcut,
-                'post' => $post
-            ]);
-        } else {
-            return redirect('/');
-        }
+        return view('web.newsDetail', [
+            'title' => $meta->title,
+            'shortcut' => $meta->shortcut,
+            'post' => $post
+        ]);
     }
 
     public function bidding()

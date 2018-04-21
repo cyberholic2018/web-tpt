@@ -47,7 +47,7 @@ section {
 	&.numberthree {
 		margin-left: 50px;
 		margin-right: 50px;
-		border: solid 1px;
+		// border: solid 1px;
 		font-size: 18px;
 		color: $color_cararra_approx;
 		a {
@@ -61,10 +61,20 @@ section {
 			transform: translateX(-50%);
 			width: 100%;
 			height: 350px;
-			margin-bottom: 200px;
+			margin-bottom: 30px;
+
+			tr {
+				&:first-child {
+					background-color: $color_gravel_approx !important;
+				}
+			}
 		}
-		.first {
-			background-color: $color_gravel_approx !important;
+		// .first {
+		// 	background-color: $color_gravel_approx !important;
+		// }
+		.content {
+			padding: 10px;
+			color: #666;
 		}
 		.download {
 			cursor: pointer;
