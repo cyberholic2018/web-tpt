@@ -41466,7 +41466,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_js_toggle_button___default.a);
                 discountedPrice: null,
                 schedulePost: null,
                 scheduleDelete: null,
-                locale: null,
+                locale: 'zh-TW',
                 status: 'instock',
                 socialImage: null,
                 seoTitle: null,
@@ -41997,37 +41997,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel panel-default"
   }, [_vm._m(2), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
-  }, [_c('select', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.productContent.locale),
-      expression: "productContent.locale"
-    }],
-    staticClass: "form-control",
-    on: {
-      "change": function($event) {
-        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
-          return o.selected
-        }).map(function(o) {
-          var val = "_value" in o ? o._value : o.value;
-          return val
-        });
-        _vm.productContent.locale = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-      }
-    }
-  }, [_c('option', {
-    attrs: {
-      "value": "zh-TW"
-    }
-  }, [_vm._v("繁體中文")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "en"
-    }
-  }, [_vm._v("英文")])])])]), _vm._v(" "), _c('div', {
-    staticClass: "panel panel-default"
-  }, [_vm._m(3), _vm._v(" "), _c('div', {
-    staticClass: "panel-body"
   }, [(_vm.productContent.featureImage === null) ? _c('a', {
     on: {
       "click": function($event) {
@@ -42055,7 +42024,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("刪除商品圖片")])])])]), _vm._v(" "), _c('div', {
     staticClass: "panel panel-default"
-  }, [_vm._m(4), _vm._v(" "), _c('div', {
+  }, [_vm._m(3), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "row"
@@ -42101,12 +42070,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('h3', {
     staticClass: "panel-title"
   }, [_vm._v("\n\t\t\t\t\t\t類別選擇\n\t\t\t\t\t")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "panel-heading"
-  }, [_c('h3', {
-    staticClass: "panel-title"
-  }, [_vm._v("\n\t\t\t\t\t\t語系選擇\n\t\t\t\t\t")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "panel-heading"

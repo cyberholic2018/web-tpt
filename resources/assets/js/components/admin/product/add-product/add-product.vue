@@ -75,7 +75,7 @@
                         </select>
     				</div>
     			</div>
-                <div class="panel panel-default">
+                <!-- <div class="panel panel-default">
     				<div class="panel-heading">
     					<h3 class="panel-title">
     						語系選擇
@@ -87,7 +87,7 @@
                             <option value="en">英文</option>
                         </select>
     				</div>
-    			</div>
+    			</div> -->
                 <div class="panel panel-default">
     				<div class="panel-heading">
     					<h3 class="panel-title">
@@ -160,7 +160,7 @@
                     discountedPrice: null,
                     schedulePost: null,
                     scheduleDelete: null,
-                    locale: null,
+                    locale: 'zh-TW',
                     status: 'instock',
                     socialImage: null,
                     seoTitle: null,

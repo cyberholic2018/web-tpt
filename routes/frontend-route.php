@@ -29,6 +29,8 @@ Route::get('/lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LocaleController@switc
 // Route::get('/product/{guid}', 'Frontend\PageController@productCategory');
 // Route::get('/product/detail/{guid}', 'Frontend\PageController@productDetail');
 
+Route::get('/mailtest', 'MailController@mailTest');
+
 Route::get('/', function () {
     return view('index');
 });
