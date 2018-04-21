@@ -67,7 +67,17 @@
           <p>最新消息</p>
           <p>News & Information</p>
         </div>
-        <div class="col-md-4 col-img" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/6C74FF/fff" alt=""/>
+        @foreach (PostView::take(3) as $key => $value)
+            <div class="col-md-4 col-img" data-aos="fade-up"><img class="img-responsive" src="{{$value->featureImage}}" alt=""/>
+              <p class="name">{{$value->title}}</p>
+              <p>{!! date('Y-m-d', strtotime($value->created_at)) !!}</p>
+              <hr/>
+              {{mb_strimwidth($value->content, 0, 300, '...', "UTF-8")}}
+              <br>
+              <a class="btn btn-default" href="/news/{{$value->guid}}">繼續閱讀</a>
+            </div>
+        @endforeach
+        {{-- <div class="col-md-4 col-img" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/6C74FF/fff" alt=""/>
           <p class="name">帕太泰國分公司開設</p>
           <p>2018-03-22</p>
           <hr/>
@@ -89,7 +99,7 @@
           <hr/>
           <p>市調機構IHS表示，今年是8電視元年，友達（2409）集群創將供應65吋以上超大尺寸的8K電視面板，給三星和索尼等品牌電視大廠，隨著8K超大尺寸產品出貨量攀升，可以提供面板廠出貨單價，並去化較多的產能。友達昨（11）日股價收平盤12.4元，成交量2.54萬張；群創也收...</p>
           <div class="btn btn-default" id="c">繼續閱讀</div>
-        </div>
+        </div> --}}
       </div>
     </div>
   </section>

@@ -20,4 +20,9 @@ class PostView
     {
         return Post::where('locale', $locale)->where('category', 'success')->paginate(15);
     }
+
+    public static function take($num)
+    {
+        return Post::take($num)->get();
+    }
 }
