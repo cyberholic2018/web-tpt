@@ -50,7 +50,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4 col-set" data-aos="fade-up">
-          <h2 class="tri">成立宗旨</h2>
+
           <img class="img-responsive" src="https://dummyimage.com/640x420/5FF1FF/fff" alt=""/>
         </div>
         <div class="col-md-4 col-int" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/579DE8/fff" alt=""/></div>
