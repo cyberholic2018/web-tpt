@@ -2,7 +2,13 @@
     <div class="row" v-if="isLoaded">
         <div class="col-md-9">
             <input type="text" class="form-control ch-product-title" name="title" value="" placeholder="商品名稱" v-model="productContent.title">
-            <div class="tabbable" id="tabs-664864">
+            <ckeditor
+                class="ch-product-description"
+                id="tabs_664864"
+                :config="ckConfig"
+                v-model="productContent.description">
+            </ckeditor>
+            <!-- <div class="tabbable" id="tabs-664864">
                 <ul class="nav nav-tabs">
                     <li v-for="(item, index) in tabContent" v-bind:class="{ active: item.isActive }">
                         <a
@@ -30,7 +36,7 @@
                         </ckeditor>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <hr>
             <h4>商品摘要</h4>
             <ckeditor
@@ -75,7 +81,7 @@
                         </select>
     				</div>
     			</div>
-                <div class="panel panel-default">
+                <!-- <div class="panel panel-default">
     				<div class="panel-heading">
     					<h3 class="panel-title">
     						語系選擇
@@ -87,7 +93,7 @@
                             <option value="en">英文</option>
                         </select>
     				</div>
-    			</div>
+    			</div> -->
                 <div class="panel panel-default">
     				<div class="panel-heading">
     					<h3 class="panel-title">
@@ -160,7 +166,7 @@
                     discountedPrice: null,
                     schedulePost: null,
                     scheduleDelete: null,
-                    locale: null,
+                    locale: 'zh-TW',
                     status: 'instock',
                     socialImage: null,
                     seoTitle: null,
@@ -391,7 +397,8 @@
                         dataType: 'json',
                         data: {
                             title: self.productContent.title,
-                            description: JSON.stringify(self.tabContent),
+                            // description: JSON.stringify(self.tabContent),
+                            description: self.productContent.description,
                             shortDescription: self.productContent.shortDescription,
                             serialNumber: self.productContent.serialNumber,
                             quantity: self.productContent.quantity,
@@ -449,7 +456,8 @@
                     self.productContent.category = result.category;
                     self.productContent.featureImage = result.featureImage;
                     self.productContent.album = JSON.parse(result.album);
-                    self.tabContent = (result.description[0] === '[' ) ?  JSON.parse(result.description) : [];
+                    // self.tabContent = (result.description[0] === '[' ) ?  JSON.parse(result.description) : [];
+                    self.productContent.description = result.description;
                     self.productContent.shortDescription = result.shortDescription;
                     self.productContent.status = result.status;
                     self.productContent.reserveStatus = Boolean(result.reserveStatus);

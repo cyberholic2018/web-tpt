@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Backend;
 
+
+use Faker\Factory as Faker;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -9,7 +11,9 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use App\Services\PublicServiceProvider;
 use App\User;
+use App\Product;
 use App\Post;
+use Helper;
 use Auth;
 use Hash;
 
@@ -214,20 +218,103 @@ class AdminController extends Controller
 
     public function generateDumyPost()
     {
+        $faker = Faker::create();
         $author = Auth::user()->guid;
         $authorName = Auth::user()->name;
 
-        for ( $i=0 ; $i<120 ; $i++ ) {
+        Post::query()->truncate();
+
+        for ( $i=0 ; $i < 30 ; $i++ ) {
             Post::create([
                 'author' => $author,
                 'authorName' => $authorName,
-                'guid' => $this->publicServiceProvider->generateGuid(),
-                'title' => 'this is dumy post'.$i,
-                'content' => 'this is dumy content '.$i.'.<br>'.'this is dumy content '.$i.'.<br>'.'this is dumy content '.$i.'.<br>'.'this is dumy content '.$i.'.<br>'.'this is dumy content '.$i.'.<br>'.'this is dumy content '.$i.'.<br>'
+                'guid' => str_random(6),
+                'featureImage' => 'https://dummyimage.com/1920x1080/'.Helper::rc().'/fff',
+                'isPublish' => true,
+                'title' => $faker->sentence(2),
+                'content' => $faker->realText(1800)
             ]);
         }
 
         return $users = DB::table('posts')
+                ->where('author', $author)
+                ->get();
+    }
+
+    public function generateDumyProduct()
+    {
+        $faker = Faker::create();
+        $author = Auth::user()->guid;
+        $authorName = Auth::user()->name;
+
+        Product::query()->truncate();
+
+        for ( $i=0 ; $i< 10 ; $i++ ) {
+            Product::create([
+                'guid' => str_random(6),
+                'author' => $author,
+                'authorName' => $authorName,
+                'locale' => 'zh-TW',
+                'featureImage' => 'https://dummyimage.com/1920x1080/'.Helper::rc().'/fff',
+                'isPublish' => true,
+                'title' => $faker->sentence(2),
+                'shortDescription' => $faker->text,
+                'description' => '<table>
+                                 	<tbody>
+                                 		<tr>
+                                 			<td>尺寸</td>
+                                 			<td>供應商</td>
+                                 			<td>料號</td>
+                                 			<td>規格書</td>
+                                 		</tr>
+                                 		<tr>
+                                 			<td>8.2&quot;</td>
+                                 			<td>邁瑞德</td>
+                                 			<td>MD082GL01-401S-40A-AM</td>
+                                 			<td><a href="\\" target="\\&quot;_blank\\&quot;">點我下載</a></td>
+                                 		</tr>
+                                 		<tr>
+                                 			<td>9.2&quot;</td>
+                                 			<td>天馬</td>
+                                 			<td>TM092XDHG01-00</td>
+                                 			<td><a href="\\" target="\\&quot;_blank\\&quot;">點我下載</a></td>
+                                 		</tr>
+                                 		<tr>
+                                 			<td>8.2&quot;</td>
+                                 			<td>邁瑞德</td>
+                                 			<td>MD082GL01-401S-40A-AM</td>
+                                 			<td><a href="\\" target="\\&quot;_blank\\&quot;">點我下載</a></td>
+                                 		</tr>
+                                 		<tr>
+                                 			<td>8.2&quot;</td>
+                                 			<td>邁瑞德</td>
+                                 			<td>MD082GL01-401S-40A-AM</td>
+                                 			<td><a href="\\" target="\\&quot;_blank\\&quot;">點我下載</a></td>
+                                 		</tr>
+                                 		<tr>
+                                 			<td>8.2&quot;</td>
+                                 			<td>邁瑞德</td>
+                                 			<td>MD082GL01-401S-40A-AM</td>
+                                 			<td><a href="\\" target="\\&quot;_blank\\&quot;">點我下載</a></td>
+                                 		</tr>
+                                 		<tr>
+                                 			<td>8.2&quot;</td>
+                                 			<td>邁瑞德</td>
+                                 			<td>MD082GL01-401S-40A-AM</td>
+                                 			<td><a href="\\" target="\\&quot;_blank\\&quot;">點我下載</a></td>
+                                 		</tr>
+                                 		<tr>
+                                 			<td>8.2&quot;</td>
+                                 			<td>邁瑞德</td>
+                                 			<td>MD082GL01-401S-40A-AM</td>
+                                 			<td><a href="\\" target="\\&quot;_blank\\&quot;">點我下載</a></td>
+                                 		</tr>
+                                 	</tbody>
+                                 </table>'
+            ]);
+        }
+
+        return $users = DB::table('products')
                 ->where('author', $author)
                 ->get();
     }

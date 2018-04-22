@@ -12,6 +12,7 @@ Route::get('auth/facebook/callback', 'Auth\RegisterController@handleProviderCall
 Route::get('generateDumyNormalUser', 'Backend\AdminController@generateDumyNormalUser');
 Route::get('generateDumyAdminUser', 'Backend\AdminController@generateDumyAdminUser');
 Route::get('generateDumyPost', 'Backend\AdminController@generateDumyPost');
+Route::get('generateDumyProduct', 'Backend\AdminController@generateDumyProduct');
 
 // For test
 Route::get('/apitest', 'HomeController@test');

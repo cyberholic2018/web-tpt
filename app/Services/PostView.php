@@ -6,9 +6,9 @@ use App\Post;
 
 class PostView
 {
-    public static function all($locale)
+    public static function all()
     {
-        return Post::where('locale', $locale)->paginate(15);
+        return Post::paginate(9);
     }
 
     public static function news($locale)
@@ -19,5 +19,10 @@ class PostView
     public static function success($locale)
     {
         return Post::where('locale', $locale)->where('category', 'success')->paginate(15);
+    }
+
+    public static function take($num)
+    {
+        return Post::take($num)->get();
     }
 }

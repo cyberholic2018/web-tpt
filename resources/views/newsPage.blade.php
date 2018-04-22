@@ -41,6 +41,9 @@
 @endsection
 
 @section('content')
+    <div>
+      <img class="img-responsive" src="{{$post->featureImage}}" alt=""/>
+    </div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2 sub-page-content">
             <h3>{{$post->title}}&nbsp;&nbsp;<br><span style="font-size: 18px;">{!! date('Y-m-d', strtotime($post->created_at)) !!}</span></h3>
@@ -55,11 +58,11 @@
     </div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2 page-content" style="text-align: center">
-            @if ($post->featureImage)
+            {{-- @if ($post->featureImage)
                 <img style="max-width: 100%" src="{{$post->featureImage}}" alt="">
             @else
                 <img style="max-width: 100%" src="/images/sunrise-1756274_1920.jpg" alt="">
-            @endif
+            @endif --}}
             {{-- <div class="page-content-header">
                 <h2>　</h2>
             </div> --}}
@@ -90,5 +93,10 @@
             {!! $post->content !!}
             <br>
         </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-copyright">
+        <p class="small">COPYRIGHT © TAIWAN POWERTEK. ALL RIGHTS RESERVED. DESIGN BY CyberHolic</p>
+      </div>
     </div>
 @endsection

@@ -11,7 +11,7 @@ Route::get('/lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LocaleController@switc
 // Route::get('/solution-enterprise', 'Frontend\PageController@solutionEnterprise');
 // Route::get('/solution-ap', 'Frontend\PageController@solutionAP');
 // Route::get('/news', 'Frontend\PageController@news');
-// Route::get('/news/{guid}', 'Frontend\PageController@singleNews');
+Route::get('/news/{guid}', 'Frontend\PageController@singleNews');
 // Route::get('/bidding', 'Frontend\PageController@bidding');
 // Route::get('/success', 'Frontend\PageController@success');
 // Route::get('/success/{guid}', 'Frontend\PageController@successDetail');
@@ -27,7 +27,9 @@ Route::get('/lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LocaleController@switc
 
 // Product
 // Route::get('/product/{guid}', 'Frontend\PageController@productCategory');
-// Route::get('/product/detail/{guid}', 'Frontend\PageController@productDetail');
+// Route::get('/productDetail/{guid}', 'Frontend\PageController@productDetail');
+
+Route::get('/mailtest', 'MailController@mailTest');
 
 Route::get('/', function () {
     return view('index');
