@@ -1,1 +1,147 @@
-@charset "UTF-8";body,html{padding:0;margin:0;height:100%;width:100%}*{font-family:微軟正黑體;position:relative;font-weight:800}.container-fluid{padding:0}.container-fluid img{height:100%;width:100%}section.numbertwo{color:#5c5c5c}section.numbertwo .col-md-12.col-tittle{text-align:center;font-size:25px;margin-top:30px;margin-bottom:20px}section.numbertwo .col-md-12.col-button{text-align:center;font-size:25px;background-color:#545454;padding:0;cursor:pointer}section.numbertwo .col-md-12.col-button ul{border:none}section.numbertwo .col-md-12.col-button ul li{list-style:none;width:50%}section.numbertwo .col-md-12.col-button ul li a{color:#e8e8e8;background-color:#545454;border:none;margin:0}section.numbertwo .col-md-12.col-button ul li.active a{background-color:#faa200}section.numbertwo .col-md-12.col-map{left:50%;right:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);max-width:900px;margin-top:35px}section.numbertwo .col-md-12.col-contact{font-size:18px;margin-top:30px;margin-bottom:30px;text-align:center;line-height:10px}section.numbersix{margin-top:80px;text-align:center}section.numbersix .col-md-12.col-tittle{text-align:center;font-size:25px;margin-top:30px}section.numbersix .col-md-12.col-list{text-align:left;margin-top:20px;padding-top:3px;padding-bottom:3px;line-height:45px;background-color:#545454;color:#e8e8e8}section.numbersix .col-md-12.col-list ul li{list-style:none}section.numbersix .col-md-12.col-tel{width:100%;margin:10px auto;text-align:left}section.numbersix .col-md-12.col-tel .contact-table{margin:30px auto 0;width:100%;max-width:600px}section.numbersix .col-md-12.col-tel .contact-table span{color:red}section.numbersix .col-md-12.col-tel .contact-table tr td{padding:5px}section.numbersix .col-md-12.col-tel .contact-table tr textarea{width:100%}section.numbersix .col-md-12.col-tel .btn-contact{background-color:#545454;color:#e8e8e8;width:50%;left:50%;right:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}section.numbersix .col-md-12.col-copyright{margin-top:100px;margin-bottom:50px;text-align:center;font-size:10px}
+@charset "UTF-8";
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+* {
+  font-family: 微軟正黑體;
+  position: relative;
+  font-weight: 800;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+.container-fluid img {
+  height: 100%;
+  width: 100%;
+}
+
+section.numbertwo {
+  color: #5c5c5c;
+}
+
+section.numbertwo .col-md-12.col-tittle {
+  text-align: center;
+  font-size: 25px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+section.numbertwo .col-md-12.col-button {
+  text-align: center;
+  font-size: 25px;
+  background-color: #545454;
+  padding: 0px;
+  cursor: pointer;
+}
+
+section.numbertwo .col-md-12.col-button ul {
+  border: none;
+}
+
+section.numbertwo .col-md-12.col-button ul li {
+  list-style: none;
+  width: 50%;
+}
+
+section.numbertwo .col-md-12.col-button ul li a {
+  color: #e8e8e8;
+  background-color: #545454;
+  border: none;
+  margin: 0px;
+}
+
+section.numbertwo .col-md-12.col-button ul li.active a {
+  background-color: #faa200;
+}
+
+section.numbertwo .col-md-12.col-map {
+  left: 50%;
+  right: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  max-width: 900px;
+  margin-top: 35px;
+}
+
+section.numbertwo .col-md-12.col-contact {
+  font-size: 18px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  line-height: 10px;
+}
+
+section.numbersix {
+  margin-top: 80px;
+  text-align: center;
+}
+
+section.numbersix .col-md-12.col-tittle {
+  text-align: center;
+  font-size: 25px;
+  margin-top: 30px;
+}
+
+section.numbersix .col-md-12.col-list {
+  text-align: left;
+  margin-top: 20px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  line-height: 45px;
+  background-color: #545454;
+  color: #e8e8e8;
+}
+
+section.numbersix .col-md-12.col-list ul li {
+  list-style: none;
+}
+
+section.numbersix .col-md-12.col-tel {
+  width: 100%;
+  margin: 10px auto;
+  text-align: left;
+}
+
+section.numbersix .col-md-12.col-tel .contact-table {
+  margin: 30px auto 0 auto;
+  width: 100%;
+  max-width: 600px;
+}
+
+section.numbersix .col-md-12.col-tel .contact-table span {
+  color: red;
+}
+
+section.numbersix .col-md-12.col-tel .contact-table tr td {
+  padding: 5px;
+}
+
+section.numbersix .col-md-12.col-tel .contact-table tr textarea {
+  width: 100%;
+}
+
+section.numbersix .col-md-12.col-tel .btn-contact {
+  background-color: #545454;
+  color: #e8e8e8;
+  width: 50%;
+  left: 50%;
+  right: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+section.numbersix .col-md-12.col-copyright {
+  margin-top: 100px;
+  margin-bottom: 50px;
+  text-align: center;
+  font-size: 10px;
+}
+

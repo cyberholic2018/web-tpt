@@ -1,1 +1,1115 @@
-!function(t){function e(n){if(a[n])return a[n].exports;var i=a[n]={i:n,l:!1,exports:{}};return t[n].call(i.exports,i,i.exports,e),i.l=!0,i.exports}var a={};e.m=t,e.c=a,e.d=function(t,a,n){e.o(t,a)||Object.defineProperty(t,a,{configurable:!1,enumerable:!0,get:n})},e.n=function(t){var a=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(a,"a",a),a},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="",e(e.s=207)}({1:function(t,e){t.exports=function(t,e,a,n,i){var s,o=t=t||{},l=typeof t.default;"object"!==l&&"function"!==l||(s=t,o=t.default);var r="function"==typeof o?o.options:o;e&&(r.render=e.render,r.staticRenderFns=e.staticRenderFns),n&&(r._scopeId=n);var c;if(i?(c=function(t){t=t||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext,t||"undefined"==typeof __VUE_SSR_CONTEXT__||(t=__VUE_SSR_CONTEXT__),a&&a.call(this,t),t&&t._registeredComponents&&t._registeredComponents.add(i)},r._ssrRegister=c):a&&(c=a),c){var d=r.functional,u=d?r.render:r.beforeCreate;d?r.render=function(t,e){return c.call(e),u(t,e)}:r.beforeCreate=u?[].concat(u,c):[c]}return{esModule:s,exports:o,options:r}}},207:function(t,e,a){t.exports=a(208)},208:function(t,e,a){Vue.component("account-list",a(209));new Vue({el:"#account-list"})},209:function(t,e,a){var n=a(1)(a(210),a(211),null,null,null);t.exports=n.exports},210:function(t,e,a){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={data:function(){return{fieldContent:{name:"",email:"",password:"",confirmPassword:""},fieldValidation:{name:!1,email:!1,password:!1,confirmPassword:!1},accounts:[],token:$('meta[name="csrf-token"]').attr("content"),message:"",next_page_url:null,prev_page_url:null,total:null,current_page:null,eachPage:[],allSelect:!1}},created:function(){this.getUser("/admin/normal/list")},watch:{accounts:{handler:function(t,e){},deep:!0},isAllSelected:{handler:function(t,e){this.allSelect=t}}},computed:{formValidation:function(){return this.fieldValidation.name&&this.fieldValidation.email&&this.fieldValidation.password&&this.fieldValidation.confirmPassword},isAllSelected:function(){var t=!0;return this.accounts.forEach(function(e){e.isSelect||(t=!1)}),t}},methods:{getUser:function(t){var e=this;$.ajax({url:t,type:"GET",dataType:"json",data:{param1:"value1"}}).done(function(t){e.next_page_url=t.next_page_url,e.prev_page_url=t.prev_page_url,e.current_page=t.current_page,e.total=t.total,e.eachPage=[],e.accounts=[];for(var a=0;a<t.last_page;a++)e.eachPage.push({pageNumber:a+1});t.data.forEach(function(t){e.accounts.push({email:t.email,name:t.name,created_at:t.created_at,point:t.point,status:t.status,isSelect:!1})}),$(".loading-bar").fadeOut("100")}).fail(function(){}).always(function(){})},addUser:function(){var t=this.token,e=this.fieldContent,a=this;if(this.fieldContent.password!==this.fieldContent.confirmPassword)return void a.showMessage("warning","密碼欄位不一致，請確認。");this.formValidator(),this.formValidation?($(".loading-bar").fadeIn("100"),$.ajax({url:"/admin/admin/add",type:"POST",cache:!1,data:e,beforeSend:function(e){e.setRequestHeader("X-CSRF-TOKEN",t)}}).done(function(t){a.showMessage("success","管理者帳號建立成功"),e.name="",e.email="",e.password="",e.confirmPassword=""}).fail(function(t){var e=JSON.parse(t.responseText);e.email&&a.showMessage("error","帳號已存在，請重新輸入"),e.password&&a.showMessage("warning","密碼長度必須大於六個字元")}).always(function(){a.getUser(),$(".loading-bar").fadeOut("100")})):a.showMessage("warning","請檢查欄位")},editAdmin:function(t){},deleteAdmin:function(t){var e=this,a=this.token;confirm("是否刪除帳號?")&&$.ajax({url:"/admin/admin/delete",type:"POST",cache:!1,dataType:"json",data:{adminUser:t.guid},beforeSend:function(t){t.setRequestHeader("X-CSRF-TOKEN",a)}}).done(function(t){e.showMessage("success",t.message)}).fail(function(t){e.showMessage("error",t.responseJSON.message)}).always(function(){e.getUser("/admin/normal/list")})},nextPage:function(){this.getUser(this.next_page_url)},prevPage:function(){this.getUser(this.prev_page_url)},gotoPage:function(t){this.getUser("/admin/normal/list?page="+t.pageNumber)},toggleAllSelect:function(){this.isAllSelected?this.accounts.forEach(function(t){t.isSelect=!1}):this.accounts.forEach(function(t){t.isSelect=!0})},formValidator:function(){var t=/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;""!==this.fieldContent.name.trim()?this.fieldValidation.name=!0:this.fieldValidation.name=!1,t.test(this.fieldContent.email)?this.fieldValidation.email=!0:this.fieldValidation.email=!1,this.fieldContent.password.trim()!==this.fieldContent.confirmPassword.trim()||""==this.fieldContent.password.trim()||""==this.fieldContent.confirmPassword.trim()?(this.fieldValidation.password=!1,this.fieldValidation.confirmPassword=!1):(this.fieldValidation.password=!0,this.fieldValidation.confirmPassword=!0)},showMessage:function(t,e){toastr[t](e),this.message=e}}}},211:function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,a=t._self._c||e;return a("div",{staticClass:"row"},[a("div",{staticClass:"col-md-12",staticStyle:{position:"relative"}},[t._m(0),t._v(" "),a("table",{staticClass:"table field-table"},[a("thead",[a("tr",[a("th",[a("input",{directives:[{name:"model",rawName:"v-model",value:t.allSelect,expression:"allSelect"}],attrs:{type:"checkbox"},domProps:{checked:Array.isArray(t.allSelect)?t._i(t.allSelect,null)>-1:t.allSelect},on:{change:function(e){t.toggleAllSelect()},__c:function(e){var a=t.allSelect,n=e.target,i=!!n.checked;if(Array.isArray(a)){var s=t._i(a,null);n.checked?s<0&&(t.allSelect=a.concat(null)):s>-1&&(t.allSelect=a.slice(0,s).concat(a.slice(s+1)))}else t.allSelect=i}}})]),t._v(" "),a("th",[t._v("帳號")]),t._v(" "),a("th",[t._v("名稱")]),t._v(" "),a("th",[t._v("建立時間")]),t._v(" "),a("th",{staticStyle:{"text-align":"center"},attrs:{width:"70"}},[t._v("剩餘點數")]),t._v(" "),a("th",{staticStyle:{"text-align":"center"},attrs:{width:"50"}},[t._v("狀態")]),t._v(" "),a("th",{staticStyle:{"text-align":"center"},attrs:{width:"50"}},[t._v("編輯")]),t._v(" "),a("th",{staticStyle:{"text-align":"center"},attrs:{width:"50"}},[t._v("刪除")])])]),t._v(" "),a("tbody",t._l(t.accounts,function(e){return a("tr",[a("td",[a("input",{directives:[{name:"model",rawName:"v-model",value:e.isSelect,expression:"item.isSelect"}],attrs:{type:"checkbox"},domProps:{checked:Array.isArray(e.isSelect)?t._i(e.isSelect,null)>-1:e.isSelect},on:{__c:function(a){var n=e.isSelect,i=a.target,s=!!i.checked;if(Array.isArray(n)){var o=t._i(n,null);i.checked?o<0&&(e.isSelect=n.concat(null)):o>-1&&(e.isSelect=n.slice(0,o).concat(n.slice(o+1)))}else e.isSelect=s}}})]),t._v(" "),a("td",[t._v(t._s(e.email))]),t._v(" "),a("td",[t._v(t._s(e.name))]),t._v(" "),a("td",[t._v(t._s(e.created_at))]),t._v(" "),a("td",{staticStyle:{"text-align":"center"}},[t._v(t._s(e.point))]),t._v(" "),a("td",{staticStyle:{"text-align":"center"}},[t._v(t._s(e.status))]),t._v(" "),a("td",{attrs:{align:"center"}},[a("span",{staticClass:"glyphicon glyphicon-pencil",on:{click:function(a){t.editAdmin(e)}}})]),t._v(" "),a("td",{attrs:{align:"center"}},[a("span",{staticClass:"glyphicon glyphicon-trash",on:{click:function(a){t.deleteAdmin(e)}}})])])})),t._v(" "),a("tfoot",[a("tr",[a("td",{attrs:{colspan:"8"}},[a("ul",{staticClass:"pagination"},[t.prev_page_url?a("li",[a("a",{attrs:{href:"#"},on:{click:function(e){t.prevPage()}}},[t._v("上一頁")])]):t._e(),t._v(" "),t._l(t.eachPage,function(e){return a("li",[a("a",{attrs:{href:"#"},on:{click:function(a){t.gotoPage(e)}}},[t._v(t._s(e.pageNumber))])])}),t._v(" "),t.next_page_url?a("li",[a("a",{attrs:{href:"#"},on:{click:function(e){t.nextPage()}}},[t._v("下一頁")])]):t._e()],2)])])])]),t._v(" "),a("div",{staticClass:"modal fade",attrs:{id:"createAdminModal",tabindex:"-1",role:"dialog","aria-labelledby":"createAdminModalLabel"}},[a("div",{staticClass:"modal-dialog",attrs:{role:"document"}},[a("div",{staticClass:"modal-content"},[t._m(1),t._v(" "),a("div",{staticClass:"modal-body"},[a("table",{staticClass:"field-table"},[a("tr",[a("td",[t._v("顯示名稱")]),t._v(" "),a("td",[a("input",{directives:[{name:"model",rawName:"v-model",value:t.fieldContent.name,expression:"fieldContent.name"}],staticClass:"form-control",attrs:{type:"text",name:"name",autofocus:"true"},domProps:{value:t.fieldContent.name},on:{input:function(e){e.target.composing||(t.fieldContent.name=e.target.value)}}})])]),t._v(" "),a("tr",[a("td",[t._v("E-Mail")]),t._v(" "),a("td",[a("input",{directives:[{name:"model",rawName:"v-model",value:t.fieldContent.email,expression:"fieldContent.email"}],staticClass:"form-control",attrs:{type:"text",name:"email"},domProps:{value:t.fieldContent.email},on:{input:function(e){e.target.composing||(t.fieldContent.email=e.target.value)}}})])]),t._v(" "),a("tr",[a("td",[t._v("密碼")]),t._v(" "),a("td",[a("input",{directives:[{name:"model",rawName:"v-model",value:t.fieldContent.password,expression:"fieldContent.password"}],staticClass:"form-control",attrs:{type:"password",name:"password"},domProps:{value:t.fieldContent.password},on:{input:function(e){e.target.composing||(t.fieldContent.password=e.target.value)}}})])]),t._v(" "),a("tr",[a("td",[t._v("確認密碼")]),t._v(" "),a("td",[a("input",{directives:[{name:"model",rawName:"v-model",value:t.fieldContent.confirmPassword,expression:"fieldContent.confirmPassword"}],staticClass:"form-control",attrs:{type:"password",name:"check-password"},domProps:{value:t.fieldContent.confirmPassword},on:{input:function(e){e.target.composing||(t.fieldContent.confirmPassword=e.target.value)}}})])])])]),t._v(" "),a("div",{staticClass:"modal-footer"},[a("button",{staticClass:"btn btn-default",attrs:{type:"button","data-dismiss":"modal"}},[t._v("關閉")]),t._v(" "),a("button",{staticClass:"btn btn-primary",attrs:{type:"button"},on:{click:function(e){t.addUser()}}},[t._v("新增")])])])])]),t._v(" "),a("div",{staticClass:"modal fade",attrs:{id:"messageModal"}},[a("div",{staticClass:"modal-dialog",attrs:{role:"document"}},[a("div",{staticClass:"modal-content"},[a("div",{staticClass:"modal-body message-modal-body"},[t._v("\n                    "+t._s(t.message)+"\n                    ")])])])])])])},staticRenderFns:[function(){var t=this,e=t.$createElement,a=t._self._c||e;return a("button",{staticClass:"btn btn-sm btn-primary",staticStyle:{position:"absolute",right:"10px",top:"-52px"},attrs:{type:"button","data-toggle":"modal","data-target":"#createAdminModal"}},[a("span",{staticClass:"glyphicon glyphicon-plus"}),t._v(" 新增帳號\n        ")])},function(){var t=this,e=t.$createElement,a=t._self._c||e;return a("div",{staticClass:"modal-header"},[a("button",{staticClass:"close",attrs:{type:"button","data-dismiss":"modal","aria-label":"Close"}},[a("span",{attrs:{"aria-hidden":"true"}},[t._v("×")])]),t._v(" "),a("h4",{staticClass:"modal-title",attrs:{id:"createAdminModalLabel"}},[t._v("新增使用者帳號")])])}]}}});
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 210);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 1:
+/***/ (function(module, exports) {
+
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file.
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = injectStyles
+  }
+
+  if (hook) {
+    var functional = options.functional
+    var existing = functional
+      ? options.render
+      : options.beforeCreate
+
+    if (!functional) {
+      // inject component registration as beforeCreate hook
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    } else {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return existing(h, context)
+      }
+    }
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+
+/***/ 210:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(211);
+
+
+/***/ }),
+
+/***/ 211:
+/***/ (function(module, exports, __webpack_require__) {
+
+Vue.component('account-list', __webpack_require__(212));
+
+var app = new Vue({
+    el: '#account-list'
+});
+
+/***/ }),
+
+/***/ 212:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(213)
+/* template */
+var __vue_template__ = __webpack_require__(214)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\admin\\account\\account-list\\account-list.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-57d9484e", Component.options)
+  } else {
+    hotAPI.reload("data-v-57d9484e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 213:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            fieldContent: {
+                name: '',
+                email: '',
+                password: '',
+                confirmPassword: ''
+            },
+            fieldValidation: {
+                name: false,
+                email: false,
+                password: false,
+                confirmPassword: false
+            },
+            accounts: [],
+            token: $('meta[name="csrf-token"]').attr('content'),
+            message: '',
+            next_page_url: null,
+            prev_page_url: null,
+            total: null,
+            current_page: null,
+            eachPage: [],
+            allSelect: false
+        };
+    },
+
+    created: function created() {
+        var self = this;
+
+        this.getUser('/admin/normal/list');
+    },
+    watch: {
+        accounts: {
+            handler: function handler(accounts, oldVal) {
+                var self = this;
+            },
+            deep: true
+        },
+        isAllSelected: {
+            handler: function handler(isAllSelected, oldVal) {
+                var self = this;
+
+                this.allSelect = isAllSelected;
+            }
+        }
+    },
+    computed: {
+        formValidation: function formValidation() {
+            return this.fieldValidation.name && this.fieldValidation.email && this.fieldValidation.password && this.fieldValidation.confirmPassword;
+        },
+        isAllSelected: function isAllSelected() {
+            var status = true;
+
+            this.accounts.forEach(function (item) {
+                if (!item.isSelect) {
+                    status = false;
+                }
+            });
+
+            return status;
+        }
+    },
+    methods: {
+        getUser: function getUser(url) {
+            var self = this;
+
+            $.ajax({
+                url: url,
+                type: 'GET',
+                dataType: 'json',
+                data: { param1: 'value1' }
+            }).done(function (result) {
+                self.next_page_url = result.next_page_url;
+                self.prev_page_url = result.prev_page_url;
+                self.current_page = result.current_page;
+                self.total = result.total;
+                self.eachPage = [];
+
+                self.accounts = [];
+
+                for (var i = 0; i < result.last_page; i++) {
+                    self.eachPage.push({
+                        pageNumber: i + 1
+                    });
+                }
+
+                result.data.forEach(function (item) {
+                    self.accounts.push({
+                        email: item.email,
+                        name: item.name,
+                        created_at: item.created_at,
+                        point: item.point,
+                        status: item.status,
+                        isSelect: false
+                    });
+                });
+                $('.loading-bar').fadeOut('100');
+            }).fail(function () {
+                console.log("error");
+            }).always(function () {
+                console.log("complete");
+            });
+        },
+        addUser: function addUser() {
+            var token = this.token;
+            var fieldContent = this.fieldContent;
+            var self = this;
+
+            if (this.fieldContent.password !== this.fieldContent.confirmPassword) {
+                self.showMessage('warning', '密碼欄位不一致，請確認。');
+                return;
+            }
+
+            this.formValidator();
+            if (this.formValidation) {
+                $('.loading-bar').fadeIn('100');
+                $.ajax({
+                    url: "/admin/admin/add",
+                    type: 'POST',
+                    cache: false,
+                    data: fieldContent,
+                    beforeSend: function beforeSend(xhr) {
+                        xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                }).done(function (result) {
+                    self.showMessage('success', '管理者帳號建立成功');
+                    fieldContent.name = '';
+                    fieldContent.email = '';
+                    fieldContent.password = '';
+                    fieldContent.confirmPassword = '';
+                }).fail(function (result) {
+                    var errorData = JSON.parse(result.responseText);
+                    if (errorData.email) {
+                        self.showMessage('error', '帳號已存在，請重新輸入');
+                    }
+                    if (errorData.password) {
+                        self.showMessage('warning', '密碼長度必須大於六個字元');
+                    }
+                }).always(function () {
+                    self.getUser();
+                    $('.loading-bar').fadeOut('100');
+                });
+            } else {
+                self.showMessage('warning', '請檢查欄位');
+            }
+        },
+        editAdmin: function editAdmin(item) {
+            console.log(item.guid);
+        },
+        deleteAdmin: function deleteAdmin(item) {
+            var self = this;
+            var token = this.token;
+            var checkProperty = confirm("是否刪除帳號?");
+
+            if (checkProperty) {
+                $.ajax({
+                    url: '/admin/admin/delete',
+                    type: 'POST',
+                    cache: false,
+                    dataType: 'json',
+                    data: {
+                        adminUser: item.guid
+                    },
+                    beforeSend: function beforeSend(xhr) {
+                        xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                }).done(function (result) {
+                    self.showMessage('success', result.message);
+                }).fail(function (errorData) {
+                    self.showMessage('error', errorData.responseJSON.message);
+                }).always(function () {
+                    self.getUser('/admin/normal/list');
+                });
+            } else {
+                return;
+            }
+        },
+        nextPage: function nextPage() {
+            this.getUser(this.next_page_url);
+        },
+        prevPage: function prevPage() {
+            this.getUser(this.prev_page_url);
+        },
+        gotoPage: function gotoPage(item) {
+            this.getUser('/admin/normal/list?page=' + item.pageNumber);
+        },
+        toggleAllSelect: function toggleAllSelect() {
+            if (this.isAllSelected) {
+                this.accounts.forEach(function (item) {
+                    item.isSelect = false;
+                });
+            } else {
+                this.accounts.forEach(function (item) {
+                    item.isSelect = true;
+                });
+            }
+        },
+        formValidator: function formValidator() {
+            var emailRule = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+
+            if (this.fieldContent.name.trim() !== '') {
+                this.fieldValidation.name = true;
+            } else {
+                this.fieldValidation.name = false;
+            }
+
+            if (emailRule.test(this.fieldContent.email)) {
+                this.fieldValidation.email = true;
+            } else {
+                this.fieldValidation.email = false;
+            }
+
+            if (this.fieldContent.password.trim() !== this.fieldContent.confirmPassword.trim() || this.fieldContent.password.trim() == '' || this.fieldContent.confirmPassword.trim() == '') {
+                this.fieldValidation.password = false;
+                this.fieldValidation.confirmPassword = false;
+            } else {
+                this.fieldValidation.password = true;
+                this.fieldValidation.confirmPassword = true;
+            }
+        },
+        showMessage: function showMessage(type, string) {
+            toastr[type](string);
+            this.message = string;
+        }
+    }
+});
+
+/***/ }),
+
+/***/ 214:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c(
+      "div",
+      { staticClass: "col-md-12", staticStyle: { position: "relative" } },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("table", { staticClass: "table field-table" }, [
+          _c("thead", [
+            _c("tr", [
+              _c("th", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.allSelect,
+                      expression: "allSelect"
+                    }
+                  ],
+                  attrs: { type: "checkbox" },
+                  domProps: {
+                    checked: Array.isArray(_vm.allSelect)
+                      ? _vm._i(_vm.allSelect, null) > -1
+                      : _vm.allSelect
+                  },
+                  on: {
+                    change: [
+                      function($event) {
+                        var $$a = _vm.allSelect,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = null,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 && (_vm.allSelect = $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              (_vm.allSelect = $$a
+                                .slice(0, $$i)
+                                .concat($$a.slice($$i + 1)))
+                          }
+                        } else {
+                          _vm.allSelect = $$c
+                        }
+                      },
+                      function($event) {
+                        _vm.toggleAllSelect()
+                      }
+                    ]
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("th", [_vm._v("帳號")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("名稱")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("建立時間")]),
+              _vm._v(" "),
+              _c(
+                "th",
+                {
+                  staticStyle: { "text-align": "center" },
+                  attrs: { width: "70" }
+                },
+                [_vm._v("剩餘點數")]
+              ),
+              _vm._v(" "),
+              _c(
+                "th",
+                {
+                  staticStyle: { "text-align": "center" },
+                  attrs: { width: "50" }
+                },
+                [_vm._v("狀態")]
+              ),
+              _vm._v(" "),
+              _c(
+                "th",
+                {
+                  staticStyle: { "text-align": "center" },
+                  attrs: { width: "50" }
+                },
+                [_vm._v("編輯")]
+              ),
+              _vm._v(" "),
+              _c(
+                "th",
+                {
+                  staticStyle: { "text-align": "center" },
+                  attrs: { width: "50" }
+                },
+                [_vm._v("刪除")]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.accounts, function(item) {
+              return _c("tr", [
+                _c("td", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: item.isSelect,
+                        expression: "item.isSelect"
+                      }
+                    ],
+                    attrs: { type: "checkbox" },
+                    domProps: {
+                      checked: Array.isArray(item.isSelect)
+                        ? _vm._i(item.isSelect, null) > -1
+                        : item.isSelect
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = item.isSelect,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = null,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 && (item.isSelect = $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              (item.isSelect = $$a
+                                .slice(0, $$i)
+                                .concat($$a.slice($$i + 1)))
+                          }
+                        } else {
+                          _vm.$set(item, "isSelect", $$c)
+                        }
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.email))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.name))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.created_at))]),
+                _vm._v(" "),
+                _c("td", { staticStyle: { "text-align": "center" } }, [
+                  _vm._v(_vm._s(item.point))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticStyle: { "text-align": "center" } }, [
+                  _vm._v(_vm._s(item.status))
+                ]),
+                _vm._v(" "),
+                _c("td", { attrs: { align: "center" } }, [
+                  _c("span", {
+                    staticClass: "glyphicon glyphicon-pencil",
+                    on: {
+                      click: function($event) {
+                        _vm.editAdmin(item)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("td", { attrs: { align: "center" } }, [
+                  _c("span", {
+                    staticClass: "glyphicon glyphicon-trash",
+                    on: {
+                      click: function($event) {
+                        _vm.deleteAdmin(item)
+                      }
+                    }
+                  })
+                ])
+              ])
+            })
+          ),
+          _vm._v(" "),
+          _c("tfoot", [
+            _c("tr", [
+              _c("td", { attrs: { colspan: "8" } }, [
+                _c(
+                  "ul",
+                  { staticClass: "pagination" },
+                  [
+                    _vm.prev_page_url
+                      ? _c("li", [
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#" },
+                              on: {
+                                click: function($event) {
+                                  _vm.prevPage()
+                                }
+                              }
+                            },
+                            [_vm._v("上一頁")]
+                          )
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm._l(_vm.eachPage, function(item) {
+                      return _c("li", [
+                        _c(
+                          "a",
+                          {
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                _vm.gotoPage(item)
+                              }
+                            }
+                          },
+                          [_vm._v(_vm._s(item.pageNumber))]
+                        )
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _vm.next_page_url
+                      ? _c("li", [
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#" },
+                              on: {
+                                click: function($event) {
+                                  _vm.nextPage()
+                                }
+                              }
+                            },
+                            [_vm._v("下一頁")]
+                          )
+                        ])
+                      : _vm._e()
+                  ],
+                  2
+                )
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "modal fade",
+            attrs: {
+              id: "createAdminModal",
+              tabindex: "-1",
+              role: "dialog",
+              "aria-labelledby": "createAdminModalLabel"
+            }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "modal-dialog", attrs: { role: "document" } },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c("table", { staticClass: "field-table" }, [
+                      _c("tr", [
+                        _c("td", [_vm._v("顯示名稱")]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.fieldContent.name,
+                                expression: "fieldContent.name"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              name: "name",
+                              autofocus: "true"
+                            },
+                            domProps: { value: _vm.fieldContent.name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.fieldContent,
+                                  "name",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [_vm._v("E-Mail")]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.fieldContent.email,
+                                expression: "fieldContent.email"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { type: "text", name: "email" },
+                            domProps: { value: _vm.fieldContent.email },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.fieldContent,
+                                  "email",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [_vm._v("密碼")]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.fieldContent.password,
+                                expression: "fieldContent.password"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { type: "password", name: "password" },
+                            domProps: { value: _vm.fieldContent.password },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.fieldContent,
+                                  "password",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [_vm._v("確認密碼")]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.fieldContent.confirmPassword,
+                                expression: "fieldContent.confirmPassword"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { type: "password", name: "check-password" },
+                            domProps: {
+                              value: _vm.fieldContent.confirmPassword
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.fieldContent,
+                                  "confirmPassword",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-default",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [_vm._v("關閉")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.addUser()
+                          }
+                        }
+                      },
+                      [_vm._v("新增")]
+                    )
+                  ])
+                ])
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "modal fade", attrs: { id: "messageModal" } },
+          [
+            _c(
+              "div",
+              { staticClass: "modal-dialog", attrs: { role: "document" } },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _c("div", { staticClass: "modal-body message-modal-body" }, [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.message) +
+                        "\n                    "
+                    )
+                  ])
+                ])
+              ]
+            )
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-sm btn-primary",
+        staticStyle: { position: "absolute", right: "10px", top: "-52px" },
+        attrs: {
+          type: "button",
+          "data-toggle": "modal",
+          "data-target": "#createAdminModal"
+        }
+      },
+      [
+        _c("span", { staticClass: "glyphicon glyphicon-plus" }),
+        _vm._v(" 新增帳號\n        ")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      ),
+      _vm._v(" "),
+      _c(
+        "h4",
+        { staticClass: "modal-title", attrs: { id: "createAdminModalLabel" } },
+        [_vm._v("新增使用者帳號")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-57d9484e", module.exports)
+  }
+}
+
+/***/ })
+
+/******/ });
