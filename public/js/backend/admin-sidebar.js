@@ -369,6 +369,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -517,24 +520,10 @@ var render = function() {
               "div",
               {
                 staticClass: "panel-collapse collapse",
-                class: { in: _vm.isSupport },
-                attrs: { id: "panel-element-559300" }
-              },
-              [_vm._m(11)]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "panel panel-default ch-panel" }, [
-            _vm._m(12),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "panel-collapse collapse",
                 class: { in: _vm.isPartner },
                 attrs: { id: "panel-element-66654789" }
               },
-              [_vm._m(13)]
+              [_vm._m(11)]
             )
           ])
         ]
@@ -563,7 +552,7 @@ var staticRenderFns = [
             staticClass: "fa fa-tachometer",
             attrs: { "aria-hidden": "true" }
           }),
-          _vm._v(" 主控板　　　")
+          _vm._v(" 主控板")
         ]
       )
     ])
@@ -629,7 +618,7 @@ var staticRenderFns = [
             staticClass: "fa fa-pencil-square-o",
             attrs: { "aria-hidden": "true" }
           }),
-          _vm._v(" 最新消息及成功案例管理系統")
+          _vm._v(" 最新消息管理系統")
         ]
       )
     ])
@@ -647,7 +636,7 @@ var staticRenderFns = [
               staticClass: "btn btn-sm btn-simple btn-block",
               attrs: { href: "/cyberholic-system/post/add" }
             },
-            [_vm._v("新增最新消息或成功案例")]
+            [_vm._v("新增最新消息")]
           )
         ]),
         _vm._v(" "),
@@ -658,7 +647,7 @@ var staticRenderFns = [
               staticClass: "btn btn-sm btn-simple btn-block",
               attrs: { href: "/cyberholic-system/post/list" }
             },
-            [_vm._v("最新消息或成功案例列表")]
+            [_vm._v("最新消息列表")]
           )
         ])
       ])
@@ -684,7 +673,7 @@ var staticRenderFns = [
             staticClass: "fa fa-picture-o",
             attrs: { "aria-hidden": "true" }
           }),
-          _vm._v(" 媒體與檔案　")
+          _vm._v(" 媒體與檔案")
         ]
       )
     ])
@@ -739,7 +728,7 @@ var staticRenderFns = [
             staticClass: "fa fa-shopping-cart",
             attrs: { "aria-hidden": "true" }
           }),
-          _vm._v(" 商品管理系統")
+          _vm._v(" 產品管理系統")
         ]
       )
     ])
@@ -757,7 +746,7 @@ var staticRenderFns = [
               staticClass: "btn btn-sm btn-simple btn-block",
               attrs: { href: "/cyberholic-system/product/add" }
             },
-            [_vm._v("新增商品")]
+            [_vm._v("新增產品")]
           )
         ]),
         _vm._v(" "),
@@ -768,18 +757,7 @@ var staticRenderFns = [
               staticClass: "btn btn-sm btn-simple btn-block",
               attrs: { href: "/cyberholic-system/product/list" }
             },
-            [_vm._v("商品列表")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-sm btn-simple btn-block",
-              attrs: { href: "/cyberholic-system/product/category" }
-            },
-            [_vm._v("商品類別管理")]
+            [_vm._v("產品列表")]
           )
         ])
       ])
@@ -852,72 +830,6 @@ var staticRenderFns = [
           attrs: {
             "data-toggle": "collapse",
             "data-parent": "#panel-52625",
-            href: "#panel-element-559300"
-          }
-        },
-        [
-          _c("i", {
-            staticClass: "fa fa-file",
-            attrs: { "aria-hidden": "true" }
-          }),
-          _vm._v(" 特殊頁面管理")
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "panel-body" }, [
-      _c("ul", [
-        _c("li", [
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-sm btn-simple btn-block",
-              attrs: { href: "/cyberholic-system/support/managment" }
-            },
-            [_vm._v("新增工業局軟體標")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-sm btn-simple btn-block",
-              attrs: { href: "/cyberholic-system/support/list" }
-            },
-            [_vm._v("工業局軟體標管理")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-sm btn-simple btn-block",
-              attrs: { href: "/cyberholic-system/support/content" }
-            },
-            [_vm._v("工業局軟體標說明管理")]
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "panel-heading" }, [
-      _c(
-        "a",
-        {
-          staticClass: "panel-title",
-          attrs: {
-            "data-toggle": "collapse",
-            "data-parent": "#panel-52625",
             href: "#panel-element-66654789"
           }
         },
@@ -942,9 +854,9 @@ var staticRenderFns = [
             "a",
             {
               staticClass: "btn btn-sm btn-simple btn-block",
-              attrs: { href: "/cyberholic-system/partner/add" }
+              attrs: { href: "/cyberholic-system/partner/success" }
             },
-            [_vm._v("新增合作夥伴位置")]
+            [_vm._v("新增合作夥伴")]
           )
         ]),
         _vm._v(" "),
@@ -953,31 +865,9 @@ var staticRenderFns = [
             "a",
             {
               staticClass: "btn btn-sm btn-simple btn-block",
-              attrs: { href: "/cyberholic-system/partner/managment" }
+              attrs: { href: "/cyberholic-system/partner/successList" }
             },
-            [_vm._v("合作夥伴位置管理")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-sm btn-simple btn-block",
-              attrs: { href: "/cyberholic-system/partner/category" }
-            },
-            [_vm._v("合作夥伴分類管理")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-sm btn-simple btn-block",
-              attrs: { href: "/cyberholic-system/partner/location" }
-            },
-            [_vm._v("合作夥伴區域管理")]
+            [_vm._v("合作夥伴管理")]
           )
         ])
       ])

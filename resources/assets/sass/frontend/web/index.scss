@@ -169,6 +169,11 @@ section {
 				line-height: 45px;
 				background-color: $color_fuscous_gray_approx;
 				color: $color_gray_nurse_approx;
+				ul {
+					li {
+						list-style: none;
+					}
+				}
 			}
 		}
 	}

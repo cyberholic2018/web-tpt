@@ -493,6 +493,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var self = this;
             var token = this.token;
 
+            $('.loading-bar').fadeIn('100');
+
             $.ajax({
                 url: '/admin/page/meta/set',
                 type: 'POST',
@@ -509,16 +511,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     xhr.setRequestHeader('X-CSRF-TOKEN', token);
                 }
             }).done(function () {
+                self.showMessage('success', '編輯成功');
                 self.getMeta();
             }).fail(function () {
+                self.showMessage('error', '編輯失敗');
                 console.log("error");
             }).always(function () {
+                $('.loading-bar').fadeOut('100');
                 console.log("complete");
             });
         },
         editMeta: function editMeta() {
             var self = this;
             var token = this.token;
+
+            $('.loading-bar').fadeIn('100');
 
             $.ajax({
                 url: '/admin/page/meta/edit',
@@ -536,12 +543,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     xhr.setRequestHeader('X-CSRF-TOKEN', token);
                 }
             }).done(function () {
+                self.showMessage('success', '編輯成功');
                 self.getMeta();
             }).fail(function () {
+                self.showMessage('error', '編輯失敗');
                 console.log("error");
             }).always(function () {
+                $('.loading-bar').fadeOut('100');
                 console.log("complete");
             });
+        },
+        showMessage: function showMessage(type, string) {
+            toastr[type](string);
         }
     }
 });
@@ -851,178 +864,6 @@ var render = function() {
                     )
                   ])
                 ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "tab-pane", attrs: { id: "panel-852432" } },
-                [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-md-6" }, [
-                      _c("table", { staticClass: "table field-table" }, [
-                        _vm._m(5),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("td", [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.siteMeta.other.phone,
-                                  expression: "siteMeta.other.phone"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: { type: "text" },
-                              domProps: { value: _vm.siteMeta.other.phone },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.siteMeta.other,
-                                    "phone",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(6),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("td", [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.siteMeta.other.email,
-                                  expression: "siteMeta.other.email"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: { type: "text" },
-                              domProps: { value: _vm.siteMeta.other.email },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.siteMeta.other,
-                                    "email",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(7),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("td", [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.siteMeta.other.facebook,
-                                  expression: "siteMeta.other.facebook"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: { type: "text" },
-                              domProps: { value: _vm.siteMeta.other.facebook },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.siteMeta.other,
-                                    "facebook",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(8),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("td", [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.siteMeta.other.youtube,
-                                  expression: "siteMeta.other.youtube"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: { type: "text" },
-                              domProps: { value: _vm.siteMeta.other.youtube },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.siteMeta.other,
-                                    "youtube",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(9),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("td", [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.siteMeta.other.instagram,
-                                  expression: "siteMeta.other.instagram"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: { type: "text" },
-                              domProps: { value: _vm.siteMeta.other.instagram },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.siteMeta.other,
-                                    "instagram",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ])
-                        ])
-                      ])
-                    ])
-                  ])
-                ]
               )
             ]
           )
@@ -1097,12 +938,6 @@ var staticRenderFns = [
         _c("a", { attrs: { href: "#panel-937041", "data-toggle": "tab" } }, [
           _vm._v("首頁輪播")
         ])
-      ]),
-      _vm._v(" "),
-      _c("li", [
-        _c("a", { attrs: { href: "#panel-852432", "data-toggle": "tab" } }, [
-          _vm._v("其他資訊")
-        ])
       ])
     ])
   },
@@ -1129,36 +964,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("tr", [_c("td", [_c("label", [_vm._v("網站縮圖")])])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [_c("td", [_c("label", [_vm._v("連絡電話")])])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [_c("td", [_c("label", [_vm._v("電子郵件")])])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [_c("td", [_c("label", [_vm._v("Facebook")])])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [_c("td", [_c("label", [_vm._v("Youtube")])])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [_c("td", [_c("label", [_vm._v("Instagram")])])])
   }
 ]
 render._withStripped = true
