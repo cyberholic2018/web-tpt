@@ -311,6 +311,11 @@ Route::get('/cyberholic-system/video/edit/{id}', function($id)
 Route::post('/partner/add', 'Backend\PartnerController@addPartner');
 Route::post('/partner/edit/{guid}', 'Backend\PartnerController@updatePartner');
 Route::get('/partner/delete/{guid}', 'Backend\PartnerController@deletePartner');
+Route::post('/success/add', 'Backend\ContentController@add');
+Route::post('/success/delete', 'Backend\ContentController@delete');
+Route::post('/success/edit/{id}', 'Backend\ContentController@edit');
+Route::get('/success/get', 'Backend\ContentController@get');
+Route::get('/success/get/{id}', 'Backend\ContentController@getOne');
 Route::get('/cyberholic-system/partner/add', function()
 {
     return view('admin.partner.addPartner', [
@@ -343,6 +348,29 @@ Route::get('/cyberholic-system/partner/location', function ()
 {
     return view('admin.partner.partnerLocation', [
         'panelTitle' => '合作夥伴區域管理',
+    ]);
+});
+
+
+Route::get('/cyberholic-system/partner/success', function ()
+{
+    return view('admin.success.success', [
+        'mode' => 'add',
+        'panelTitle' => '合作夥伴管理',
+    ]);
+});
+Route::get('/cyberholic-system/partner/success/edit/{id}', function ($id)
+{
+    return view('admin.success.success', [
+        'id' => $id,
+        'mode' => 'edit',
+        'panelTitle' => '合作夥伴管理',
+    ]);
+});
+Route::get('/cyberholic-system/partner/successList', function ()
+{
+    return view('admin.success.successList', [
+        'panelTitle' => '合作夥伴管理',
     ]);
 });
 

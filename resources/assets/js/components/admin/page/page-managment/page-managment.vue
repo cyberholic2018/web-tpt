@@ -9,9 +9,9 @@
             		<li>
             			<a href="#panel-937041" data-toggle="tab">首頁輪播</a>
             		</li>
-                    <li>
+                    <!-- <li>
             			<a href="#panel-852432" data-toggle="tab">其他資訊</a>
-            		</li>
+            		</li> -->
             	</ul>
             	<div class="tab-content" style="padding:10px;">
             		<div class="tab-pane active" id="panel-508832">
@@ -94,7 +94,7 @@
                             </div>
             			</div>
             		</div>
-                    <div class="tab-pane" id="panel-852432">
+                    <!-- <div class="tab-pane" id="panel-852432">
                         <div class="row">
                             <div class="col-md-6">
                                 <table class="table field-table">
@@ -132,7 +132,7 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div> -->
             	</div>
             </div>
 
@@ -247,6 +247,8 @@
                 var self = this;
                 var token = this.token;
 
+                $('.loading-bar').fadeIn('100');
+
                 $.ajax({
                     url: '/admin/page/meta/set',
                     type: 'POST',
@@ -264,12 +266,15 @@
                     }
                 })
                 .done(function() {
+                    self.showMessage('success', '編輯成功');
                     self.getMeta();
                 })
                 .fail(function() {
+                    self.showMessage('error', '編輯失敗');
                     console.log("error");
                 })
                 .always(function() {
+                    $('.loading-bar').fadeOut('100');
                     console.log("complete");
                 });
 
@@ -277,6 +282,8 @@
             editMeta: function () {
                 var self = this;
                 var token = this.token;
+
+                $('.loading-bar').fadeIn('100');
 
                 $.ajax({
                     url: '/admin/page/meta/edit',
@@ -295,14 +302,20 @@
                     }
                 })
                 .done(function() {
+                    self.showMessage('success', '編輯成功');
                     self.getMeta();
                 })
                 .fail(function() {
+                    self.showMessage('error', '編輯失敗');
                     console.log("error");
                 })
                 .always(function() {
+                    $('.loading-bar').fadeOut('100');
                     console.log("complete");
                 });
+            },
+            showMessage: function (type, string) {
+                toastr[type](string);
             }
         }
     }

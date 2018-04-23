@@ -68,7 +68,7 @@
                         </button>
     				</div>
     			</div>
-                <div class="panel panel-default">
+                <!-- <div class="panel panel-default">
     				<div class="panel-heading">
     					<h3 class="panel-title">
     						類別選擇
@@ -80,7 +80,7 @@
                             <option v-for="item in categories" v-bind:value="item.guid">{{item.name}}</option>
                         </select>
     				</div>
-    			</div>
+    			</div> -->
                 <!-- <div class="panel panel-default">
     				<div class="panel-heading">
     					<h3 class="panel-title">
@@ -109,7 +109,7 @@
                         </div>
     				</div>
     			</div>
-                <div class="panel panel-default">
+                <!-- <div class="panel panel-default">
     				<div class="panel-heading">
     					<h3 class="panel-title">
     						商品圖庫
@@ -130,7 +130,7 @@
                             </div>
                         </div>
     				</div>
-    			</div>
+    			</div> -->
             </div>
 
         </div>

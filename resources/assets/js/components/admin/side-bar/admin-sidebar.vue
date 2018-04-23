@@ -4,7 +4,7 @@
             <div class="panel-group ch-left-panel-group" id="panel-52625">
                 <div class="panel panel-default ch-panel">
                     <div class="panel-heading">
-                         <a class="panel-title" data-toggle="collapse" data-parent="#panel-52625" href="#panel-element-78670"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;主控板　　　</a>
+                         <a class="panel-title" data-toggle="collapse" data-parent="#panel-52625" href="#panel-element-78670"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;主控板</a>
                     </div>
                     <div id="panel-element-78670" class="panel-collapse collapse" v-bind:class="{ in: isAdmin }">
                         <div class="panel-body">
@@ -18,13 +18,13 @@
                 </div>
                 <div class="panel panel-default ch-panel">
                     <div class="panel-heading">
-                         <a class="panel-title" data-toggle="collapse" data-parent="#panel-52625" href="#panel-element-915732"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;最新消息及成功案例管理系統</a>
+                         <a class="panel-title" data-toggle="collapse" data-parent="#panel-52625" href="#panel-element-915732"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;最新消息管理系統</a>
                     </div>
                     <div id="panel-element-915732" class="panel-collapse collapse" v-bind:class="{ in: isPost }">
                         <div class="panel-body">
                             <ul>
-                                <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/post/add">新增最新消息或成功案例</a></li>
-                                <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/post/list">最新消息或成功案例列表</a></li>
+                                <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/post/add">新增最新消息</a></li>
+                                <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/post/list">最新消息列表</a></li>
                                 <!-- <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/post/category">文章類別管理</a></li> -->
                             </ul>
                         </div>
@@ -32,7 +32,7 @@
                 </div>
                 <div class="panel panel-default ch-panel">
                     <div class="panel-heading">
-                         <a class="panel-title" data-toggle="collapse" data-parent="#panel-52625" href="#panel-element-517968"><i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp;媒體與檔案　</a>
+                         <a class="panel-title" data-toggle="collapse" data-parent="#panel-52625" href="#panel-element-517968"><i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp;媒體與檔案</a>
                     </div>
                     <div id="panel-element-517968" class="panel-collapse collapse" v-bind:class="{ in: isMedia }">
                         <div class="panel-body">
@@ -45,14 +45,14 @@
                 </div>
                 <div class="panel panel-default ch-panel">
                     <div class="panel-heading">
-                         <a class="panel-title" data-toggle="collapse" data-parent="#panel-52625" href="#panel-element-749932"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;商品管理系統</a>
+                         <a class="panel-title" data-toggle="collapse" data-parent="#panel-52625" href="#panel-element-749932"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;產品管理系統</a>
                     </div>
                     <div id="panel-element-749932" class="panel-collapse collapse" v-bind:class="{ in: isProduct }">
                         <div class="panel-body">
                             <ul>
-                                <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/product/add">新增商品</a></li>
-                                <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/product/list">商品列表</a></li>
-                                <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/product/category">商品類別管理</a></li>
+                                <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/product/add">新增產品</a></li>
+                                <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/product/list">產品列表</a></li>
+                                <!-- <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/product/category">商品類別管理</a></li> -->
                             </ul>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default ch-panel">
+                <!-- <div class="panel panel-default ch-panel">
                     <div class="panel-heading">
                          <a class="panel-title" data-toggle="collapse" data-parent="#panel-52625" href="#panel-element-559300"><i class="fa fa-file" aria-hidden="true"></i>&nbsp;特殊頁面管理</a>
                     </div>
@@ -84,7 +84,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- <div class="panel panel-default ch-panel">
                     <div class="panel-heading">
                          <a class="panel-title" data-toggle="collapse" data-parent="#panel-52625" href="#panel-element-66654789"><i class="fa fa-video-camera" aria-hidden="true"></i>&nbsp;影音管理系統</a>
@@ -105,11 +105,14 @@
                     <div id="panel-element-66654789" class="panel-collapse collapse" v-bind:class="{ in: isPartner }">
                         <div class="panel-body">
                             <ul>
-                                <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/partner/add">新增合作夥伴位置</a></li>
+                                <!-- <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/partner/add">新增合作夥伴位置</a></li>
                                 <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/partner/managment">合作夥伴位置管理</a></li>
                                 <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/partner/category">合作夥伴分類管理</a></li>
-                                <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/partner/location">合作夥伴區域管理</a></li>
+                                <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/partner/location">合作夥伴區域管理</a></li> -->
                                 <!-- <li><a class="btn btn-sm btn-simple btn-block" href="#">頁面排序設定</a></li> -->
+                                <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/partner/success">新增合作夥伴</a></li>
+                                <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/partner/successList">合作夥伴管理</a></li>
+
                             </ul>
                         </div>
                     </div>

@@ -88,6 +88,10 @@ var LiveReloadPlugin = require('webpack-livereload-plugin');
  mix.js('resources/assets/js/components/admin/partner/partner-category/partner-category.js', 'public/js/backend')
     .js('resources/assets/js/components/admin/partner/partner-location/partner-location.js', 'public/js/backend');
 
+ // success view
+ mix.js('resources/assets/js/components/admin/content/success/success.js', 'public/js/backend')
+    .js('resources/assets/js/components/admin/content/success-list/success-list.js', 'public/js/backend');
+
 
  // frontend
  mix.js('resources/assets/js/components/frontend/index/index.js', 'public/js')

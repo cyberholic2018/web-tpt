@@ -20,7 +20,7 @@
                         <th @click="toggleOrder('title')">商品名稱</th>
                         <th @click="toggleOrder('author')">建立者</th>
                         <th @click="toggleOrder('category')">類別</th>
-                        <th @click="toggleOrder('locale')">語系</th>
+                        <!-- <th @click="toggleOrder('locale')">語系</th> -->
                         <th @click="toggleOrder('created_at')">建立時間</th>
                         <!-- <th width="50" style="text-align: center">狀態</th> -->
                         <!-- <th width="50" style="text-align: center">編輯</th> -->
@@ -36,10 +36,10 @@
                         <td><a :href="editLink(item)">{{ item.title }}</a></td>
                         <td>{{ item.authorName }}</td>
                         <td>{{ item.category }}</td>
-                        <td>
+                        <!-- <td>
                             <span v-if="item.locale == 'en'"><strong>英文</strong></span>
                             <span v-if="item.locale == 'zh-TW'"><strong>繁體中文</strong></span>
-                        </td>
+                        </td> -->
                         <td>{{ item.created_at }}</td>
                         <!-- <td style="padding-top: 8px;">
                             <toggle-button v-model="item.isPublish" @change="togglePublish(item)"/>

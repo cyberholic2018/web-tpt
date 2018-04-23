@@ -5,7 +5,12 @@
 
 @section('custom-style')
     <style media="screen">
-
+        .product-header {
+            background-image: url('{{ProductView::get($id)->featureImage}}');
+            background-position: center;
+            background-size: cover;
+            height: 500px;
+        }
     </style>
     <link rel="stylesheet" href="/css/tpt/product-detail.css">
 @endsection
@@ -13,7 +18,11 @@
 @section('content')
 
   <div>
-    <div class="container-fluid"><img src="{{ProductView::get($id)->featureImage}}" alt=""/></div>
+
+    {{-- <div class="container-fluid"><img src="{{ProductView::get($id)->featureImage}}" alt=""/></div> --}}
+    <div class="container-fluid product-header">
+        {{-- <img src="{{ProductView::get($id)->featureImage}}" alt=""/> --}}
+    </div>
     <section class="numbertwo">
       <p>{{ProductView::get($id)->title}}</p>
     </section>
