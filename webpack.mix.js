@@ -132,6 +132,7 @@ var LiveReloadPlugin = require('webpack-livereload-plugin');
 
  mix.scripts([
      'public/js/app.js',
+     'public/js/plugins/jquery-ui/jquery-ui.min.js',
      'public/js/plugins/toastr/toastr.min.js',
      'public/js/frontend-script.js',
  ], 'public/js/frontend.js');

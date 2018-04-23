@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 240);
+/******/ 	return __webpack_require__(__webpack_require__.s = 237);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -70,14 +70,12 @@
 
 /* globals __VUE_SSR_CONTEXT__ */
 
-// IMPORTANT: Do NOT use ES2015 features in this file.
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
+// this module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle
 
 module.exports = function normalizeComponent (
   rawScriptExports,
   compiledTemplate,
-  functionalTemplate,
   injectStyles,
   scopeId,
   moduleIdentifier /* server only */
@@ -101,12 +99,6 @@ module.exports = function normalizeComponent (
   if (compiledTemplate) {
     options.render = compiledTemplate.render
     options.staticRenderFns = compiledTemplate.staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
   }
 
   // scopedId
@@ -147,16 +139,12 @@ module.exports = function normalizeComponent (
     var existing = functional
       ? options.render
       : options.beforeCreate
-
     if (!functional) {
       // inject component registration as beforeCreate hook
       options.beforeCreate = existing
         ? [].concat(existing, hook)
         : [hook]
     } else {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
       // register for functioal component in vue file
       options.render = function renderWithStyleInjection (h, context) {
         hook.call(context)
@@ -175,18 +163,18 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 240:
+/***/ 237:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(241);
+module.exports = __webpack_require__(238);
 
 
 /***/ }),
 
-/***/ 241:
+/***/ 238:
 /***/ (function(module, exports, __webpack_require__) {
 
-Vue.component('category', __webpack_require__(242));
+Vue.component('category', __webpack_require__(239));
 
 var app = new Vue({
     el: '#categoryElment'
@@ -194,32 +182,25 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ 242:
+/***/ 239:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(243)
-/* template */
-var __vue_template__ = __webpack_require__(244)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(240),
+  /* template */
+  __webpack_require__(241),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
 )
-Component.options.__file = "resources\\assets\\js\\components\\admin\\post\\category\\category.vue"
+Component.options.__file = "D:\\Work Station\\Project\\server\\web-tpt_20180421\\resources\\assets\\js\\components\\admin\\post\\category\\category.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] category.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -228,9 +209,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-a572e938", Component.options)
+    hotAPI.createRecord("data-v-d151fec8", Component.options)
   } else {
-    hotAPI.reload("data-v-a572e938", Component.options)
+    hotAPI.reload("data-v-d151fec8", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -242,7 +223,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 243:
+/***/ 240:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -483,211 +464,156 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 244:
+/***/ 241:
 /***/ (function(module, exports, __webpack_require__) {
 
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-md-6" }, [
-      _c("div", { staticClass: "panel panel-default" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "panel-body" }, [
-          _c("table", { staticClass: "table field-table" }, [
-            _vm._m(1),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.categories, function(item) {
-                return _c("tr", [
-                  _c("td", [
-                    item.isEdit
-                      ? _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: item.name,
-                              expression: "item.name"
-                            }
-                          ],
-                          staticClass: "edit-category-input",
-                          staticStyle: { width: "100%" },
-                          attrs: { type: "text" },
-                          domProps: { value: item.name },
-                          on: {
-                            blur: function($event) {
-                              _vm.toggleEditMode(item)
-                            },
-                            keyup: function($event) {
-                              if (
-                                !("button" in $event) &&
-                                _vm._k($event.keyCode, "enter", 13, $event.key)
-                              ) {
-                                return null
-                              }
-                              _vm.editCategory(item)
-                            },
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(item, "name", $event.target.value)
-                            }
-                          }
-                        })
-                      : _c("span", [_vm._v(_vm._s(item.name))])
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { attrs: { align: "center" } }, [
-                    _c("span", {
-                      staticClass: "glyphicon glyphicon-pencil",
-                      on: {
-                        click: function($event) {
-                          _vm.toggleEditMode(item)
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { attrs: { align: "center" } }, [
-                    _c("span", {
-                      staticClass: "glyphicon glyphicon-trash",
-                      on: {
-                        click: function($event) {
-                          _vm.deleteCategory(item.guid)
-                        }
-                      }
-                    })
-                  ])
-                ])
-              })
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "panel-footer" })
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-md-6" }, [
-      _c("div", { staticClass: "panel panel-default" }, [
-        _vm._m(2),
-        _vm._v(" "),
-        _c("div", { staticClass: "panel-body" }, [
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-              _vm._v("\n                        類別名稱\n                    ")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.addCategoryForm.categoryName,
-                  expression: "addCategoryForm.categoryName"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "email" },
-              domProps: { value: _vm.addCategoryForm.categoryName },
-              on: {
-                keyup: function($event) {
-                  if (
-                    !("button" in $event) &&
-                    _vm._k($event.keyCode, "enter", 13, $event.key)
-                  ) {
-                    return null
-                  }
-                  _vm.addCategory()
-                },
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(
-                    _vm.addCategoryForm,
-                    "categoryName",
-                    $event.target.value
-                  )
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "panel-footer" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary",
-              on: {
-                click: function($event) {
-                  _vm.addCategory()
-                }
-              }
-            },
-            [_vm._v("\n                    新增\n                ")]
-          )
-        ])
-      ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "panel-heading" }, [
-      _c("h3", { staticClass: "panel-title" }, [
-        _vm._v("\n                    類別管理\n                ")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("類別名稱")]),
-        _vm._v(" "),
-        _c(
-          "th",
-          { staticStyle: { "text-align": "center" }, attrs: { width: "50" } },
-          [_vm._v("編輯")]
-        ),
-        _vm._v(" "),
-        _c(
-          "th",
-          { staticStyle: { "text-align": "center" }, attrs: { width: "50" } },
-          [_vm._v("刪除")]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "panel-heading" }, [
-      _c("h3", { staticClass: "panel-title" }, [
-        _vm._v("\n                    新增類別\n                ")
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }, [_c('div', {
+    staticClass: "panel panel-default"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "panel-body"
+  }, [_c('table', {
+    staticClass: "table field-table"
+  }, [_vm._m(1), _vm._v(" "), _c('tbody', _vm._l((_vm.categories), function(item) {
+    return _c('tr', [_c('td', [(item.isEdit) ? _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.name),
+        expression: "item.name"
+      }],
+      staticClass: "edit-category-input",
+      staticStyle: {
+        "width": "100%"
+      },
+      attrs: {
+        "type": "text"
+      },
+      domProps: {
+        "value": (item.name)
+      },
+      on: {
+        "blur": function($event) {
+          _vm.toggleEditMode(item)
+        },
+        "keyup": function($event) {
+          if (!('button' in $event) && _vm._k($event.keyCode, "enter", 13)) { return null; }
+          _vm.editCategory(item)
+        },
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.name = $event.target.value
+        }
+      }
+    }) : _c('span', [_vm._v(_vm._s(item.name))])]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_c('span', {
+      staticClass: "glyphicon glyphicon-pencil",
+      on: {
+        "click": function($event) {
+          _vm.toggleEditMode(item)
+        }
+      }
+    })]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_c('span', {
+      staticClass: "glyphicon glyphicon-trash",
+      on: {
+        "click": function($event) {
+          _vm.deleteCategory(item.guid)
+        }
+      }
+    })])])
+  }))])]), _vm._v(" "), _c('div', {
+    staticClass: "panel-footer"
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6"
+  }, [_c('div', {
+    staticClass: "panel panel-default"
+  }, [_vm._m(2), _vm._v(" "), _c('div', {
+    staticClass: "panel-body"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "exampleInputEmail1"
+    }
+  }, [_vm._v("\n                        類別名稱\n                    ")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.addCategoryForm.categoryName),
+      expression: "addCategoryForm.categoryName"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "email"
+    },
+    domProps: {
+      "value": (_vm.addCategoryForm.categoryName)
+    },
+    on: {
+      "keyup": function($event) {
+        if (!('button' in $event) && _vm._k($event.keyCode, "enter", 13)) { return null; }
+        _vm.addCategory()
+      },
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.addCategoryForm.categoryName = $event.target.value
+      }
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "panel-footer"
+  }, [_c('button', {
+    staticClass: "btn btn-primary",
+    on: {
+      "click": function($event) {
+        _vm.addCategory()
+      }
+    }
+  }, [_vm._v("\n                    新增\n                ")])])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "panel-heading"
+  }, [_c('h3', {
+    staticClass: "panel-title"
+  }, [_vm._v("\n                    類別管理\n                ")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('thead', [_c('tr', [_c('th', [_vm._v("類別名稱")]), _vm._v(" "), _c('th', {
+    staticStyle: {
+      "text-align": "center"
+    },
+    attrs: {
+      "width": "50"
+    }
+  }, [_vm._v("編輯")]), _vm._v(" "), _c('th', {
+    staticStyle: {
+      "text-align": "center"
+    },
+    attrs: {
+      "width": "50"
+    }
+  }, [_vm._v("刪除")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "panel-heading"
+  }, [_c('h3', {
+    staticClass: "panel-title"
+  }, [_vm._v("\n                    新增類別\n                ")])])
+}]}
+module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-a572e938", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-d151fec8", module.exports)
   }
 }
 

@@ -60,20 +60,20 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 188);
+/******/ 	return __webpack_require__(__webpack_require__.s = 185);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 188:
+/***/ 185:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(189);
+module.exports = __webpack_require__(186);
 
 
 /***/ }),
 
-/***/ 189:
+/***/ 186:
 /***/ (function(module, exports) {
 
 $(function () {
@@ -101,12 +101,12 @@ $(function () {
 
     $('#side-bar-btn').on('click', function () {
         if ($(this).hasClass('active')) {
-            closeMenu();
+            closeMenu($(this));
         } else {
-            showMenu();
+            showMenu($(this));
         }
     }), $('.gray-layer').on('click', function () {
-        closeMenu();
+        closeMenu($('#side-bar-btn'));
     }),
 
     //Check to see if the window is top if not then display button
@@ -172,15 +172,16 @@ $(function () {
         }
     }
 
-    function showMenu() {
+    function showMenu(btn) {
         $('body').css('overflow', 'hidden');
         $('#side-bar-btn').addClass('active');
         $('.menu-panel').fadeIn(200, function () {
             $('.menu-section').removeClass('hide').addClass('fadeInLeft animated');
+            btn.css('margin-left', '300px');
         });
     }
 
-    function closeMenu() {
+    function closeMenu(btn) {
         $('body').css('overflow', 'initial');
         $('#side-bar-btn').removeClass('active');
         $('.menu-section').removeClass('fadeInLeft animated').addClass('fadeOutLeft animated').fadeOut(500, function () {
@@ -188,6 +189,8 @@ $(function () {
                 $('.menu-section').removeClass('fadeOutLeft animated').addClass('hide').removeAttr('style');
             });
         });
+
+        btn.css('margin-left', '0px');
     }
 
     function addSingleProduct(guid) {

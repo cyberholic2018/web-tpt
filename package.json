@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "ckeditor": "^4.7.3",
+    "jquery-ui": "^1.12.1",
     "slick-carousel": "^1.8.1",
     "swiper": "^4.0.7",
     "vue-bootstrap-datetimepicker": "^3.0.0",

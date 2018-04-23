@@ -10,7 +10,7 @@
         </div>
 
         <div class="col-md-3">
-            <div class="panel panel-default">
+            <!-- <div class="panel panel-default">
     			<div class="panel-heading">
     				<h3 class="panel-title">
     					代表圖片
@@ -24,19 +24,19 @@
                         <a @click="deleteFeatureImg()">刪除代表圖片</a>
                     </div>
     			</div>
-    		</div>
+    		</div> -->
             <div class="panel panel-default">
     			<div class="panel-heading">
     				<h3 class="panel-title">
-    					設定語系
+    					儲存頁面區塊
     				</h3>
     			</div>
-    			<div class="panel-body">
+    			<!-- <div class="panel-body">
                     <select class="form-control" v-model="pageContent.locale">
                         <option value="en">英文</option>
                         <option value="zh-TW">繁體中文</option>
                     </select>
-    			</div>
+    			</div> -->
                 <div class="panel-footer">
                     <button class="btn btn-success" type="button" name="button" @click="savePage">儲存頁面</button>
                 </div>

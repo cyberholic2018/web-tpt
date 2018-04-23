@@ -12,12 +12,20 @@ class PageView
         $page = Page::where('guid', $guid)->first();
 
         $content = json_decode($page['content']);
-        return $content['locale'];
-        if ($content['locale']) {
-            # code...
-        } else {
-            # code...
-        }
+        return $content['content'];
+        // if ($content['locale']) {
+        //     # code...
+        // } else {
+        //     # code...
+        // }
 
+    }
+
+    public static function show($id)
+    {
+        $page = Page::where('id', $id)->first();
+
+        $content = json_decode($page['content']);
+        return $content->content;
     }
 }

@@ -24,14 +24,14 @@ $(function () {
 
     $('#side-bar-btn').on('click', function() {
         if ($(this).hasClass('active')) {
-            closeMenu();
+            closeMenu($(this));
         } else {
-            showMenu();
+            showMenu($(this));
         }
     }),
 
     $('.gray-layer').on('click', function() {
-        closeMenu();
+        closeMenu($('#side-bar-btn'));
     }),
 
     //Check to see if the window is top if not then display button
@@ -97,16 +97,17 @@ $(function () {
 		}
     }
 
-    function showMenu() {
+    function showMenu(btn) {
         $('body').css('overflow', 'hidden');
         $('#side-bar-btn').addClass('active');
         $('.menu-panel').fadeIn(200, function () {
             $('.menu-section').removeClass('hide')
                               .addClass('fadeInLeft animated');
+            btn.css('margin-left', '300px');
         });
     }
 
-    function closeMenu() {
+    function closeMenu(btn) {
         $('body').css('overflow', 'initial');
         $('#side-bar-btn').removeClass('active');
         $('.menu-section').removeClass('fadeInLeft animated')
@@ -119,6 +120,7 @@ $(function () {
                               });
                           });
 
+        btn.css('margin-left', '0px');
     }
 
     function addSingleProduct(guid) {

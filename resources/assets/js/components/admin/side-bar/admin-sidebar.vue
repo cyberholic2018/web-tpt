@@ -64,7 +64,7 @@
                     <div id="panel-element-334892" class="panel-collapse collapse" v-bind:class="{ in: isPage }">
                         <div class="panel-body">
                             <ul>
-                                <!-- <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/page/add">新增頁面</a></li> -->
+                                <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/page/add">新增頁面</a></li>
                                 <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/page/list">頁面列表</a></li>
                                 <li><a class="btn btn-sm btn-simple btn-block" href="/cyberholic-system/page/managment">網站資訊管理</a></li>
                             </ul>
