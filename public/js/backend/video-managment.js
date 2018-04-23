@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 300);
+/******/ 	return __webpack_require__(__webpack_require__.s = 299);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -199,6 +199,14 @@ try {
 // easier to handle this case. if(!global) { ...}
 
 module.exports = g;
+
+
+/***/ }),
+
+/***/ 299:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(300);
 
 
 /***/ }),
@@ -397,15 +405,7 @@ process.umask = function() { return 0; };
 /***/ 300:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(301);
-
-
-/***/ }),
-
-/***/ 301:
-/***/ (function(module, exports, __webpack_require__) {
-
-Vue.component('video-managment', __webpack_require__(302));
+Vue.component('video-managment', __webpack_require__(301));
 
 var app = new Vue({
     el: '#video-managment'
@@ -413,15 +413,15 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ 302:
+/***/ 301:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(303)
+var __vue_script__ = __webpack_require__(302)
 /* template */
-var __vue_template__ = __webpack_require__(304)
+var __vue_template__ = __webpack_require__(303)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -461,7 +461,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 303:
+/***/ 302:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -728,7 +728,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_js_toggle_button___default.a);
 
 /***/ }),
 
-/***/ 304:
+/***/ 303:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

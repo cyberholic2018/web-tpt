@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 197);
+/******/ 	return __webpack_require__(__webpack_require__.s = 199);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -70,12 +70,14 @@
 
 /* globals __VUE_SSR_CONTEXT__ */
 
-// this module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle
+// IMPORTANT: Do NOT use ES2015 features in this file.
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
 
 module.exports = function normalizeComponent (
   rawScriptExports,
   compiledTemplate,
+  functionalTemplate,
   injectStyles,
   scopeId,
   moduleIdentifier /* server only */
@@ -99,6 +101,12 @@ module.exports = function normalizeComponent (
   if (compiledTemplate) {
     options.render = compiledTemplate.render
     options.staticRenderFns = compiledTemplate.staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
   }
 
   // scopedId
@@ -139,12 +147,16 @@ module.exports = function normalizeComponent (
     var existing = functional
       ? options.render
       : options.beforeCreate
+
     if (!functional) {
       // inject component registration as beforeCreate hook
       options.beforeCreate = existing
         ? [].concat(existing, hook)
         : [hook]
     } else {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
       // register for functioal component in vue file
       options.render = function renderWithStyleInjection (h, context) {
         hook.call(context)
@@ -163,18 +175,18 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 197:
+/***/ 199:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(198);
+module.exports = __webpack_require__(200);
 
 
 /***/ }),
 
-/***/ 198:
+/***/ 200:
 /***/ (function(module, exports, __webpack_require__) {
 
-Vue.component('adminlist', __webpack_require__(199));
+Vue.component('adminlist', __webpack_require__(201));
 
 var app = new Vue({
     el: '#addAdminForm'
@@ -182,25 +194,32 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ 199:
+/***/ 201:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(200),
-  /* template */
-  __webpack_require__(201),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(202)
+/* template */
+var __vue_template__ = __webpack_require__(203)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "D:\\Work Station\\Project\\server\\web-tpt_20180421\\resources\\assets\\js\\components\\admin\\administrator\\admin-list\\admin-list.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] admin-list.vue: functional components are not supported with templates, they should use render functions.")}
+Component.options.__file = "resources\\assets\\js\\components\\admin\\administrator\\admin-list\\admin-list.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -209,9 +228,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-55c953fe", Component.options)
+    hotAPI.createRecord("data-v-520cee8e", Component.options)
   } else {
-    hotAPI.reload("data-v-55c953fe", Component.options)
+    hotAPI.reload("data-v-520cee8e", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -223,7 +242,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 200:
+/***/ 202:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -472,242 +491,355 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 201:
+/***/ 203:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-12",
-    staticStyle: {
-      "position": "relative"
-    }
-  }, [_vm._m(0), _vm._v(" "), _c('table', {
-    staticClass: "table field-table"
-  }, [_vm._m(1), _vm._v(" "), _c('tbody', _vm._l((_vm.accounts), function(item) {
-    return _c('tr', [_c('td', [_vm._v(_vm._s(item.email))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.created_at))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.status))]), _vm._v(" "), _c('td', {
-      attrs: {
-        "align": "center"
-      }
-    }, [_c('span', {
-      staticClass: "glyphicon glyphicon-pencil",
-      on: {
-        "click": function($event) {
-          _vm.editAdmin(item)
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c(
+      "div",
+      { staticClass: "col-md-12", staticStyle: { position: "relative" } },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("table", { staticClass: "table field-table" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.accounts, function(item) {
+              return _c("tr", [
+                _c("td", [_vm._v(_vm._s(item.email))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.name))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.created_at))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.status))]),
+                _vm._v(" "),
+                _c("td", { attrs: { align: "center" } }, [
+                  _c("span", {
+                    staticClass: "glyphicon glyphicon-pencil",
+                    on: {
+                      click: function($event) {
+                        _vm.editAdmin(item)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("td", { attrs: { align: "center" } }, [
+                  _c("span", {
+                    staticClass: "glyphicon glyphicon-trash",
+                    on: {
+                      click: function($event) {
+                        _vm.deleteAdmin(item)
+                      }
+                    }
+                  })
+                ])
+              ])
+            })
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "modal fade",
+            attrs: {
+              id: "createAdminModal",
+              tabindex: "-1",
+              role: "dialog",
+              "aria-labelledby": "createAdminModalLabel"
+            }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "modal-dialog", attrs: { role: "document" } },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c("table", { staticClass: "field-table" }, [
+                      _c("tr", [
+                        _c("td", [_vm._v("顯示名稱")]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.fieldContent.name,
+                                expression: "fieldContent.name"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              name: "name",
+                              autofocus: "true"
+                            },
+                            domProps: { value: _vm.fieldContent.name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.fieldContent,
+                                  "name",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [_vm._v("E-Mail")]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.fieldContent.email,
+                                expression: "fieldContent.email"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { type: "text", name: "email" },
+                            domProps: { value: _vm.fieldContent.email },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.fieldContent,
+                                  "email",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [_vm._v("密碼")]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.fieldContent.password,
+                                expression: "fieldContent.password"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { type: "password", name: "password" },
+                            domProps: { value: _vm.fieldContent.password },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.fieldContent,
+                                  "password",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [_vm._v("確認密碼")]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.fieldContent.confirmPassword,
+                                expression: "fieldContent.confirmPassword"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { type: "password", name: "check-password" },
+                            domProps: {
+                              value: _vm.fieldContent.confirmPassword
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.fieldContent,
+                                  "confirmPassword",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-default",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [_vm._v("關閉")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.addUser()
+                          }
+                        }
+                      },
+                      [_vm._v("新增")]
+                    )
+                  ])
+                ])
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "modal fade", attrs: { id: "messageModal" } },
+          [
+            _c(
+              "div",
+              { staticClass: "modal-dialog", attrs: { role: "document" } },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _c("div", { staticClass: "modal-body message-modal-body" }, [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.message) +
+                        "\n                    "
+                    )
+                  ])
+                ])
+              ]
+            )
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-sm btn-primary",
+        staticStyle: { position: "absolute", right: "10px", top: "-52px" },
+        attrs: {
+          type: "button",
+          "data-toggle": "modal",
+          "data-target": "#createAdminModal"
         }
-      }
-    })]), _vm._v(" "), _c('td', {
-      attrs: {
-        "align": "center"
-      }
-    }, [_c('span', {
-      staticClass: "glyphicon glyphicon-trash",
-      on: {
-        "click": function($event) {
-          _vm.deleteAdmin(item)
-        }
-      }
-    })])])
-  }))]), _vm._v(" "), _c('div', {
-    staticClass: "modal fade",
-    attrs: {
-      "id": "createAdminModal",
-      "tabindex": "-1",
-      "role": "dialog",
-      "aria-labelledby": "createAdminModalLabel"
-    }
-  }, [_c('div', {
-    staticClass: "modal-dialog",
-    attrs: {
-      "role": "document"
-    }
-  }, [_c('div', {
-    staticClass: "modal-content"
-  }, [_vm._m(2), _vm._v(" "), _c('div', {
-    staticClass: "modal-body"
-  }, [_c('table', {
-    staticClass: "field-table"
-  }, [_c('tr', [_c('td', [_vm._v("顯示名稱")]), _vm._v(" "), _c('td', [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.fieldContent.name),
-      expression: "fieldContent.name"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "name": "name",
-      "autofocus": "true"
-    },
-    domProps: {
-      "value": (_vm.fieldContent.name)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.fieldContent.name = $event.target.value
-      }
-    }
-  })])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("E-Mail")]), _vm._v(" "), _c('td', [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.fieldContent.email),
-      expression: "fieldContent.email"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "name": "email"
-    },
-    domProps: {
-      "value": (_vm.fieldContent.email)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.fieldContent.email = $event.target.value
-      }
-    }
-  })])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("密碼")]), _vm._v(" "), _c('td', [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.fieldContent.password),
-      expression: "fieldContent.password"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "password",
-      "name": "password"
-    },
-    domProps: {
-      "value": (_vm.fieldContent.password)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.fieldContent.password = $event.target.value
-      }
-    }
-  })])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("確認密碼")]), _vm._v(" "), _c('td', [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.fieldContent.confirmPassword),
-      expression: "fieldContent.confirmPassword"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "password",
-      "name": "check-password"
-    },
-    domProps: {
-      "value": (_vm.fieldContent.confirmPassword)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.fieldContent.confirmPassword = $event.target.value
-      }
-    }
-  })])])])]), _vm._v(" "), _c('div', {
-    staticClass: "modal-footer"
-  }, [_c('button', {
-    staticClass: "btn btn-default",
-    attrs: {
-      "type": "button",
-      "data-dismiss": "modal"
-    }
-  }, [_vm._v("關閉")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-primary",
-    attrs: {
-      "type": "button"
-    },
-    on: {
-      "click": function($event) {
-        _vm.addUser()
-      }
-    }
-  }, [_vm._v("新增")])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "modal fade",
-    attrs: {
-      "id": "messageModal"
-    }
-  }, [_c('div', {
-    staticClass: "modal-dialog",
-    attrs: {
-      "role": "document"
-    }
-  }, [_c('div', {
-    staticClass: "modal-content"
-  }, [_c('div', {
-    staticClass: "modal-body message-modal-body"
-  }, [_vm._v("\n                    " + _vm._s(_vm.message) + "\n                    ")])])])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('button', {
-    staticClass: "btn btn-sm btn-primary",
-    staticStyle: {
-      "position": "absolute",
-      "right": "10px",
-      "top": "-52px"
-    },
-    attrs: {
-      "type": "button",
-      "data-toggle": "modal",
-      "data-target": "#createAdminModal"
-    }
-  }, [_c('span', {
-    staticClass: "glyphicon glyphicon-plus"
-  }), _vm._v(" 新增管理者\n        ")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('thead', [_c('tr', [_c('th', [_vm._v("帳號")]), _vm._v(" "), _c('th', [_vm._v("名稱")]), _vm._v(" "), _c('th', [_vm._v("建立時間")]), _vm._v(" "), _c('th', {
-    attrs: {
-      "width": "50"
-    }
-  }, [_vm._v("狀態")]), _vm._v(" "), _c('th', {
-    staticStyle: {
-      "text-align": "center"
-    },
-    attrs: {
-      "width": "50"
-    }
-  }, [_vm._v("編輯")]), _vm._v(" "), _c('th', {
-    staticStyle: {
-      "text-align": "center"
-    },
-    attrs: {
-      "width": "50"
-    }
-  }, [_vm._v("刪除")])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "modal-header"
-  }, [_c('button', {
-    staticClass: "close",
-    attrs: {
-      "type": "button",
-      "data-dismiss": "modal",
-      "aria-label": "Close"
-    }
-  }, [_c('span', {
-    attrs: {
-      "aria-hidden": "true"
-    }
-  }, [_vm._v("×")])]), _vm._v(" "), _c('h4', {
-    staticClass: "modal-title",
-    attrs: {
-      "id": "createAdminModalLabel"
-    }
-  }, [_vm._v("新增管理者帳號")])])
-}]}
-module.exports.render._withStripped = true
+      },
+      [
+        _c("span", { staticClass: "glyphicon glyphicon-plus" }),
+        _vm._v(" 新增管理者\n        ")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("帳號")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("名稱")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("建立時間")]),
+        _vm._v(" "),
+        _c("th", { attrs: { width: "50" } }, [_vm._v("狀態")]),
+        _vm._v(" "),
+        _c(
+          "th",
+          { staticStyle: { "text-align": "center" }, attrs: { width: "50" } },
+          [_vm._v("編輯")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          { staticStyle: { "text-align": "center" }, attrs: { width: "50" } },
+          [_vm._v("刪除")]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      ),
+      _vm._v(" "),
+      _c(
+        "h4",
+        { staticClass: "modal-title", attrs: { id: "createAdminModalLabel" } },
+        [_vm._v("新增管理者帳號")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-55c953fe", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-520cee8e", module.exports)
   }
 }
 

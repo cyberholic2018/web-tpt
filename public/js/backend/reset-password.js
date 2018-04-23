@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 202);
+/******/ 	return __webpack_require__(__webpack_require__.s = 204);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -70,12 +70,14 @@
 
 /* globals __VUE_SSR_CONTEXT__ */
 
-// this module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle
+// IMPORTANT: Do NOT use ES2015 features in this file.
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
 
 module.exports = function normalizeComponent (
   rawScriptExports,
   compiledTemplate,
+  functionalTemplate,
   injectStyles,
   scopeId,
   moduleIdentifier /* server only */
@@ -99,6 +101,12 @@ module.exports = function normalizeComponent (
   if (compiledTemplate) {
     options.render = compiledTemplate.render
     options.staticRenderFns = compiledTemplate.staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
   }
 
   // scopedId
@@ -139,12 +147,16 @@ module.exports = function normalizeComponent (
     var existing = functional
       ? options.render
       : options.beforeCreate
+
     if (!functional) {
       // inject component registration as beforeCreate hook
       options.beforeCreate = existing
         ? [].concat(existing, hook)
         : [hook]
     } else {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
       // register for functioal component in vue file
       options.render = function renderWithStyleInjection (h, context) {
         hook.call(context)
@@ -163,18 +175,18 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 202:
+/***/ 204:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(203);
+module.exports = __webpack_require__(205);
 
 
 /***/ }),
 
-/***/ 203:
+/***/ 205:
 /***/ (function(module, exports, __webpack_require__) {
 
-Vue.component('resetpassword', __webpack_require__(204));
+Vue.component('resetpassword', __webpack_require__(206));
 
 var app = new Vue({
     el: '#resetPassword'
@@ -182,25 +194,32 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ 204:
+/***/ 206:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(205),
-  /* template */
-  __webpack_require__(206),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(207)
+/* template */
+var __vue_template__ = __webpack_require__(208)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "D:\\Work Station\\Project\\server\\web-tpt_20180421\\resources\\assets\\js\\components\\admin\\administrator\\reset-password\\reset-password.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] reset-password.vue: functional components are not supported with templates, they should use render functions.")}
+Component.options.__file = "resources\\assets\\js\\components\\admin\\administrator\\reset-password\\reset-password.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -209,9 +228,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-ae0ede3e", Component.options)
+    hotAPI.createRecord("data-v-10206bce", Component.options)
   } else {
-    hotAPI.reload("data-v-ae0ede3e", Component.options)
+    hotAPI.reload("data-v-10206bce", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -223,7 +242,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 205:
+/***/ 207:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -315,119 +334,159 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 206:
+/***/ 208:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-4 col-md-offset-4"
-  }, [_c('div', {
-    staticClass: "panel panel-default"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "panel-body"
-  }, [_c('table', {
-    staticClass: "field-table"
-  }, [_c('tr', [_c('td', [_c('label', {
-    attrs: {
-      "for": "oldPassword"
-    }
-  }, [_vm._v("請輸入舊密碼")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.passwordForm.oldPassword),
-      expression: "passwordForm.oldPassword"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "password",
-      "name": "oldPassword"
-    },
-    domProps: {
-      "value": (_vm.passwordForm.oldPassword)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.passwordForm.oldPassword = $event.target.value
-      }
-    }
-  })])]), _vm._v(" "), _c('tr', [_c('td', [_c('label', {
-    attrs: {
-      "for": "newPassword"
-    }
-  }, [_vm._v("請輸入新密碼")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.passwordForm.newPassword),
-      expression: "passwordForm.newPassword"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "password",
-      "name": "newPassword"
-    },
-    domProps: {
-      "value": (_vm.passwordForm.newPassword)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.passwordForm.newPassword = $event.target.value
-      }
-    }
-  })])]), _vm._v(" "), _c('tr', [_c('td', [_c('label', {
-    attrs: {
-      "for": "confirmedPassword"
-    }
-  }, [_vm._v("確認密碼")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.passwordForm.confirmedPassword),
-      expression: "passwordForm.confirmedPassword"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "password",
-      "name": "confirmedPassword"
-    },
-    domProps: {
-      "value": (_vm.passwordForm.confirmedPassword)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.passwordForm.confirmedPassword = $event.target.value
-      }
-    }
-  })])])])]), _vm._v(" "), _c('div', {
-    staticClass: "panel-footer"
-  }, [_c('button', {
-    staticClass: "btn btn-success btn-sm btn-block",
-    attrs: {
-      "type": "button",
-      "name": "button"
-    },
-    on: {
-      "click": function($event) {
-        _vm.resetPassword()
-      }
-    }
-  }, [_vm._v("Reset")])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "panel-heading"
-  }, [_c('h3', {
-    staticClass: "panel-title"
-  }, [_vm._v("\n                重置密碼\n            ")])])
-}]}
-module.exports.render._withStripped = true
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "col-md-4 col-md-offset-4" }, [
+    _c("div", { staticClass: "panel panel-default" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "panel-body" }, [
+        _c("table", { staticClass: "field-table" }, [
+          _c("tr", [
+            _c("td", [
+              _c("label", { attrs: { for: "oldPassword" } }, [
+                _vm._v("請輸入舊密碼")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.passwordForm.oldPassword,
+                    expression: "passwordForm.oldPassword"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "password", name: "oldPassword" },
+                domProps: { value: _vm.passwordForm.oldPassword },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.passwordForm,
+                      "oldPassword",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", [
+              _c("label", { attrs: { for: "newPassword" } }, [
+                _vm._v("請輸入新密碼")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.passwordForm.newPassword,
+                    expression: "passwordForm.newPassword"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "password", name: "newPassword" },
+                domProps: { value: _vm.passwordForm.newPassword },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.passwordForm,
+                      "newPassword",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", [
+              _c("label", { attrs: { for: "confirmedPassword" } }, [
+                _vm._v("確認密碼")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.passwordForm.confirmedPassword,
+                    expression: "passwordForm.confirmedPassword"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "password", name: "confirmedPassword" },
+                domProps: { value: _vm.passwordForm.confirmedPassword },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.passwordForm,
+                      "confirmedPassword",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "panel-footer" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-success btn-sm btn-block",
+            attrs: { type: "button", name: "button" },
+            on: {
+              click: function($event) {
+                _vm.resetPassword()
+              }
+            }
+          },
+          [_vm._v("Reset")]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel-heading" }, [
+      _c("h3", { staticClass: "panel-title" }, [
+        _vm._v("\n                重置密碼\n            ")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-ae0ede3e", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-10206bce", module.exports)
   }
 }
 

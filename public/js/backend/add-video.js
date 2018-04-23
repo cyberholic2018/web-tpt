@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 305);
+/******/ 	return __webpack_require__(__webpack_require__.s = 304);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -624,18 +624,18 @@ if (false) {
 
 /***/ }),
 
-/***/ 305:
+/***/ 304:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(306);
+module.exports = __webpack_require__(305);
 
 
 /***/ }),
 
-/***/ 306:
+/***/ 305:
 /***/ (function(module, exports, __webpack_require__) {
 
-Vue.component('add-video', __webpack_require__(307));
+Vue.component('add-video', __webpack_require__(306));
 
 var app = new Vue({
     el: '#add-video'
@@ -643,15 +643,15 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ 307:
+/***/ 306:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(308)
+var __vue_script__ = __webpack_require__(307)
 /* template */
-var __vue_template__ = __webpack_require__(309)
+var __vue_template__ = __webpack_require__(308)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -691,7 +691,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 308:
+/***/ 307:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -887,7 +887,7 @@ $('.loading-bar').fadeOut('100');
 
 /***/ }),
 
-/***/ 309:
+/***/ 308:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
