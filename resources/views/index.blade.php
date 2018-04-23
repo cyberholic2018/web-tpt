@@ -6,38 +6,39 @@
 @endsection
 
 @section('custom-style')
-    <link rel="stylesheet" href="/js/plugins/slider/style.css">
-
     <link rel="stylesheet" href="/css/tpt/index.css">
+    <link rel="stylesheet" href="/js/plugins/slider/style.css">
 @endsection
 
 @section('content')
+    <div id="wowslider-container1" data-aos="fade-in">
+        <div class="ws_images">
+            <ul>
+                @foreach (SiteMetaView::album() as $item)
+                    <li>
+                        <img src="{{$item->url}}" alt="{{$item->title}}">
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+        <div class="ws_bullets">
+            <div>
+                @foreach (SiteMetaView::album() as $item)
+                    <a href="#" title="{{$item->title}}"><span>1</span></a>
+                @endforeach
+            </div>
+        </div>
+        <div class="ws_shadow"></div>
+        <div class="scroll-down-btn">
+            <div class="text">Scroll</div>
+            <div class="arrow"></div>
+        </div>
+    </div>
 
   <div>
     <div class="container-fluid">
-        <div id="wowslider-container1" data-aos="fade-in">
-            <div class="ws_images">
-                <ul>
-                    @foreach (SiteMetaView::album() as $item)
-                        <li>
-                            <img src="{{$item->url}}" alt="{{$item->title}}">
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-            {{-- <div class="ws_bullets">
-                <div>
-                    @foreach (SiteMetaView::album() as $item)
-                        <a href="#" title="{{$item->title}}"><span>1</span></a>
-                    @endforeach
-                </div>
-            </div>
-            <div class="ws_shadow"></div> --}}
-            <div class="scroll-down-btn">
-                <div class="text">Scroll</div>
-                <div class="arrow"></div>
-            </div>
-        </div>
+
+
         {{-- <div class="row">
             <div class="col-md-12">
 
@@ -48,11 +49,14 @@
   </div>
   <section class="numbertwo">
     <div class="container">
-      <div class="row">
+      <div class="row product-list">
         @foreach (ProductView::all() as $key => $value)
             <a href="/productDetail/{{$value->id}}">
                 <div class="col-md-4 col-set">
-                    <img class="img-responsive" src="{{$value->featureImage}}" alt=""/>
+                    <div class="embed-responsive embed-responsive-4by3 featureImage">
+                        <img src="{{$value->featureImage}}" alt=""/>
+                    </div>
+
                     <p>{{$value->title}}</p>
                 </div>
             </a>
@@ -69,7 +73,11 @@
           <hr/>
         </div>
         @foreach (PostView::take(3) as $key => $value)
-            <div class="col-md-4 col-img" data-aos="fade-up"><img class="img-responsive" src="{{$value->featureImage}}" alt=""/>
+            <div class="col-md-4 col-img" data-aos="fade-up">
+                {{-- <img class="img-responsive" src="{{$value->featureImage}}" alt=""/> --}}
+                <div class="embed-responsive embed-responsive-16by9 partner-list">
+                    <img src="{{$value->featureImage}}" alt=""/>
+                </div>
               <p class="name">{{$value->title}}</p>
               <p>{!! date('Y-m-d', strtotime($value->created_at)) !!}</p>
               <hr/>
@@ -108,20 +116,21 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 col-tittle">
-          <p>我們的供應商</p>
-          <p class="eng">Our Supplier</p>
+          <p>我們的合作夥伴</p>
+          <p class="eng">Our Partner</p>
           <hr/>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4 col-img" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/579DE8/fff" alt=""/></div>
-        <div class="col-md-4 col-img" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/579DE8/fff" alt=""/></div>
-        <div class="col-md-4 col-img" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/579DE8/fff" alt=""/></div>
-        <div class="col-md-4 col-img" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/579DE8/fff" alt=""/></div>
-        <div class="col-md-4 col-img" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/579DE8/fff" alt=""/></div>
-        <div class="col-md-4 col-img" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/579DE8/fff" alt=""/></div>
+          @foreach (PartnerView::tpt() as $key => $value)
+              <div class="col-md-4 col-img" data-aos="fade-up">
+                  <div class="embed-responsive embed-responsive-16by9 partner-list">
+                      <img src="{{$value->content}}" alt=""/>
+                  </div>
+              </div>
+          @endforeach
       </div>
-      <div class="row">
+      {{-- <div class="row">
         <div class="col-md-12 col-tittle">
           <p>我們的客戶</p>
           <p class="eng">Our Customer</p>
@@ -135,7 +144,7 @@
         <div class="col-md-4 col-img" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/E563FF/fff" alt=""/></div>
         <div class="col-md-4 col-img" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/E563FF/fff" alt=""/></div>
         <div class="col-md-4 col-img" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/E563FF/fff" alt=""/></div>
-      </div>
+      </div> --}}
     </div>
   </section>
   <section class="numberfive">
