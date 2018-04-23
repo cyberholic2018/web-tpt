@@ -22417,11 +22417,11 @@ __webpack_require__(175);
 __webpack_require__(176);
 __webpack_require__(177);
 __webpack_require__(178);
-(function webpackMissingModule() { throw new Error("Cannot find module \"D:\\projects\\web-tpt\\resources\\assets\\sass\\frontend\\web\\index.scss\""); }());
 __webpack_require__(179);
 __webpack_require__(180);
 __webpack_require__(181);
-module.exports = __webpack_require__(182);
+__webpack_require__(182);
+module.exports = __webpack_require__(183);
 
 
 /***/ }),
@@ -47530,6 +47530,12 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 // removed by extract-text-webpack-plugin
 
+/***/ }),
+/* 183 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
 /***/ })
 /******/ ]);
 /******/ (function(modules) { // webpackBootstrap
@@ -47594,20 +47600,20 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 185);
+/******/ 	return __webpack_require__(__webpack_require__.s = 186);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 185:
+/***/ 186:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(186);
+module.exports = __webpack_require__(187);
 
 
 /***/ }),
 
-/***/ 186:
+/***/ 187:
 /***/ (function(module, exports) {
 
 
