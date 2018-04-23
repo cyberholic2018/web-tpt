@@ -49,14 +49,14 @@
   <section class="numbertwo">
     <div class="container">
       <div class="row">
-        <div class="col-md-4 col-set" data-aos="fade-up">
-
-          <img class="img-responsive" src="https://dummyimage.com/640x420/5FF1FF/fff" alt=""/>
-        </div>
-        <div class="col-md-4 col-int" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/579DE8/fff" alt=""/></div>
-        <div class="col-md-4 col-idea" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/8B51E8/fff" alt=""/></div>
-        <div class="col-md-6 col-por" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/960x540/E563FF/fff" alt=""/></div>
-        <div class="col-md-6 col-part" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/960x540/5FF1FF/fff" alt=""/></div>
+        @foreach (ProductView::all() as $key => $value)
+            <a href="/productDetail/{{$value->id}}">
+                <div class="col-md-4 col-set">
+                    <img class="img-responsive" src="{{$value->featureImage}}" alt=""/>
+                    <p>{{$value->title}}</p>
+                </div>
+            </a>
+        @endforeach
       </div>
     </div>
   </section>
@@ -66,6 +66,7 @@
         <div class="col-md-12 col-tittle">
           <p>最新消息</p>
           <p>News & Information</p>
+          <hr/>
         </div>
         @foreach (PostView::take(3) as $key => $value)
             <div class="col-md-4 col-img" data-aos="fade-up"><img class="img-responsive" src="{{$value->featureImage}}" alt=""/>
