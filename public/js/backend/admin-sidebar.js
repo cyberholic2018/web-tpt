@@ -799,6 +799,17 @@ var staticRenderFns = [
             "a",
             {
               staticClass: "btn btn-sm btn-simple btn-block",
+              attrs: { href: "/cyberholic-system/page/add" }
+            },
+            [_vm._v("新增頁面")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-sm btn-simple btn-block",
               attrs: { href: "/cyberholic-system/page/list" }
             },
             [_vm._v("頁面列表")]

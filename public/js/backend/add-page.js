@@ -925,96 +925,6 @@ var render = function() {
           _c("div", { staticClass: "panel panel-default" }, [
             _vm._m(0),
             _vm._v(" "),
-            _c("div", { staticClass: "panel-body" }, [
-              _vm.pageContent.featureImage === null
-                ? _c(
-                    "a",
-                    {
-                      on: {
-                        click: function($event) {
-                          _vm.selectFeatureImg()
-                        }
-                      }
-                    },
-                    [_vm._v("設定代表圖片")]
-                  )
-                : _c("div", {}, [
-                    _c("img", {
-                      staticStyle: { width: "100%" },
-                      attrs: {
-                        src: _vm.pageContent.featureImage,
-                        id: "featurePreview"
-                      },
-                      on: {
-                        click: function($event) {
-                          _vm.selectFeatureImg()
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("p", [_vm._v("點選圖片以編輯或更新")]),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        on: {
-                          click: function($event) {
-                            _vm.deleteFeatureImg()
-                          }
-                        }
-                      },
-                      [_vm._v("刪除代表圖片")]
-                    )
-                  ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "panel panel-default" }, [
-            _vm._m(1),
-            _vm._v(" "),
-            _c("div", { staticClass: "panel-body" }, [
-              _c(
-                "select",
-                {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.pageContent.locale,
-                      expression: "pageContent.locale"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.pageContent,
-                        "locale",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
-                    }
-                  }
-                },
-                [
-                  _c("option", { attrs: { value: "en" } }, [_vm._v("英文")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "zh-TW" } }, [
-                    _vm._v("繁體中文")
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
             _c("div", { staticClass: "panel-footer" }, [
               _c(
                 "button",
@@ -1038,17 +948,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "panel-heading" }, [
       _c("h3", { staticClass: "panel-title" }, [
-        _vm._v("\n\t\t\t\t\t代表圖片\n\t\t\t\t")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "panel-heading" }, [
-      _c("h3", { staticClass: "panel-title" }, [
-        _vm._v("\n\t\t\t\t\t設定語系\n\t\t\t\t")
+        _vm._v("\n\t\t\t\t\t儲存頁面區塊\n\t\t\t\t")
       ])
     ])
   }
