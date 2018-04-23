@@ -6,6 +6,7 @@
 /public/scripts
 /public/images
 /public/styles
+/public/js/backend
 /public/apple-touch-icon.png
 /storage/*.key
 /vendor
@@ -16,3 +17,17 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 .env
+/public/js/app.js
+/public/js/customFunction.js
+/public/js/frontendCustomFunction.js
+/public/js/index.js
+/public/js/netone-news.js
+/public/js/netone-solution.js
+/public/js/contact-us.js
+/public/js/partner.js
+/public/js/support-category.js
+/public/js/all.js
+/public/css/app.css
+/public/css/frontend.css
+/public/css/all.css
+/public/css/frontend-all.css
