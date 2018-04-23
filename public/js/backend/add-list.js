@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 285);
+/******/ 	return __webpack_require__(__webpack_require__.s = 282);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -70,14 +70,12 @@
 
 /* globals __VUE_SSR_CONTEXT__ */
 
-// IMPORTANT: Do NOT use ES2015 features in this file.
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
+// this module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle
 
 module.exports = function normalizeComponent (
   rawScriptExports,
   compiledTemplate,
-  functionalTemplate,
   injectStyles,
   scopeId,
   moduleIdentifier /* server only */
@@ -101,12 +99,6 @@ module.exports = function normalizeComponent (
   if (compiledTemplate) {
     options.render = compiledTemplate.render
     options.staticRenderFns = compiledTemplate.staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
   }
 
   // scopedId
@@ -147,16 +139,12 @@ module.exports = function normalizeComponent (
     var existing = functional
       ? options.render
       : options.beforeCreate
-
     if (!functional) {
       // inject component registration as beforeCreate hook
       options.beforeCreate = existing
         ? [].concat(existing, hook)
         : [hook]
     } else {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
       // register for functioal component in vue file
       options.render = function renderWithStyleInjection (h, context) {
         hook.call(context)
@@ -175,18 +163,18 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 285:
+/***/ 282:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(286);
+module.exports = __webpack_require__(283);
 
 
 /***/ }),
 
-/***/ 286:
+/***/ 283:
 /***/ (function(module, exports, __webpack_require__) {
 
-Vue.component('add-list', __webpack_require__(287));
+Vue.component('add-list', __webpack_require__(284));
 
 var app = new Vue({
     el: '#add-list'
@@ -194,32 +182,25 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ 287:
+/***/ 284:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(288)
-/* template */
-var __vue_template__ = __webpack_require__(289)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(285),
+  /* template */
+  __webpack_require__(286),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
 )
-Component.options.__file = "resources\\assets\\js\\components\\admin\\page\\add-list\\add-list.vue"
+Component.options.__file = "D:\\Work Station\\Project\\server\\web-tpt_20180421\\resources\\assets\\js\\components\\admin\\page\\add-list\\add-list.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] add-list.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -228,9 +209,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0e629d93", Component.options)
+    hotAPI.createRecord("data-v-0f19da6a", Component.options)
   } else {
-    hotAPI.reload("data-v-0e629d93", Component.options)
+    hotAPI.reload("data-v-0f19da6a", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -242,11 +223,12 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 288:
+/***/ 285:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -298,6 +280,7 @@ $('.loading-bar').fadeOut('100');
                     self.pageContent.push({
                         title: item.title,
                         guid: item.guid,
+                        id: item.id,
                         locale: JSON.parse(item.content).locale
                     });
                 });
@@ -315,64 +298,43 @@ $('.loading-bar').fadeOut('100');
 
 /***/ }),
 
-/***/ 289:
+/***/ 286:
 /***/ (function(module, exports, __webpack_require__) {
 
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-md-12" }, [
-      _c("table", { staticClass: "table field-table" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.pageContent, function(item) {
-            return _c("tr", [
-              _c("td", [
-                _c("a", { attrs: { href: _vm.editLink(item) } }, [
-                  _vm._v(_vm._s(item.title))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                item.locale == "en"
-                  ? _c("span", [_c("strong", [_vm._v("英文")])])
-                  : _vm._e(),
-                _vm._v(" "),
-                item.locale == "zh-TW"
-                  ? _c("span", [_c("strong", [_vm._v("繁體中文")])])
-                  : _vm._e()
-              ])
-            ])
-          })
-        )
-      ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("頁面名稱")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("語系")])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-7"
+  }, [_c('table', {
+    staticClass: "table field-table"
+  }, [_vm._m(0), _vm._v(" "), _c('tbody', _vm._l((_vm.pageContent), function(item) {
+    return _c('tr', [_c('td', [_c('a', {
+      attrs: {
+        "href": _vm.editLink(item)
+      }
+    }, [_vm._v(_vm._s(item.title))])]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(item.id))])])
+  }))])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('thead', [_c('tr', [_c('th', [_vm._v("頁面名稱")]), _vm._v(" "), _c('th', {
+    staticStyle: {
+      "text-align": "center"
+    },
+    attrs: {
+      "width": "70",
+      "align": "center"
+    }
+  }, [_vm._v("識別ID")])])])
+}]}
+module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0e629d93", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-0f19da6a", module.exports)
   }
 }
 

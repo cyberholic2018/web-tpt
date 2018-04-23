@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 335);
+/******/ 	return __webpack_require__(__webpack_require__.s = 342);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -70,14 +70,12 @@
 
 /* globals __VUE_SSR_CONTEXT__ */
 
-// IMPORTANT: Do NOT use ES2015 features in this file.
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
+// this module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle
 
 module.exports = function normalizeComponent (
   rawScriptExports,
   compiledTemplate,
-  functionalTemplate,
   injectStyles,
   scopeId,
   moduleIdentifier /* server only */
@@ -101,12 +99,6 @@ module.exports = function normalizeComponent (
   if (compiledTemplate) {
     options.render = compiledTemplate.render
     options.staticRenderFns = compiledTemplate.staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
   }
 
   // scopedId
@@ -147,16 +139,12 @@ module.exports = function normalizeComponent (
     var existing = functional
       ? options.render
       : options.beforeCreate
-
     if (!functional) {
       // inject component registration as beforeCreate hook
       options.beforeCreate = existing
         ? [].concat(existing, hook)
         : [hook]
     } else {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
       // register for functioal component in vue file
       options.render = function renderWithStyleInjection (h, context) {
         hook.call(context)
@@ -175,18 +163,18 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 335:
+/***/ 342:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(336);
+module.exports = __webpack_require__(343);
 
 
 /***/ }),
 
-/***/ 336:
+/***/ 343:
 /***/ (function(module, exports, __webpack_require__) {
 
-Vue.component('contact-us', __webpack_require__(337));
+Vue.component('contact-us', __webpack_require__(344));
 
 var app = new Vue({
     el: '#contact-us'
@@ -194,32 +182,25 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ 337:
+/***/ 344:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(338)
-/* template */
-var __vue_template__ = __webpack_require__(339)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(345),
+  /* template */
+  __webpack_require__(346),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
 )
-Component.options.__file = "resources\\assets\\js\\components\\frontend\\contact-us\\contact-us.vue"
+Component.options.__file = "D:\\Work Station\\Project\\server\\web-tpt_20180421\\resources\\assets\\js\\components\\frontend\\contact-us\\contact-us.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] contact-us.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -228,9 +209,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3c156249", Component.options)
+    hotAPI.createRecord("data-v-1ffb14ee", Component.options)
   } else {
-    hotAPI.reload("data-v-3c156249", Component.options)
+    hotAPI.reload("data-v-1ffb14ee", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -242,7 +223,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 338:
+/***/ 345:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -436,267 +417,232 @@ $('.loading-bar').fadeOut('100');
 
 /***/ }),
 
-/***/ 339:
+/***/ 346:
 /***/ (function(module, exports, __webpack_require__) {
 
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-md-6" }, [
-      _c("table", { staticClass: "contact-form", attrs: { width: "100%" } }, [
-        _c("tr", [
-          _c("td", [
-            _c("label", { attrs: { for: "name" } }, [_vm._v("您的大名(必填)")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.formContent.name,
-                  expression: "formContent.name"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", name: "name" },
-              domProps: { value: _vm.formContent.name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.formContent, "name", $event.target.value)
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", [
-            _c("label", { attrs: { for: "email" } }, [_vm._v("E-mail(必填)")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.formContent.email,
-                  expression: "formContent.email"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", name: "email" },
-              domProps: { value: _vm.formContent.email },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.formContent, "email", $event.target.value)
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", [
-            _c("label", { attrs: { for: "phone" } }, [
-              _vm._v("電話號碼(必填)")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.formContent.phone,
-                  expression: "formContent.phone"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", name: "phone" },
-              domProps: { value: _vm.formContent.phone },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.formContent, "phone", $event.target.value)
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", [
-            _c("label", { attrs: { for: "where" } }, [
-              _vm._v("您是從哪裡知道我們的?")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.formContent.where,
-                  expression: "formContent.where"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", name: "where" },
-              domProps: { value: _vm.formContent.where },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.formContent, "where", $event.target.value)
-                }
-              }
-            })
-          ])
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-md-6" }, [
-      _c("table", { staticClass: "contact-form", attrs: { width: "100%" } }, [
-        _c("tr", [
-          _c("td", [
-            _c("label", { attrs: { for: "type" } }, [_vm._v("諮詢項目")]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.formContent.type,
-                    expression: "formContent.type"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { name: "type" },
-                on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.formContent,
-                      "type",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
-                  }
-                }
-              },
-              [
-                _c("option", { attrs: { value: "NULL" } }, [
-                  _vm._v("諮詢內容")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "詢價(報價)" } }, [
-                  _vm._v("詢價(報價)")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "售後服務" } }, [
-                  _vm._v("售後服務")
-                ])
-              ]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", [
-            _c("label", { attrs: { for: "content" } }, [
-              _vm._v("諮詢內容 (必填)")
-            ]),
-            _vm._v(" "),
-            _c("textarea", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.formContent.content,
-                  expression: "formContent.content"
-                }
-              ],
-              staticClass: "form-control",
-              staticStyle: { resize: "vertical" },
-              attrs: { name: "content", rows: "8" },
-              domProps: { value: _vm.formContent.content },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.formContent, "content", $event.target.value)
-                }
-              }
-            })
-          ])
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-md-12" }, [
-      _c("table", { staticClass: "contact-form", attrs: { width: "100%" } }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", { attrs: { align: "center" } }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-lg contact-submit-btn",
-                attrs: { type: "button", name: "button" },
-                on: {
-                  click: function($event) {
-                    _vm.sendContact()
-                  }
-                }
-              },
-              [_vm._v("送出")]
-            )
-          ])
-        ])
-      ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", { attrs: { align: "center" } }, [
-        _c("div", {
-          staticClass: "g-recaptcha",
-          attrs: { "data-sitekey": "6Lf13TIUAAAAAFeq8picDJ9DVpMwioBqfFQZdhc2" }
-        })
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }, [_c('table', {
+    staticClass: "contact-form",
+    attrs: {
+      "width": "100%"
+    }
+  }, [_c('tr', [_c('td', [_c('label', {
+    attrs: {
+      "for": "name"
+    }
+  }, [_vm._v("您的大名(必填)")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.formContent.name),
+      expression: "formContent.name"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "name": "name"
+    },
+    domProps: {
+      "value": (_vm.formContent.name)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.formContent.name = $event.target.value
+      }
+    }
+  })])]), _vm._v(" "), _c('tr', [_c('td', [_c('label', {
+    attrs: {
+      "for": "email"
+    }
+  }, [_vm._v("E-mail(必填)")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.formContent.email),
+      expression: "formContent.email"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "name": "email"
+    },
+    domProps: {
+      "value": (_vm.formContent.email)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.formContent.email = $event.target.value
+      }
+    }
+  })])]), _vm._v(" "), _c('tr', [_c('td', [_c('label', {
+    attrs: {
+      "for": "phone"
+    }
+  }, [_vm._v("電話號碼(必填)")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.formContent.phone),
+      expression: "formContent.phone"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "name": "phone"
+    },
+    domProps: {
+      "value": (_vm.formContent.phone)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.formContent.phone = $event.target.value
+      }
+    }
+  })])]), _vm._v(" "), _c('tr', [_c('td', [_c('label', {
+    attrs: {
+      "for": "where"
+    }
+  }, [_vm._v("您是從哪裡知道我們的?")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.formContent.where),
+      expression: "formContent.where"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "name": "where"
+    },
+    domProps: {
+      "value": (_vm.formContent.where)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.formContent.where = $event.target.value
+      }
+    }
+  })])])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6"
+  }, [_c('table', {
+    staticClass: "contact-form",
+    attrs: {
+      "width": "100%"
+    }
+  }, [_c('tr', [_c('td', [_c('label', {
+    attrs: {
+      "for": "type"
+    }
+  }, [_vm._v("諮詢項目")]), _vm._v(" "), _c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.formContent.type),
+      expression: "formContent.type"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "name": "type"
+    },
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.formContent.type = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
+    }
+  }, [_c('option', {
+    attrs: {
+      "value": "NULL"
+    }
+  }, [_vm._v("諮詢內容")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "詢價(報價)"
+    }
+  }, [_vm._v("詢價(報價)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "售後服務"
+    }
+  }, [_vm._v("售後服務")])])])]), _vm._v(" "), _c('tr', [_c('td', [_c('label', {
+    attrs: {
+      "for": "content"
+    }
+  }, [_vm._v("諮詢內容 (必填)")]), _vm._v(" "), _c('textarea', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.formContent.content),
+      expression: "formContent.content"
+    }],
+    staticClass: "form-control",
+    staticStyle: {
+      "resize": "vertical"
+    },
+    attrs: {
+      "name": "content",
+      "rows": "8"
+    },
+    domProps: {
+      "value": (_vm.formContent.content)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.formContent.content = $event.target.value
+      }
+    }
+  })])])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-12"
+  }, [_c('table', {
+    staticClass: "contact-form",
+    attrs: {
+      "width": "100%"
+    }
+  }, [_vm._m(0), _vm._v(" "), _c('tr', [_c('td', {
+    attrs: {
+      "align": "center"
+    }
+  }, [_c('button', {
+    staticClass: "btn btn-lg contact-submit-btn",
+    attrs: {
+      "type": "button",
+      "name": "button"
+    },
+    on: {
+      "click": function($event) {
+        _vm.sendContact()
+      }
+    }
+  }, [_vm._v("送出")])])])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('tr', [_c('td', {
+    attrs: {
+      "align": "center"
+    }
+  }, [_c('div', {
+    staticClass: "g-recaptcha",
+    attrs: {
+      "data-sitekey": "6Lf13TIUAAAAAFeq8picDJ9DVpMwioBqfFQZdhc2"
+    }
+  })])])
+}]}
+module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3c156249", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-1ffb14ee", module.exports)
   }
 }
 

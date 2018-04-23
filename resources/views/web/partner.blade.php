@@ -18,22 +18,15 @@
     <section class="numbertwo">
       <div class="container">
         <div class="row">
-          <div class="col-md-4 col-set"><img class="img-responsive" src="https://dummyimage.com/640x420/000/fff" alt=""/></div>
-          <div class="col-md-4 col-set"><img class="img-responsive" src="https://dummyimage.com/640x420/000/fff" alt=""/></div>
-          <div class="col-md-4 col-set"><img class="img-responsive" src="https://dummyimage.com/640x420/000/fff" alt=""/></div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 col-set"><img class="img-responsive" src="https://dummyimage.com/640x420/000/fff" alt=""/></div>
-          <div class="col-md-4 col-set"><img class="img-responsive" src="https://dummyimage.com/640x420/000/fff" alt=""/></div>
-          <div class="col-md-4 col-set"><img class="img-responsive" src="https://dummyimage.com/640x420/000/fff" alt=""/></div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 col-set"><img class="img-responsive" src="https://dummyimage.com/640x420/000/fff" alt=""/></div>
-          <div class="col-md-4 col-set"><img class="img-responsive" src="https://dummyimage.com/640x420/000/fff" alt=""/></div>
-          <div class="col-md-4 col-set"><img class="img-responsive" src="https://dummyimage.com/640x420/000/fff" alt=""/></div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 col-bottom"><img class="img-responsive" src="https://dummyimage.com/640x420/000/fff" alt=""/></div>
+            @foreach (PartnerView::tpt() as $key => $value)
+                <div class="col-md-4 col-set">
+                    <div class="embed-responsive embed-responsive-16by9 featureImage">
+                        <img src="{{$value->content}}" >
+                    </div>
+                    <a href="{{$value->customField1}}">{{$value->title}}</a>
+                </div>
+            @endforeach
+
         </div>
       </div>
     </section>

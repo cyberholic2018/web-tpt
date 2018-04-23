@@ -131,7 +131,7 @@
                 <td colspan="2">
                   <div class="form-group">
                     <label for="content-input">備註</label>
-                    <textarea class="form-control" id="content-input" name="content" rows="5"></textarea>
+                    <textarea class="form-control" id="content-input" name="content" style="resize: vertical; min-height: 150px;"></textarea>
                   </div>
                 </td>
               </tr>

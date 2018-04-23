@@ -16,7 +16,7 @@ body {
 
 .container-fluid {
   padding: 0;
-  margin-bottom: 150px;
+  margin-bottom: 50px;
 }
 
 .container-fluid img {
@@ -25,7 +25,33 @@ body {
 }
 
 section.numbertwo .col-md-4.col-set {
+  position: relative;
   margin-top: 30px;
+  text-align: center;
+}
+
+section.numbertwo .col-md-4.col-set .featureImage {
+  position: relative;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+section.numbertwo .col-md-4.col-set .featureImage img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+  max-width: 100%;
+  max-height: 100%;
+}
+
+section.numbertwo .col-md-4.col-set a {
+  font-size: 20px;
+  color: #000;
+  text-decoration: none;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
 }
 
 section.numbertwo .col-md-4.col-bottom {

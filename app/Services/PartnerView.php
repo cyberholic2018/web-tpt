@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Partner;
 use App;
+use App\Content;
 
 class PartnerView
 {
@@ -20,5 +21,10 @@ class PartnerView
     public static function get($guid)
     {
         return Partner::where('guid', $guid)->first();
+    }
+
+    public static function tpt()
+    {
+        return Content::paginate(9);
     }
 }
