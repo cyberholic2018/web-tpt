@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 317);
+/******/ 	return __webpack_require__(__webpack_require__.s = 320);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -70,12 +70,14 @@
 
 /* globals __VUE_SSR_CONTEXT__ */
 
-// this module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle
+// IMPORTANT: Do NOT use ES2015 features in this file.
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
 
 module.exports = function normalizeComponent (
   rawScriptExports,
   compiledTemplate,
+  functionalTemplate,
   injectStyles,
   scopeId,
   moduleIdentifier /* server only */
@@ -99,6 +101,12 @@ module.exports = function normalizeComponent (
   if (compiledTemplate) {
     options.render = compiledTemplate.render
     options.staticRenderFns = compiledTemplate.staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
   }
 
   // scopedId
@@ -139,12 +147,16 @@ module.exports = function normalizeComponent (
     var existing = functional
       ? options.render
       : options.beforeCreate
+
     if (!functional) {
       // inject component registration as beforeCreate hook
       options.beforeCreate = existing
         ? [].concat(existing, hook)
         : [hook]
     } else {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
       // register for functioal component in vue file
       options.render = function renderWithStyleInjection (h, context) {
         hook.call(context)
@@ -163,18 +175,18 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 317:
+/***/ 320:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(318);
+module.exports = __webpack_require__(321);
 
 
 /***/ }),
 
-/***/ 318:
+/***/ 321:
 /***/ (function(module, exports, __webpack_require__) {
 
-Vue.component('success', __webpack_require__(319));
+Vue.component('success', __webpack_require__(322));
 
 var app = new Vue({
     el: '#success'
@@ -182,25 +194,32 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ 319:
+/***/ 322:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(320),
-  /* template */
-  __webpack_require__(321),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(323)
+/* template */
+var __vue_template__ = __webpack_require__(324)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "D:\\Work Station\\Project\\server\\web-tpt_20180421\\resources\\assets\\js\\components\\admin\\content\\success\\success.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] success.vue: functional components are not supported with templates, they should use render functions.")}
+Component.options.__file = "resources\\assets\\js\\components\\admin\\content\\success\\success.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -209,9 +228,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-21717f96", Component.options)
+    hotAPI.createRecord("data-v-2b7d251a", Component.options)
   } else {
-    hotAPI.reload("data-v-21717f96", Component.options)
+    hotAPI.reload("data-v-2b7d251a", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -223,7 +242,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 320:
+/***/ 323:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -337,111 +356,134 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 321:
+/***/ 324:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-5"
-  }, [_c('form', {
-    on: {
-      "submit": function($event) {
-        $event.preventDefault();
-        _vm.saveContent($event)
-      }
-    }
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', {
-    attrs: {
-      "for": "success-title"
-    }
-  }, [_vm._v("合作夥伴名稱")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.content.title),
-      expression: "content.title"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "id": "success-title",
-      "name": "",
-      "value": "",
-      "required": ""
-    },
-    domProps: {
-      "value": (_vm.content.title)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.content.title = $event.target.value
-      }
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
-  }, [_c('label', {
-    attrs: {
-      "for": "success-link"
-    }
-  }, [_vm._v("合作夥伴連結")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.content.link),
-      expression: "content.link"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "id": "success-link",
-      "name": "",
-      "value": ""
-    },
-    domProps: {
-      "value": (_vm.content.link)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.content.link = $event.target.value
-      }
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
-  }, [_c('button', {
-    staticClass: "btn btn-info",
-    attrs: {
-      "type": "button",
-      "name": "button"
-    },
-    on: {
-      "click": function($event) {
-        _vm.addImage()
-      }
-    }
-  }, [_vm._v("編輯代表圖片")]), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('img', {
-    attrs: {
-      "src": _vm.content.featureImage,
-      "width": "300"
-    }
-  })]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-primary",
-    attrs: {
-      "type": "submit",
-      "name": "button"
-    }
-  }, [_vm._v("儲存合作夥伴")])])])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-5" }, [
+      _c(
+        "form",
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              _vm.saveContent($event)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "success-title" } }, [
+              _vm._v("合作夥伴名稱")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.content.title,
+                  expression: "content.title"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "success-title",
+                name: "",
+                value: "",
+                required: ""
+              },
+              domProps: { value: _vm.content.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.content, "title", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "success-link" } }, [
+              _vm._v("合作夥伴連結")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.content.link,
+                  expression: "content.link"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", id: "success-link", name: "", value: "" },
+              domProps: { value: _vm.content.link },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.content, "link", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-info",
+                attrs: { type: "button", name: "button" },
+                on: {
+                  click: function($event) {
+                    _vm.addImage()
+                  }
+                }
+              },
+              [_vm._v("編輯代表圖片")]
+            ),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("img", {
+              attrs: { src: _vm.content.featureImage, width: "300" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { type: "submit", name: "button" }
+            },
+            [_vm._v("儲存合作夥伴")]
+          )
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-21717f96", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-2b7d251a", module.exports)
   }
 }
 

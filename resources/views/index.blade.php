@@ -196,7 +196,7 @@
     </div>
   </section>
   <section class="numbersix">
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
         <div class="col-md-12 col-tittle">
           <p>聯絡我們</p>
@@ -205,12 +205,14 @@
       </div>
       <div class="row">
         <div class="col-md-12 col-list">
-            <div class="col-md-8 col-md-offset-2">
-                <ul style="padding-left: 20px">
-                  <li>※謝謝您對我們的支持與肯定，為了提供您更好的服務，敬請留下您寶貴的建議，我們將盡快回復您。</li>
-                  <li>※我們的上班時間為週一至週五09:00~18:00，我們將於收到您的來信後立即回覆您。</li>
-                  <li>※客服信箱：service@tpt.com.tw</li>
-                </ul>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <ul style="padding-left: 20px">
+                      <li>※謝謝您對我們的支持與肯定，為了提供您更好的服務，敬請留下您寶貴的建議，我們將盡快回復您。</li>
+                      <li>※我們的上班時間為週一至週五09:00~18:00，我們將於收到您的來信後立即回覆您。</li>
+                      <li>※客服信箱：service@tpt.com.tw</li>
+                    </ul>
+                </div>
             </div>
         </div>
       </div>
@@ -270,6 +272,5 @@
       </div>
     </div>
   </section>
-
 
 @endsection

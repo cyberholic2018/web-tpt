@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 332);
+/******/ 	return __webpack_require__(__webpack_require__.s = 335);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -70,12 +70,14 @@
 
 /* globals __VUE_SSR_CONTEXT__ */
 
-// this module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle
+// IMPORTANT: Do NOT use ES2015 features in this file.
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
 
 module.exports = function normalizeComponent (
   rawScriptExports,
   compiledTemplate,
+  functionalTemplate,
   injectStyles,
   scopeId,
   moduleIdentifier /* server only */
@@ -99,6 +101,12 @@ module.exports = function normalizeComponent (
   if (compiledTemplate) {
     options.render = compiledTemplate.render
     options.staticRenderFns = compiledTemplate.staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
   }
 
   // scopedId
@@ -139,12 +147,16 @@ module.exports = function normalizeComponent (
     var existing = functional
       ? options.render
       : options.beforeCreate
+
     if (!functional) {
       // inject component registration as beforeCreate hook
       options.beforeCreate = existing
         ? [].concat(existing, hook)
         : [hook]
     } else {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
       // register for functioal component in vue file
       options.render = function renderWithStyleInjection (h, context) {
         hook.call(context)
@@ -163,18 +175,18 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 332:
+/***/ 335:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(333);
+module.exports = __webpack_require__(336);
 
 
 /***/ }),
 
-/***/ 333:
+/***/ 336:
 /***/ (function(module, exports, __webpack_require__) {
 
-Vue.component('netone-news', __webpack_require__(334));
+Vue.component('netone-news', __webpack_require__(337));
 
 var app = new Vue({
     el: '#netone-news'
@@ -182,25 +194,32 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ 334:
+/***/ 337:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(335),
-  /* template */
-  __webpack_require__(336),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(338)
+/* template */
+var __vue_template__ = __webpack_require__(339)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "D:\\Work Station\\Project\\server\\web-tpt_20180421\\resources\\assets\\js\\components\\frontend\\netone-news\\netone-news.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] netone-news.vue: functional components are not supported with templates, they should use render functions.")}
+Component.options.__file = "resources\\assets\\js\\components\\frontend\\netone-news\\netone-news.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -209,9 +228,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e7cac504", Component.options)
+    hotAPI.createRecord("data-v-f8c20bc2", Component.options)
   } else {
-    hotAPI.reload("data-v-e7cac504", Component.options)
+    hotAPI.reload("data-v-f8c20bc2", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -223,7 +242,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 335:
+/***/ 338:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -366,66 +385,124 @@ $('.loading-bar').fadeOut('100');
 
 /***/ }),
 
-/***/ 336:
+/***/ 339:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-12"
-  }, [_c('table', {
-    staticClass: "table-field"
-  }, _vm._l((_vm.posts), function(item) {
-    return _c('tr', [_c('td', [_c('h4', [_c('a', {
-      on: {
-        "click": function($event) {
-          _vm.goPostPage(item.guid)
-        }
-      }
-    }, [_vm._v(_vm._s(item.title))])])]), _vm._v(" "), _c('td', {
-      attrs: {
-        "align": "right"
-      }
-    }, [_vm._v("\n                    " + _vm._s(item.created_at) + "\n                ")])])
-  })), _vm._v(" "), _c('ul', {
-    staticClass: "pagination"
-  }, [(_vm.prev_page_url) ? _c('li', [_c('a', {
-    on: {
-      "click": function($event) {
-        _vm.prevPage()
-      }
-    }
-  }, [_vm._v("上一頁")])]) : _vm._e(), _vm._v(" "), _vm._l((_vm.eachPage), function(item) {
-    return _c('li', [(item.isBrowsing) ? _c('a', {
-      staticStyle: {
-        "background": "#eee"
-      },
-      on: {
-        "click": function($event) {
-          _vm.gotoPage(item)
-        }
-      }
-    }, [_vm._v(_vm._s(item.pageNumber))]) : _c('a', {
-      on: {
-        "click": function($event) {
-          _vm.gotoPage(item)
-        }
-      }
-    }, [_vm._v(_vm._s(item.pageNumber))])])
-  }), _vm._v(" "), (_vm.next_page_url) ? _c('li', [_c('a', {
-    on: {
-      "click": function($event) {
-        _vm.nextPage()
-      }
-    }
-  }, [_vm._v("下一頁")])]) : _vm._e()], 2)])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-12" }, [
+      _c(
+        "table",
+        { staticClass: "table-field" },
+        _vm._l(_vm.posts, function(item) {
+          return _c("tr", [
+            _c("td", [
+              _c("h4", [
+                _c(
+                  "a",
+                  {
+                    on: {
+                      click: function($event) {
+                        _vm.goPostPage(item.guid)
+                      }
+                    }
+                  },
+                  [_vm._v(_vm._s(item.title))]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("td", { attrs: { align: "right" } }, [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(item.created_at) +
+                  "\n                "
+              )
+            ])
+          ])
+        })
+      ),
+      _vm._v(" "),
+      _c(
+        "ul",
+        { staticClass: "pagination" },
+        [
+          _vm.prev_page_url
+            ? _c("li", [
+                _c(
+                  "a",
+                  {
+                    on: {
+                      click: function($event) {
+                        _vm.prevPage()
+                      }
+                    }
+                  },
+                  [_vm._v("上一頁")]
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm._l(_vm.eachPage, function(item) {
+            return _c("li", [
+              item.isBrowsing
+                ? _c(
+                    "a",
+                    {
+                      staticStyle: { background: "#eee" },
+                      on: {
+                        click: function($event) {
+                          _vm.gotoPage(item)
+                        }
+                      }
+                    },
+                    [_vm._v(_vm._s(item.pageNumber))]
+                  )
+                : _c(
+                    "a",
+                    {
+                      on: {
+                        click: function($event) {
+                          _vm.gotoPage(item)
+                        }
+                      }
+                    },
+                    [_vm._v(_vm._s(item.pageNumber))]
+                  )
+            ])
+          }),
+          _vm._v(" "),
+          _vm.next_page_url
+            ? _c("li", [
+                _c(
+                  "a",
+                  {
+                    on: {
+                      click: function($event) {
+                        _vm.nextPage()
+                      }
+                    }
+                  },
+                  [_vm._v("下一頁")]
+                )
+              ])
+            : _vm._e()
+        ],
+        2
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-e7cac504", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-f8c20bc2", module.exports)
   }
 }
 

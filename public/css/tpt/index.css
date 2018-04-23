@@ -167,6 +167,10 @@ section.numbersix .col-md-12.col-list {
   color: #e8e8e8;
 }
 
+section.numbersix .col-md-12.col-list ul li {
+  list-style: none;
+}
+
 .btn-contact {
   background-color: #545454;
   color: #e8e8e8;
