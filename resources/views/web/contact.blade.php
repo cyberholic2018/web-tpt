@@ -38,7 +38,7 @@
             <div class="tab-pane fade in active" id="home">
               <div class="row">
                 <div class="col-md-12 col-map">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28968.13186951268!2d120.92452149999998!3d24.829109900000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8dfe1ebae1c22986!2z5paw56u55Y2X5a-u6IiK5ryB5riv!5e0!3m2!1szh-TW!2stw!4v1523373663161" width="100%" height="350" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.2875845685617!2d121.63280801493782!3d25.058240083961007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x345d535404923b37%3A0x8e60a1f91679e603!2zMjIx5paw5YyX5biC5rGQ5q2i5Y2A5aSn5ZCM6Lev5LiA5q61MjM3LTbomZ8!5e0!3m2!1szh-TW!2stw!4v1524496783601" width="100%" height="350" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
                 </div>
               </div>
               <div class="row">
@@ -55,7 +55,7 @@
             <div class="tab-pane fade" id="menu1">
               <div class="row">
                 <div class="col-md-12 col-map">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28968.13186951268!2d120.92452149999998!3d24.829109900000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8dfe1ebae1c22986!2z5paw56u55Y2X5a-u6IiK5ryB5riv!5e0!3m2!1szh-TW!2stw!4v1523373663161" width="100%" height="350" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.2875845685617!2d121.63280801493782!3d25.058240083961007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x345d535404923b37%3A0x8e60a1f91679e603!2zMjIx5paw5YyX5biC5rGQ5q2i5Y2A5aSn5ZCM6Lev5LiA5q61MjM3LTbomZ8!5e0!3m2!1szh-TW!2stw!4v1524496783601" width="100%" height="350" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
                 </div>
               </div>
               <div class="row">

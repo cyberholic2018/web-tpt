@@ -42,22 +42,13 @@ body {
 		width: 100%;
 	}
 }
+
 section {
 	&.numbertwo {
 		// border-bottom: solid $color_quill_gray_approx;
 		padding-top: 70px;
 		padding-bottom: 70px;
-		.tri{
-			border: solid 1px;
-			position: absolute;
-			left: 0px;
-			top: 0px;
-			width: 200px;
-			height: 150px;
-			background-color: $white;
-			z-index: 999;
-			transform: translateX(-85px) translateY(-15px) rotate(-45deg);
-		}
+
 		.img-responsive {
 			margin-bottom: 50px;
 		}
@@ -127,8 +118,7 @@ section {
 				text-align: center;
 				font-size: 25px;
 				background-color: $color_fuscous_gray_approx;
-				padding-top: 3px;
-				padding-bottom: 3px;
+				padding: 0px;
 				cursor: pointer;
 				ul {
 					border: none;
@@ -139,9 +129,10 @@ section {
 							color: $color_gray_nurse_approx;
 							background-color: $color_fuscous_gray_approx;
 							border: none;
+							margin: 0px;
 						}
 						&.active a {
-							border-bottom: solid 2px $color_orange_peel_approx;
+							background-color: $color_orange_peel_approx;
 						}
 					}
 				}

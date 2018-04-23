@@ -1,1 +1,511 @@
-!function(e){function t(a){if(n[a])return n[a].exports;var r=n[a]={i:a,l:!1,exports:{}};return e[a].call(r.exports,r,r.exports,t),r.l=!0,r.exports}var n={};t.m=e,t.c=n,t.d=function(e,n,a){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:a})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=332)}({1:function(e,t){e.exports=function(e,t,n,a,r){var o,s=e=e||{},u=typeof e.default;"object"!==u&&"function"!==u||(o=e,s=e.default);var i="function"==typeof s?s.options:s;t&&(i.render=t.render,i.staticRenderFns=t.staticRenderFns),a&&(i._scopeId=a);var c;if(r?(c=function(e){e=e||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext,e||"undefined"==typeof __VUE_SSR_CONTEXT__||(e=__VUE_SSR_CONTEXT__),n&&n.call(this,e),e&&e._registeredComponents&&e._registeredComponents.add(r)},i._ssrRegister=c):n&&(c=n),c){var l=i.functional,p=l?i.render:i.beforeCreate;l?i.render=function(e,t){return c.call(t),p(e,t)}:i.beforeCreate=p?[].concat(p,c):[c]}return{esModule:o,exports:s,options:i}}},332:function(e,t,n){e.exports=n(333)},333:function(e,t,n){Vue.component("netone-news",n(334));new Vue({el:"#netone-news"})},334:function(e,t,n){var a=n(1)(n(335),n(336),null,null,null);e.exports=a.exports},335:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),$(".loading-bar").fadeOut("100"),t.default={data:function(){return{posts:[],next_page_url:null,prev_page_url:null,total:null,current_page:null,eachPage:[]}},created:function(){this.getPosts("/posts")},methods:{prevPage:function(){this.getPosts(this.prev_page_url)},nextPage:function(){this.getPosts(this.next_page_url)},gotoPage:function(e){this.getPosts("/posts?page="+e.pageNumber)},goPostPage:function(e){window.open("/news/"+e)},getPosts:function(e){var t=this;$.ajax({url:e,type:"GET",dataType:"json"}).done(function(e){var n=/<[^>]*>/g,a=/<a[^>]*>[^>]*<[^>]a>/g,r=/(<a[^>]*>)|(<[^>]a>)/g,o=e.data.last_page>=5?5:e.data.last_page;if(t.posts=[],t.eachPage=[],t.current_page=e.data.current_page,t.next_page_url=e.data.next_page_url,t.prev_page_url=e.data.prev_page_url,e.data.data.forEach(function(e){t.posts.push({guid:e.guid,content:e.content.replace(n,"").replace(a,"").replace(r,"").replace(/&nbsp;/g," ").substr(0,100)+".....",featureImage:e.featureImage,created_at:e.created_at.split(" ")[0],title:e.title})}),t.current_page>=4&&e.data.last_page>5)if(t.current_page+2>=e.data.last_page)for(var s=0;s<o;s++)t.eachPage.push({pageNumber:e.data.last_page-4+s,isBrowsing:e.data.last_page-4+s===t.current_page});else for(var s=0;s<o;s++)t.eachPage.push({pageNumber:t.current_page-2+s,isBrowsing:t.current_page-2+s===t.current_page});else for(var s=0;s<o;s++)t.eachPage.push({pageNumber:s+1,isBrowsing:s+1===t.current_page})}).always(function(){})}}}},336:function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{staticClass:"row"},[n("div",{staticClass:"col-md-12"},[n("table",{staticClass:"table-field"},e._l(e.posts,function(t){return n("tr",[n("td",[n("h4",[n("a",{on:{click:function(n){e.goPostPage(t.guid)}}},[e._v(e._s(t.title))])])]),e._v(" "),n("td",{attrs:{align:"right"}},[e._v("\n                    "+e._s(t.created_at)+"\n                ")])])})),e._v(" "),n("ul",{staticClass:"pagination"},[e.prev_page_url?n("li",[n("a",{on:{click:function(t){e.prevPage()}}},[e._v("上一頁")])]):e._e(),e._v(" "),e._l(e.eachPage,function(t){return n("li",[t.isBrowsing?n("a",{staticStyle:{background:"#eee"},on:{click:function(n){e.gotoPage(t)}}},[e._v(e._s(t.pageNumber))]):n("a",{on:{click:function(n){e.gotoPage(t)}}},[e._v(e._s(t.pageNumber))])])}),e._v(" "),e.next_page_url?n("li",[n("a",{on:{click:function(t){e.nextPage()}}},[e._v("下一頁")])]):e._e()],2)])])},staticRenderFns:[]}}});
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 325);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 1:
+/***/ (function(module, exports) {
+
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file.
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = injectStyles
+  }
+
+  if (hook) {
+    var functional = options.functional
+    var existing = functional
+      ? options.render
+      : options.beforeCreate
+
+    if (!functional) {
+      // inject component registration as beforeCreate hook
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    } else {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return existing(h, context)
+      }
+    }
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+
+/***/ 325:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(326);
+
+
+/***/ }),
+
+/***/ 326:
+/***/ (function(module, exports, __webpack_require__) {
+
+Vue.component('netone-news', __webpack_require__(327));
+
+var app = new Vue({
+    el: '#netone-news'
+});
+
+/***/ }),
+
+/***/ 327:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(328)
+/* template */
+var __vue_template__ = __webpack_require__(329)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\frontend\\netone-news\\netone-news.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-f8c20bc2", Component.options)
+  } else {
+    hotAPI.reload("data-v-f8c20bc2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 328:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+$('.loading-bar').fadeOut('100');
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            posts: [],
+            next_page_url: null,
+            prev_page_url: null,
+            total: null,
+            current_page: null,
+            eachPage: []
+        };
+    },
+
+    created: function created() {
+        this.getPosts('/posts');
+    },
+    methods: {
+        prevPage: function prevPage() {
+            this.getPosts(this.prev_page_url);
+        },
+        nextPage: function nextPage() {
+            this.getPosts(this.next_page_url);
+        },
+        gotoPage: function gotoPage(item) {
+            this.getPosts('/posts?page=' + item.pageNumber);
+        },
+        goPostPage: function goPostPage(guid) {
+            window.open('/news/' + guid);
+        },
+        getPosts: function getPosts(url) {
+            var self = this;
+
+            $.ajax({
+                url: url,
+                type: 'GET',
+                dataType: 'json'
+            }).done(function (result) {
+                var regExHtml = /<[^>]*>/g;
+                var regExA = /<a[^>]*>[^>]*<[^>]a>/g;
+                var regExAH = /(<a[^>]*>)|(<[^>]a>)/g;
+                var maxThumbNail = result.data.last_page >= 5 ? 5 : result.data.last_page;
+                self.posts = [];
+                self.eachPage = [];
+
+                self.current_page = result.data.current_page;
+                self.next_page_url = result.data.next_page_url;
+                self.prev_page_url = result.data.prev_page_url;
+
+                result.data.data.forEach(function (item) {
+                    self.posts.push({
+                        guid: item.guid,
+                        content: item.content.replace(regExHtml, "").replace(regExA, "").replace(regExAH, "").replace(/&nbsp;/g, " ").substr(0, 100) + '.....',
+                        featureImage: item.featureImage,
+                        created_at: item.created_at.split(' ')[0],
+                        title: item.title
+                    });
+                });
+
+                if (self.current_page >= 4 && result.data.last_page > 5) {
+                    if (self.current_page + 2 >= result.data.last_page) {
+                        for (var i = 0; i < maxThumbNail; i++) {
+                            self.eachPage.push({
+                                pageNumber: result.data.last_page - 4 + i,
+                                isBrowsing: result.data.last_page - 4 + i === self.current_page ? true : false
+                            });
+                        }
+                    } else {
+                        for (var i = 0; i < maxThumbNail; i++) {
+                            self.eachPage.push({
+                                pageNumber: self.current_page - 2 + i,
+                                isBrowsing: self.current_page - 2 + i === self.current_page ? true : false
+                            });
+                        }
+                    }
+                } else {
+                    for (var i = 0; i < maxThumbNail; i++) {
+                        self.eachPage.push({
+                            pageNumber: i + 1,
+                            isBrowsing: i + 1 === self.current_page ? true : false
+                        });
+                    }
+                }
+            }).always(function () {});
+        }
+    }
+});
+
+/***/ }),
+
+/***/ 329:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-12" }, [
+      _c(
+        "table",
+        { staticClass: "table-field" },
+        _vm._l(_vm.posts, function(item) {
+          return _c("tr", [
+            _c("td", [
+              _c("h4", [
+                _c(
+                  "a",
+                  {
+                    on: {
+                      click: function($event) {
+                        _vm.goPostPage(item.guid)
+                      }
+                    }
+                  },
+                  [_vm._v(_vm._s(item.title))]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("td", { attrs: { align: "right" } }, [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(item.created_at) +
+                  "\n                "
+              )
+            ])
+          ])
+        })
+      ),
+      _vm._v(" "),
+      _c(
+        "ul",
+        { staticClass: "pagination" },
+        [
+          _vm.prev_page_url
+            ? _c("li", [
+                _c(
+                  "a",
+                  {
+                    on: {
+                      click: function($event) {
+                        _vm.prevPage()
+                      }
+                    }
+                  },
+                  [_vm._v("上一頁")]
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm._l(_vm.eachPage, function(item) {
+            return _c("li", [
+              item.isBrowsing
+                ? _c(
+                    "a",
+                    {
+                      staticStyle: { background: "#eee" },
+                      on: {
+                        click: function($event) {
+                          _vm.gotoPage(item)
+                        }
+                      }
+                    },
+                    [_vm._v(_vm._s(item.pageNumber))]
+                  )
+                : _c(
+                    "a",
+                    {
+                      on: {
+                        click: function($event) {
+                          _vm.gotoPage(item)
+                        }
+                      }
+                    },
+                    [_vm._v(_vm._s(item.pageNumber))]
+                  )
+            ])
+          }),
+          _vm._v(" "),
+          _vm.next_page_url
+            ? _c("li", [
+                _c(
+                  "a",
+                  {
+                    on: {
+                      click: function($event) {
+                        _vm.nextPage()
+                      }
+                    }
+                  },
+                  [_vm._v("下一頁")]
+                )
+              ])
+            : _vm._e()
+        ],
+        2
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-f8c20bc2", module.exports)
+  }
+}
+
+/***/ })
+
+/******/ });

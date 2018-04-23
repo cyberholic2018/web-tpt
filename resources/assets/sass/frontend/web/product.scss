@@ -32,11 +32,12 @@ body {
 }
 section {
 	&.numbertwo {
+		text-align: justify;
 		font-size: 20px;
 		line-height: 30px;
-		padding: 80px;
-		padding-left: 200px;
-		padding-right: 200px;
+	  margin-top: 80px;
+
+
 	}
 	&.numberthree {
 		text-align: center;
