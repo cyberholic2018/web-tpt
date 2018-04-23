@@ -50,5 +50,6 @@
     "/css/frontend-all.css": "/css/frontend-all.css",
     "/js/frontend-all.js": "/js/frontend-all.js",
     "/js/all.js": "/js/all.js",
-    "/js/frontend.js": "/js/frontend.js"
+    "/js/frontend.js": "/js/frontend.js",
+    "/css/tpt/index.css": "/css/tpt/index.css"
 }
