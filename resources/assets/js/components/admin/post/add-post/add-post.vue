@@ -4,6 +4,7 @@
             <input type="text" class="form-control ch-product-title" name="title" value="" placeholder="文章標題" v-model="postContent.title">
             <ckeditor
                 class="ch-product-description"
+                id="post-content"
                 :config="ckConfig"
                 v-model="postContent.content">
             </ckeditor>
@@ -142,20 +143,21 @@
                         <button v-else type="button" class="btn btn-success btn-sm btn-block" name="button" disabled>發布文章</button>
     				</div>
     			</div>
-                <!-- <div class="panel panel-default">
+                <div class="panel panel-default">
     				<div class="panel-heading">
     					<h3 class="panel-title">
-    						類別選擇
+    						文章來源
     					</h3>
     				</div>
     				<div class="panel-body">
-                        <select class="form-control" v-model="postContent.category">
+                        <input class="form-control" type="text" name="" v-model="postContent.seoTitle">
+                        <!-- <select class="form-control" v-model="postContent.category">
                             <option value="null">--不指定--</option>
                             <option v-for="item in categories" v-bind:value="item.guid">{{item.name}}</option>
-                        </select>
+                        </select> -->
     				</div>
-    			</div> -->
-                <div class="panel panel-default">
+    			</div>
+                <!-- <div class="panel panel-default">
     				<div class="panel-heading">
     					<h3 class="panel-title">
     						類別選擇
@@ -167,18 +169,19 @@
                             <option value="success">成功案例</option>
                         </select>
     				</div>
-    			</div>
+    			</div> -->
                 <div class="panel panel-default">
     				<div class="panel-heading">
     					<h3 class="panel-title">
-    						語系選擇
+    						作者
     					</h3>
     				</div>
     				<div class="panel-body">
-                        <select class="form-control" v-model="postContent.locale">
+                        <input class="form-control" type="text" name="" v-model="postContent.seoKeyword">
+                        <!-- <select class="form-control" v-model="postContent.locale">
                             <option value="zh-TW">繁體中文</option>
                             <option value="en">英文</option>
-                        </select>
+                        </select> -->
     				</div>
     			</div>
                 <div class="panel panel-default">
@@ -228,7 +231,7 @@
                     seoTitle: null,
                     seoKeyword: null,
                     socialImage: null,
-                    locale: null,
+                    locale: 'zh-TW',
                     seoDescription: null,
                     isPublish: false,
                     schedulePost: null,

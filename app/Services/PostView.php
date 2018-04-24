@@ -11,6 +11,11 @@ class PostView
         return Post::paginate(9);
     }
 
+    public static function get($id)
+    {
+        return Post::where('id', $id)->first();
+    }
+
     public static function news($locale)
     {
         return Post::where('locale', $locale)->where('category', 'news')->paginate(15);

@@ -35,3 +35,10 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 .env
+/public/css/tpt/partner.css
+/public/css/tpt/product.css
+/public/css/tpt/product-detail.css
+/public/css/tpt/about.css
+/public/css/tpt/contact.css
+/public/css/tpt/index.css
+/public/css/tpt/news.css

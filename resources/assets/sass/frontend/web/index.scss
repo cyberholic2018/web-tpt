@@ -110,6 +110,11 @@ section {
 		.name {
 			margin-top: 20px;
 			font-size: 25px;
+			display : inline-block;
+			  overflow : hidden;
+			  text-overflow : ellipsis;
+			  white-space : nowrap;
+			  width : 100%;
 		}
 		p {
 			font-size: 15px;

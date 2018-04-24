@@ -14,7 +14,8 @@
 @section('content')
 
   <div>
-    <div class="container-fluid"><img src="https://dummyimage.com/1920x600/{{Helper::rc()}}/fff" alt=""/></div>
+      {!!PageView::show(6)!!}
+    {{-- <div class="container-fluid"><img src="https://dummyimage.com/1920x600/{{Helper::rc()}}/fff" alt=""/></div> --}}
   </div>
   <section class="numbertwo">
     <div class="container">

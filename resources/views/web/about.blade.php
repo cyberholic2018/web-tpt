@@ -8,8 +8,8 @@
 @endsection
 
 @section('content')
-
-  <div>
+    {!!PageView::show(2)!!}
+  {{-- <div>
     <div class="container-fluid"><img src="https://dummyimage.com/1920x600/{{Helper::rc()}}/fff" alt=""/></div>
   </div>
   <section class="numbertwo">
@@ -80,7 +80,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> --}}
 
 
 @endsection

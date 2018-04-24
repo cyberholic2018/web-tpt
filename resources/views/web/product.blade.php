@@ -14,16 +14,18 @@
 @section('content')
 
   <div>
-    <div class="container-fluid"><img src="https://dummyimage.com/1920x600/{{Helper::rc()}}/fff" alt=""/></div>
+      {!!PageView::show(3)!!}
+    {{-- <div class="container-fluid"><img src="https://dummyimage.com/1920x600/{{Helper::rc()}}/fff" alt=""/></div>
     <section class="numbertwo">
-      <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <p>這是產品介紹的測試檔案，建立TFT module在全球快速流通與完整的售後服務，並確實服務全球客戶，期待結合各國之通路商，建構一個以物流、商流、金流的全球實體經濟網!建立TFT module在全球快速流通與完整的售後服務，並確實服務全球客戶，期待結合各國之通路商，建構一個以物流、商流、金流的全球實體經濟網!這是產品介紹的測試檔案，建立TFT module在全球快速流通與完整的售後服務，並確實服務全球客戶，期待結合各國之通路商，建構一個以物流、商流、金流的全球實體經濟網!</p>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <p>這是產品介紹的測試檔案，建立TFT module在全球快速流通與完整的售後服務，並確實服務全球客戶，期待結合各國之通路商，建構一個以物流、商流、金流的全球實體經濟網!建立TFT module在全球快速流通與完整的售後服務，並確實服務全球客戶，期待結合各國之通路商，建構一個以物流、商流、金流的全球實體經濟網!這是產品介紹的測試檔案，建立TFT module在全球快速流通與完整的售後服務，並確實服務全球客戶，期待結合各國之通路商，建構一個以物流、商流、金流的全球實體經濟網!</p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    </section>
+    </section> --}}
+    <br>
     <section class="numberthree">
       <div class="container">
         <div class="row" id="a">

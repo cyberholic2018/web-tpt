@@ -28,25 +28,62 @@
         #facebook-share, #line-share {
         cursor: pointer;
         }
-        .page-content-header {
-            @if ($post->featureImage)
-                background-image: url('{{$post->featureImage}}');
-            @else
-                background-image: url('/images/sunrise-1756274_1920.jpg');
-            @endif
-
+        .product-header {
+            background-image: url('{{$post->featureImage}}');
+            background-position: center;
+            background-size: cover;
+            height: 500px;
+            position: relative;
+        }
+        .product-header .mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .product-header .mask h1 {
+            position: absolute;
+            width: 100%;
+            left: 50%;
+            top: 50%;
+            margin: 0;
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 12px rgba(0,0,0,0.5);
+            transform: translateX(-50%) translateY(-50%);
         }
     </style>
     <link rel="stylesheet" href="/css/tpt/news.css">
 @endsection
 
 @section('content')
-    <div>
-      <img class="img-responsive" src="{{$post->featureImage}}" alt=""/>
+    <div class="container-fluid product-header">
+        {{-- <img src="{{ProductView::get($id)->featureImage}}" alt=""/> --}}
+        <div class="mask">
+            <h1>{{$post->title}}</h1>
+        </div>
     </div>
+    {{-- <div>
+      <img class="img-responsive" src="{{$post->featureImage}}" alt=""/>
+    </div> --}}
     <div class="row">
         <div class="col-md-8 col-md-offset-2 sub-page-content">
-            <h3>{{$post->title}}&nbsp;&nbsp;<br><span style="font-size: 18px;">{!! date('Y-m-d', strtotime($post->created_at)) !!}</span></h3>
+            <h3>
+                {{$post->title}}&nbsp;&nbsp;<br>
+                @if ($post->seoTitle)
+                    <span style="font-size: 18px;">文章節錄自：{{$post->seoTitle}}</span>
+                @endif
+                @if ($post->seoTitle && $post->seoKeyword)
+                    <span style="font-size: 18px;">，</span>
+                @endif
+                @if ($post->seoKeyword)
+                    <span style="font-size: 18px;">作者：{{$post->seoKeyword}}</span>
+                @endif
+                <br>
+                <span style="font-size: 18px;">{!! date('Y-m-d', strtotime($post->created_at)) !!}</span>
+            </h3>
             <table style="width: 80px;">
                 <tr>
                     <td width="50%" align="left" style="border-bottom: none;"><img id="facebook-share" class="alignleft" src="/img/icon/facebook-icon.svg" alt="" width="80%" /></td>

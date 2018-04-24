@@ -85,10 +85,13 @@
                 <div class="embed-responsive embed-responsive-16by9 partner-list">
                     <img src="{{$value->featureImage}}" alt=""/>
                 </div>
-              <p class="name">{{$value->title}}</p>
+              <div class="name">
+                  <span title="{{$value->title}}">{{$value->title}}</span>
+              </div>
+              {{-- <p class="name">{{$value->title}}</p> --}}
               <p>{!! date('Y-m-d', strtotime($value->created_at)) !!}</p>
               <hr/>
-              {{mb_strimwidth($value->content, 0, 300, '...', "UTF-8")}}
+              {{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', $value->content), 0, 100, '...', "UTF-8")}}
               <br>
               <a class="btn btn-default" href="/news/{{$value->guid}}">繼續閱讀</a>
             </div>
