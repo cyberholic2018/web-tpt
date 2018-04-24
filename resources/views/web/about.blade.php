@@ -9,6 +9,8 @@
 
 @section('content')
     {!!PageView::show(2)!!}
+
+
   {{-- <div>
     <div class="container-fluid"><img src="https://dummyimage.com/1920x600/{{Helper::rc()}}/fff" alt=""/></div>
   </div>
@@ -81,6 +83,15 @@
       </div>
     </div>
   </section> --}}
+  <section class="numbertwo">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-copyright">
+          <p class="small">COPYRIGHT © TAIWAN POWERTEK. ALL RIGHTS RESERVED. DESIGN BY CyberHolic    </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
 @endsection
