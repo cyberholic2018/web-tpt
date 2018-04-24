@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 187);
+/******/ 	return __webpack_require__(__webpack_require__.s = 190);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -70,12 +70,14 @@
 
 /* globals __VUE_SSR_CONTEXT__ */
 
-// this module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle
+// IMPORTANT: Do NOT use ES2015 features in this file.
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
 
 module.exports = function normalizeComponent (
   rawScriptExports,
   compiledTemplate,
+  functionalTemplate,
   injectStyles,
   scopeId,
   moduleIdentifier /* server only */
@@ -99,6 +101,12 @@ module.exports = function normalizeComponent (
   if (compiledTemplate) {
     options.render = compiledTemplate.render
     options.staticRenderFns = compiledTemplate.staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
   }
 
   // scopedId
@@ -139,12 +147,16 @@ module.exports = function normalizeComponent (
     var existing = functional
       ? options.render
       : options.beforeCreate
+
     if (!functional) {
       // inject component registration as beforeCreate hook
       options.beforeCreate = existing
         ? [].concat(existing, hook)
         : [hook]
     } else {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
       // register for functioal component in vue file
       options.render = function renderWithStyleInjection (h, context) {
         hook.call(context)
@@ -163,18 +175,18 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 187:
+/***/ 190:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(188);
+module.exports = __webpack_require__(191);
 
 
 /***/ }),
 
-/***/ 188:
+/***/ 191:
 /***/ (function(module, exports, __webpack_require__) {
 
-Vue.component('admin-sidebar', __webpack_require__(189));
+Vue.component('admin-sidebar', __webpack_require__(192));
 
 var adminSidebar = new Vue({
     el: '#admin-sidebar'
@@ -182,25 +194,32 @@ var adminSidebar = new Vue({
 
 /***/ }),
 
-/***/ 189:
+/***/ 192:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(190),
-  /* template */
-  __webpack_require__(191),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(193)
+/* template */
+var __vue_template__ = __webpack_require__(194)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "D:\\Work Station\\Project\\server\\web-tpt_20180421\\resources\\assets\\js\\components\\admin\\side-bar\\admin-sidebar.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] admin-sidebar.vue: functional components are not supported with templates, they should use render functions.")}
+Component.options.__file = "resources\\assets\\js\\components\\admin\\side-bar\\admin-sidebar.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -209,9 +228,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-bd99bb70", Component.options)
+    hotAPI.createRecord("data-v-9b850c3a", Component.options)
   } else {
-    hotAPI.reload("data-v-bd99bb70", Component.options)
+    hotAPI.reload("data-v-9b850c3a", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -223,7 +242,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 190:
+/***/ 193:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -408,270 +427,470 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 191:
+/***/ 194:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-12"
-  }, [_c('div', {
-    staticClass: "panel-group ch-left-panel-group",
-    attrs: {
-      "id": "panel-52625"
-    }
-  }, [_c('div', {
-    staticClass: "panel panel-default ch-panel"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "panel-collapse collapse",
-    class: { in: _vm.isAdmin
-    },
-    attrs: {
-      "id": "panel-element-78670"
-    }
-  }, [_vm._m(1)])]), _vm._v(" "), _c('div', {
-    staticClass: "panel panel-default ch-panel"
-  }, [_vm._m(2), _vm._v(" "), _c('div', {
-    staticClass: "panel-collapse collapse",
-    class: { in: _vm.isPost
-    },
-    attrs: {
-      "id": "panel-element-915732"
-    }
-  }, [_vm._m(3)])]), _vm._v(" "), _c('div', {
-    staticClass: "panel panel-default ch-panel"
-  }, [_vm._m(4), _vm._v(" "), _c('div', {
-    staticClass: "panel-collapse collapse",
-    class: { in: _vm.isMedia
-    },
-    attrs: {
-      "id": "panel-element-517968"
-    }
-  }, [_vm._m(5)])]), _vm._v(" "), _c('div', {
-    staticClass: "panel panel-default ch-panel"
-  }, [_vm._m(6), _vm._v(" "), _c('div', {
-    staticClass: "panel-collapse collapse",
-    class: { in: _vm.isProduct
-    },
-    attrs: {
-      "id": "panel-element-749932"
-    }
-  }, [_vm._m(7)])]), _vm._v(" "), _c('div', {
-    staticClass: "panel panel-default ch-panel"
-  }, [_vm._m(8), _vm._v(" "), _c('div', {
-    staticClass: "panel-collapse collapse",
-    class: { in: _vm.isPage
-    },
-    attrs: {
-      "id": "panel-element-334892"
-    }
-  }, [_vm._m(9)])]), _vm._v(" "), _c('div', {
-    staticClass: "panel panel-default ch-panel"
-  }, [_vm._m(10), _vm._v(" "), _c('div', {
-    staticClass: "panel-collapse collapse",
-    class: { in: _vm.isPartner
-    },
-    attrs: {
-      "id": "panel-element-66654789"
-    }
-  }, [_vm._m(11)])])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "panel-heading"
-  }, [_c('a', {
-    staticClass: "panel-title",
-    attrs: {
-      "data-toggle": "collapse",
-      "data-parent": "#panel-52625",
-      "href": "#panel-element-78670"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-tachometer",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" 主控板")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "panel-body"
-  }, [_c('ul', [_c('li', [_c('a', {
-    staticClass: "btn btn-sm btn-simple btn-block",
-    attrs: {
-      "href": "/cyberholic-system/admin"
-    }
-  }, [_vm._v("後臺首頁")])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "btn btn-sm btn-simple btn-block",
-    attrs: {
-      "href": "/cyberholic-system/admin/list"
-    }
-  }, [_vm._v("後台使用者列表")])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "btn btn-sm btn-simple btn-block",
-    attrs: {
-      "href": "/cyberholic-system/admin/reset"
-    }
-  }, [_vm._v("重設密碼")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "panel-heading"
-  }, [_c('a', {
-    staticClass: "panel-title",
-    attrs: {
-      "data-toggle": "collapse",
-      "data-parent": "#panel-52625",
-      "href": "#panel-element-915732"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-pencil-square-o",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" 最新消息管理系統")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "panel-body"
-  }, [_c('ul', [_c('li', [_c('a', {
-    staticClass: "btn btn-sm btn-simple btn-block",
-    attrs: {
-      "href": "/cyberholic-system/post/add"
-    }
-  }, [_vm._v("新增最新消息")])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "btn btn-sm btn-simple btn-block",
-    attrs: {
-      "href": "/cyberholic-system/post/list"
-    }
-  }, [_vm._v("最新消息列表")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "panel-heading"
-  }, [_c('a', {
-    staticClass: "panel-title",
-    attrs: {
-      "data-toggle": "collapse",
-      "data-parent": "#panel-52625",
-      "href": "#panel-element-517968"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-picture-o",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" 媒體與檔案")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "panel-body"
-  }, [_c('ul', [_c('li', [_c('a', {
-    staticClass: "btn btn-sm btn-simple btn-block",
-    attrs: {
-      "href": "/cyberholic-system/media/manager?type=Images"
-    }
-  }, [_vm._v("媒體庫")])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "btn btn-sm btn-simple btn-block",
-    attrs: {
-      "href": "/cyberholic-system/media/manager"
-    }
-  }, [_vm._v("檔案庫")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "panel-heading"
-  }, [_c('a', {
-    staticClass: "panel-title",
-    attrs: {
-      "data-toggle": "collapse",
-      "data-parent": "#panel-52625",
-      "href": "#panel-element-749932"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-shopping-cart",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" 產品管理系統")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "panel-body"
-  }, [_c('ul', [_c('li', [_c('a', {
-    staticClass: "btn btn-sm btn-simple btn-block",
-    attrs: {
-      "href": "/cyberholic-system/product/add"
-    }
-  }, [_vm._v("新增產品")])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "btn btn-sm btn-simple btn-block",
-    attrs: {
-      "href": "/cyberholic-system/product/list"
-    }
-  }, [_vm._v("產品列表")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "panel-heading"
-  }, [_c('a', {
-    staticClass: "panel-title",
-    attrs: {
-      "data-toggle": "collapse",
-      "data-parent": "#panel-52625",
-      "href": "#panel-element-334892"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-file-text-o",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" 網站頁面列表")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "panel-body"
-  }, [_c('ul', [_c('li', [_c('a', {
-    staticClass: "btn btn-sm btn-simple btn-block",
-    attrs: {
-      "href": "/cyberholic-system/page/add"
-    }
-  }, [_vm._v("新增頁面")])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "btn btn-sm btn-simple btn-block",
-    attrs: {
-      "href": "/cyberholic-system/page/list"
-    }
-  }, [_vm._v("頁面列表")])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "btn btn-sm btn-simple btn-block",
-    attrs: {
-      "href": "/cyberholic-system/page/managment"
-    }
-  }, [_vm._v("網站資訊管理")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "panel-heading"
-  }, [_c('a', {
-    staticClass: "panel-title",
-    attrs: {
-      "data-toggle": "collapse",
-      "data-parent": "#panel-52625",
-      "href": "#panel-element-66654789"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-handshake-o",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" 合作夥伴管理系統")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "panel-body"
-  }, [_c('ul', [_c('li', [_c('a', {
-    staticClass: "btn btn-sm btn-simple btn-block",
-    attrs: {
-      "href": "/cyberholic-system/partner/success"
-    }
-  }, [_vm._v("新增合作夥伴")])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "btn btn-sm btn-simple btn-block",
-    attrs: {
-      "href": "/cyberholic-system/partner/successList"
-    }
-  }, [_vm._v("合作夥伴管理")])])])])
-}]}
-module.exports.render._withStripped = true
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-12" }, [
+      _c(
+        "div",
+        {
+          staticClass: "panel-group ch-left-panel-group",
+          attrs: { id: "panel-52625" }
+        },
+        [
+          _c("div", { staticClass: "panel panel-default ch-panel" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "panel-collapse collapse",
+                class: { in: _vm.isAdmin },
+                attrs: { id: "panel-element-78670" }
+              },
+              [_vm._m(1)]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel panel-default ch-panel" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "panel-collapse collapse",
+                class: { in: _vm.isPost },
+                attrs: { id: "panel-element-915732" }
+              },
+              [_vm._m(3)]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel panel-default ch-panel" }, [
+            _vm._m(4),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "panel-collapse collapse",
+                class: { in: _vm.isMedia },
+                attrs: { id: "panel-element-517968" }
+              },
+              [_vm._m(5)]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel panel-default ch-panel" }, [
+            _vm._m(6),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "panel-collapse collapse",
+                class: { in: _vm.isProduct },
+                attrs: { id: "panel-element-749932" }
+              },
+              [_vm._m(7)]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel panel-default ch-panel" }, [
+            _vm._m(8),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "panel-collapse collapse",
+                class: { in: _vm.isPage },
+                attrs: { id: "panel-element-334892" }
+              },
+              [_vm._m(9)]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel panel-default ch-panel" }, [
+            _vm._m(10),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "panel-collapse collapse",
+                class: { in: _vm.isPartner },
+                attrs: { id: "panel-element-66654789" }
+              },
+              [_vm._m(11)]
+            )
+          ])
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel-heading" }, [
+      _c(
+        "a",
+        {
+          staticClass: "panel-title",
+          attrs: {
+            "data-toggle": "collapse",
+            "data-parent": "#panel-52625",
+            href: "#panel-element-78670"
+          }
+        },
+        [
+          _c("i", {
+            staticClass: "fa fa-tachometer",
+            attrs: { "aria-hidden": "true" }
+          }),
+          _vm._v(" 主控板")
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel-body" }, [
+      _c("ul", [
+        _c("li", [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-sm btn-simple btn-block",
+              attrs: { href: "/cyberholic-system/admin" }
+            },
+            [_vm._v("後臺首頁")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-sm btn-simple btn-block",
+              attrs: { href: "/cyberholic-system/admin/list" }
+            },
+            [_vm._v("後台使用者列表")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-sm btn-simple btn-block",
+              attrs: { href: "/cyberholic-system/admin/reset" }
+            },
+            [_vm._v("重設密碼")]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel-heading" }, [
+      _c(
+        "a",
+        {
+          staticClass: "panel-title",
+          attrs: {
+            "data-toggle": "collapse",
+            "data-parent": "#panel-52625",
+            href: "#panel-element-915732"
+          }
+        },
+        [
+          _c("i", {
+            staticClass: "fa fa-pencil-square-o",
+            attrs: { "aria-hidden": "true" }
+          }),
+          _vm._v(" 最新消息管理系統")
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel-body" }, [
+      _c("ul", [
+        _c("li", [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-sm btn-simple btn-block",
+              attrs: { href: "/cyberholic-system/post/add" }
+            },
+            [_vm._v("新增最新消息")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-sm btn-simple btn-block",
+              attrs: { href: "/cyberholic-system/post/list" }
+            },
+            [_vm._v("最新消息列表")]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel-heading" }, [
+      _c(
+        "a",
+        {
+          staticClass: "panel-title",
+          attrs: {
+            "data-toggle": "collapse",
+            "data-parent": "#panel-52625",
+            href: "#panel-element-517968"
+          }
+        },
+        [
+          _c("i", {
+            staticClass: "fa fa-picture-o",
+            attrs: { "aria-hidden": "true" }
+          }),
+          _vm._v(" 媒體與檔案")
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel-body" }, [
+      _c("ul", [
+        _c("li", [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-sm btn-simple btn-block",
+              attrs: { href: "/cyberholic-system/media/manager?type=Images" }
+            },
+            [_vm._v("媒體庫")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-sm btn-simple btn-block",
+              attrs: { href: "/cyberholic-system/media/manager" }
+            },
+            [_vm._v("檔案庫")]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel-heading" }, [
+      _c(
+        "a",
+        {
+          staticClass: "panel-title",
+          attrs: {
+            "data-toggle": "collapse",
+            "data-parent": "#panel-52625",
+            href: "#panel-element-749932"
+          }
+        },
+        [
+          _c("i", {
+            staticClass: "fa fa-shopping-cart",
+            attrs: { "aria-hidden": "true" }
+          }),
+          _vm._v(" 產品管理系統")
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel-body" }, [
+      _c("ul", [
+        _c("li", [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-sm btn-simple btn-block",
+              attrs: { href: "/cyberholic-system/product/add" }
+            },
+            [_vm._v("新增產品")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-sm btn-simple btn-block",
+              attrs: { href: "/cyberholic-system/product/list" }
+            },
+            [_vm._v("產品列表")]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel-heading" }, [
+      _c(
+        "a",
+        {
+          staticClass: "panel-title",
+          attrs: {
+            "data-toggle": "collapse",
+            "data-parent": "#panel-52625",
+            href: "#panel-element-334892"
+          }
+        },
+        [
+          _c("i", {
+            staticClass: "fa fa-file-text-o",
+            attrs: { "aria-hidden": "true" }
+          }),
+          _vm._v(" 網站頁面列表")
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel-body" }, [
+      _c("ul", [
+        _c("li", [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-sm btn-simple btn-block",
+              attrs: { href: "/cyberholic-system/page/add" }
+            },
+            [_vm._v("新增頁面")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-sm btn-simple btn-block",
+              attrs: { href: "/cyberholic-system/page/list" }
+            },
+            [_vm._v("頁面列表")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-sm btn-simple btn-block",
+              attrs: { href: "/cyberholic-system/page/managment" }
+            },
+            [_vm._v("網站資訊管理")]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel-heading" }, [
+      _c(
+        "a",
+        {
+          staticClass: "panel-title",
+          attrs: {
+            "data-toggle": "collapse",
+            "data-parent": "#panel-52625",
+            href: "#panel-element-66654789"
+          }
+        },
+        [
+          _c("i", {
+            staticClass: "fa fa-handshake-o",
+            attrs: { "aria-hidden": "true" }
+          }),
+          _vm._v(" 合作夥伴管理系統")
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel-body" }, [
+      _c("ul", [
+        _c("li", [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-sm btn-simple btn-block",
+              attrs: { href: "/cyberholic-system/partner/success" }
+            },
+            [_vm._v("新增合作夥伴")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-sm btn-simple btn-block",
+              attrs: { href: "/cyberholic-system/partner/successList" }
+            },
+            [_vm._v("合作夥伴管理")]
+          )
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-bd99bb70", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-9b850c3a", module.exports)
   }
 }
 
