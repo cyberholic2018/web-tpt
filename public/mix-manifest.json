@@ -8,6 +8,7 @@
     "/css/frontend-style.css": "/css/frontend-style.css",
     "/css/tpt/about.css": "/css/tpt/about.css",
     "/css/tpt/contact.css": "/css/tpt/contact.css",
+    "/css/tpt/index.css": "/css/tpt/index.css",
     "/css/tpt/news.css": "/css/tpt/news.css",
     "/css/tpt/partner.css": "/css/tpt/partner.css",
     "/css/tpt/product.css": "/css/tpt/product.css",
@@ -50,6 +51,5 @@
     "/css/frontend-all.css": "/css/frontend-all.css",
     "/js/frontend-all.js": "/js/frontend-all.js",
     "/js/all.js": "/js/all.js",
-    "/js/frontend.js": "/js/frontend.js",
-    "/css/tpt/index.css": "/css/tpt/index.css"
+    "/js/frontend.js": "/js/frontend.js"
 }

@@ -50,6 +50,13 @@
   <section class="numbertwo">
     <div class="container">
       <div class="row product-list">
+          <div class="row">
+            <div class="col-md-12 col-tittle">
+              <p>產品介紹</p>
+              <p class="eng">Produc Information</p>
+              <hr/>
+            </div>
+          </div>
         @foreach (ProductView::all() as $key => $value)
             <a href="/productDetail/{{$value->id}}">
                 <div class="col-md-4 col-set">
@@ -116,7 +123,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 col-tittle">
-          <p>我們的合作夥伴</p>
+          <p>合作夥伴</p>
           <p class="eng">Our Partner</p>
           <hr/>
         </div>
