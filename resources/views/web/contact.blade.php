@@ -44,12 +44,12 @@
               </div>
               <div class="row">
                 <div class="col-md-12 col-contact">
-                  <p>帕太科技公司</p>
-                  <p>TAIWAN POWERTEK CO.,LTD.</p>
-                  <P>地址：22161新北市汐止區大同路一段237號6樓之1</P>
-                  <P>6F-1,No237,Sec. 1,Datong Rd.,Ximzhi Dist., New Taipei City 221, Taiwan</P>
-                  <p>Tel：+886 2 8646-1681</p>
-                  <p>Fax：+886 2 8646-1761</p>
+                  <h4>帕太科技公司</h4>
+                  <h4>TAIWAN POWERTEK CO.,LTD.</h4>
+                  <h4>地址：22161新北市汐止區大同路一段237號6樓之1</h4>
+                  <h4>6F-1,No237,Sec. 1,Datong Rd.,Ximzhi Dist., New Taipei City 221, Taiwan</h4>
+                  <h4>Tel：+886 2 8646-1681</h4>
+                  <h4>Fax：+886 2 8646-1761</h4>
                 </div>
               </div>
             </div>
@@ -61,12 +61,12 @@
               </div>
               <div class="row">
                 <div class="col-md-12 col-contact">
-                  <p>蘇州曜邦電子科技有限公司 </p>
-                  <p>TAIWAN POWERTEK CO.,LTD.</p>
-                  <P>地址：22161新北市汐止區大同路一段237號6樓之1</P>
-                  <P>6F-1,No237,Sec. 1,Datong Rd.,Ximzhi Dist., New Taipei City 221, Taiwan</P>
-                  <p>Tel：+886 2 8646-1681</p>
-                  <p>Fax：+886 2 8646-1761</p>
+                  <h4>蘇州曜邦電子科技有限公司 </h4>
+                  <h4>TAIWAN POWERTEK CO.,LTD.</h4>
+                  <h4>地址：22161新北市汐止區大同路一段237號6樓之1</h4>
+                  <h4>6F-1,No237,Sec. 1,Datong Rd.,Ximzhi Dist., New Taipei City 221, Taiwan</h4>
+                  <h4>Tel：+886 2 8646-1681</h4>
+                  <h4>Fax：+886 2 8646-1761</h4>
                 </div>
               </div>
             </div>
