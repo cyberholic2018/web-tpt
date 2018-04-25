@@ -6,6 +6,7 @@ $color_gray_nurse_approx: #e8e8e8;
 $color_orange_peel_approx: #faa200;
 $red: red;
 $white: white;
+$black: black;
 $color_fuscous_gray_approx: #545454;
 $color_gray_nurse_approx: #e8e8e8;
 
@@ -43,6 +44,9 @@ body {
 	}
 }
 
+p {
+	color: $black;
+}
 .partner-list {
 	position: relative;
 

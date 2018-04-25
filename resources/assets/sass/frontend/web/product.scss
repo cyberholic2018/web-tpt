@@ -1,6 +1,7 @@
 //fonts
 $font_0: 微軟正黑體;
-
+//color
+$black: black;
 //@extend-elements
 //original selectors
 //html, body
@@ -15,14 +16,14 @@ $font_0: 微軟正黑體;
 * {
 	font-family: $font_0;
 	position: relative;
-	font-weight: 800;
-}
+  }
 html {
 	@extend %extend_1;
 }
 body {
 	@extend %extend_1;
 }
+
 .container-fluid {
 	padding: 0;
 	img {
@@ -90,4 +91,8 @@ section {
 	margin-bottom: 50px;
 	text-align: center;
 	font-size: 10px;
+}
+
+p{
+	color: $black;
 }
