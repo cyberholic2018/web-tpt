@@ -25,6 +25,6 @@ class PartnerView
 
     public static function tpt()
     {
-        return Content::paginate(9);
+        return Content::paginate(15);
     }
 }
