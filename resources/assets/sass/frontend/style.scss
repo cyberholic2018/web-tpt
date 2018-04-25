@@ -35,6 +35,15 @@ input::-webkit-inner-spin-button {
     z-index: 20;
 }
 
+.sub-page-content {
+    font-weight: inherit;
+    font-size: 16px;
+
+    a {
+        color: #0098FD;
+    }
+}
+
 .scroll-down-btn .arrow {
     position: absolute;
     top: 0px;
@@ -95,6 +104,11 @@ input::-webkit-inner-spin-button {
     0% {top: 0px;}
     50% {top: 10px;}
     100% {top: 0px;}
+}
+
+.img-responsive {
+    margin: 0 auto;
+    height: auto !important;
 }
 
 .loading-bar {
@@ -183,6 +197,30 @@ input::-webkit-inner-spin-button {
                 transform: translateX(-50%) translateY(-50%) rotate(-45deg);
                 top: 50%;
             }
+        }
+    }
+}
+
+.sub-page-header {
+    position: relative;
+
+    .mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        h1 {
+            position: absolute;
+            text-align: center;
+            margin: 0;
+            width: 100%;
+            top: 50%;
+            left: 0;
+            color: white;
+            text-shadow: 2px 2px 12px rgba(0,0,0,0.6);
+            transform: translateY(-50%);
         }
     }
 }

@@ -8,7 +8,7 @@
 @endsection
 
 @section('content')
-    {!!PageView::show(2)!!}
+    {!!PageView::show(1)!!}
 
 
   {{-- <div>

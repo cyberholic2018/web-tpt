@@ -14,7 +14,7 @@
 @section('content')
 
   <div>
-      {!!PageView::show(6)!!}
+      {!!PageView::show(5)!!}
     {{-- <div class="container-fluid"><img src="https://dummyimage.com/1920x600/{{Helper::rc()}}/fff" alt=""/></div> --}}
   </div>
   <section class="numbertwo">
@@ -44,7 +44,7 @@
               </div>
               <div class="row">
                 <div class="col-md-12 col-contact">
-                  <h4>帕太科技公司</h4>
+                  <h4>帕太科技股份公司</h4>
                   <h4>TAIWAN POWERTEK CO.,LTD.</h4>
                   <h4>地址：22161新北市汐止區大同路一段237號6樓之1</h4>
                   <h4>6F-1,No237,Sec. 1,Datong Rd.,Ximzhi Dist., New Taipei City 221, Taiwan</h4>

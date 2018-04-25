@@ -91,34 +91,12 @@
               {{-- <p class="name">{{$value->title}}</p> --}}
               <p>{!! date('Y-m-d', strtotime($value->created_at)) !!}</p>
               <hr/>
-              {{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', $value->content), 0, 100, '...', "UTF-8")}}
-              <br>
+              <div class="content" style="height:70px; overflow: hidden">
+                  {{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', $value->content), 0, 100, '...', "UTF-8")}}
+              </div>
               <a class="btn btn-default" href="/news/{{$value->guid}}">繼續閱讀</a>
             </div>
         @endforeach
-        {{-- <div class="col-md-4 col-img" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/6C74FF/fff" alt=""/>
-          <p class="name">帕太泰國分公司開設</p>
-          <p>2018-03-22</p>
-          <hr/>
-          <p>台灣帕太於大中華地區已有16間分公司致力提供點對點服務，一通電話服務就到，且由國內面板廠供貨，商譽完善且品質穩定，備受好評。</p>
-          <p>近日於泰國分公司正式成立，主要拓展東南亞市場，董事長李峻丞，布局東南亞早已於2015 年開始規劃，選於2018年開設，主要為...</p>
-          <div class="btn btn-default">繼續閱讀</div>
-        </div>
-        <div class="col-md-4 col-img" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/5FF1FF/fff" alt=""/>
-          <p class="name">群創車載面板 驚艷</p>
-          <p>2018-03-06</p>
-          <hr/>
-          <p>群創（3481.）搶自駕車商機，All事業群總經理楊柱祥指出，未來車載面板應用會從車內到車外，從2片到7片，車載面板技術、品質要求高，成為台灣面板產業很重要的驅動力之一。</p>
-          <P>50吋多曲面車用面板讓車廠驚艷，已經和多加一線車廠洽談產品開發。</P>
-          <div class="btn btn-default" id="b">繼續閱讀</div>
-        </div>
-        <div class="col-md-4 col-img" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/8B51E8/fff" alt=""/>
-          <p class="name">友達群創衝刺8K大面板</p>
-          <p>2018-03-06</p>
-          <hr/>
-          <p>市調機構IHS表示，今年是8電視元年，友達（2409）集群創將供應65吋以上超大尺寸的8K電視面板，給三星和索尼等品牌電視大廠，隨著8K超大尺寸產品出貨量攀升，可以提供面板廠出貨單價，並去化較多的產能。友達昨（11）日股價收平盤12.4元，成交量2.54萬張；群創也收...</p>
-          <div class="btn btn-default" id="c">繼續閱讀</div>
-        </div> --}}
       </div>
     </div>
   </section>
@@ -133,28 +111,14 @@
       </div>
       <div class="row">
           @foreach (PartnerView::tpt() as $key => $value)
-              <div class="col-md-4 col-img" data-aos="fade-up">
+              <div class="col-md-4 col-img" data-aos="fade-up" style="text-align: center; font-weight: 800; font-size: 20px;">
                   <div class="embed-responsive embed-responsive-16by9 partner-list">
                       <img src="{{$value->content}}" alt=""/>
                   </div>
+                  <p>{{$value->title}}</p>
               </div>
           @endforeach
       </div>
-      {{-- <div class="row">
-        <div class="col-md-12 col-tittle">
-          <p>我們的客戶</p>
-          <p class="eng">Our Customer</p>
-          <hr/>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4 col-img" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/E563FF/fff" alt=""/></div>
-        <div class="col-md-4 col-img" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/E563FF/fff" alt=""/></div>
-        <div class="col-md-4 col-img" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/E563FF/fff" alt=""/></div>
-        <div class="col-md-4 col-img" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/E563FF/fff" alt=""/></div>
-        <div class="col-md-4 col-img" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/E563FF/fff" alt=""/></div>
-        <div class="col-md-4 col-img" data-aos="fade-up"><img class="img-responsive" src="https://dummyimage.com/640x420/E563FF/fff" alt=""/></div>
-      </div> --}}
     </div>
   </section>
   <section class="numberfive">
@@ -184,7 +148,7 @@
               </div>
               <div class="row">
                 <div class="col-md-12 col-contact">
-                  <h4>帕太科技公司</h4>
+                  <h4>帕太科技股份公司</h4>
                   <h4>TAIWAN POWERTEK CO.,LTD.</h4>
                   <h4>地址：22161新北市汐止區大同路一段237號6樓之1</h4>
                   <h4>6F-1,No237,Sec. 1,Datong Rd.,Ximzhi Dist., New Taipei City 221, Taiwan</h4>

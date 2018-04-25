@@ -26,7 +26,7 @@
   </div> --}}
 
   <div class="news-description">
-      {!!PageView::show(4)!!}
+      {!!PageView::show(2)!!}
   </div>
 
 
@@ -56,10 +56,13 @@
                   </div>
                   <p>{!! date('Y-m-d', strtotime($value->created_at)) !!}</p>
                   <hr/>
-                  <div class="content" style="height:100px; overflow: hidden">
+                  <div class="content" style="height:70px; overflow: hidden">
                       {{mb_strimwidth(preg_replace('#<[^>]+>#', ' ', $value->content), 0, 100, '...', "UTF-8")}}
                   </div>
-                  <a href="/news/{{$value->guid}}">Learn more</a>
+                  <div style="text-align:center; margin-top: 10px">
+                      <a class="btn btn-default" href="/news/{{$value->guid}}">繼續閱讀</a>
+                  </div>
+
               </div>
           @endforeach
           <br><br>

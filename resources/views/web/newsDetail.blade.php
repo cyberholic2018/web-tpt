@@ -73,16 +73,16 @@
             <h3>
                 {{$post->title}}&nbsp;&nbsp;<br>
                 @if ($post->seoTitle)
-                    <span style="font-size: 18px;">文章節錄自：{{$post->seoTitle}}</span>
+                    <span style="font-size: 16px;">文章節錄自：{{$post->seoTitle}}</span>
                 @endif
                 @if ($post->seoTitle && $post->seoKeyword)
-                    <span style="font-size: 18px;">，</span>
+                    <span style="font-size: 16px;">，</span>
                 @endif
                 @if ($post->seoKeyword)
-                    <span style="font-size: 18px;">作者：{{$post->seoKeyword}}</span>
+                    <span style="font-size: 16px;">作者：{{$post->seoKeyword}}</span>
                 @endif
                 <br>
-                <span style="font-size: 18px;">{!! date('Y-m-d', strtotime($post->created_at)) !!}</span>
+                <span style="font-size: 16px;">{!! date('Y-m-d', strtotime($post->created_at)) !!}</span>
             </h3>
             <table style="width: 80px;">
                 <tr>

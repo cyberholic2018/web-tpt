@@ -56,6 +56,33 @@ section {
 		img {
 			margin-bottom: 10px;
 		}
+
+		.col-set {
+			.featureImage {
+				position: relative;
+				overflow: hidden;
+				margin-bottom: 10px;
+
+				img {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translateX(-50%) translateY(-50%);
+					max-width: 100%;
+					max-height: 100%;
+					margin-bottom: 10px;
+					transition: all .2s ease;
+				}
+			}
+
+			&:hover {
+				.featureImage {
+					img {
+						transform: scale(1.2) translateX(-40%) translateY(-40%);
+					}
+				}
+			}
+		}
 	}
 }
 .col-md-12.col-copyright {

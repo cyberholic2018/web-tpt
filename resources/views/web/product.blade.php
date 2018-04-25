@@ -32,7 +32,9 @@
             @foreach (ProductView::all() as $key => $value)
                 <a href="/productDetail/{{$value->id}}">
                     <div class="col-md-4 col-set">
-                        <img class="img-responsive" src="{{$value->featureImage}}" alt=""/>
+                        <div class="embed-responsive embed-responsive-4by3 featureImage">
+                            <img src="{{$value->featureImage}}" alt=""/>
+                        </div>
                         <p>{{$value->title}}</p>
                     </div>
                 </a>

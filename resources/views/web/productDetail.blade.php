@@ -49,7 +49,7 @@
       <p>{{ProductView::get($id)->title}}</p>
     </section>
     <section class="numberthree">
-        <div class="content">
+        <div class="content sub-page-content">
             {!!ProductView::get($id)->shortDescription!!}
         </div>
         <hr>
