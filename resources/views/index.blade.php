@@ -3,6 +3,9 @@
 @section('custom-script')
     <script src="/js/plugins/slider/wowslider.js" charset="utf-8"></script>
     <script src="/js/plugins/slider/script.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        $('.ws_images').find('div').first().css('height','100%');
+    </script>
 @endsection
 
 @section('custom-style')

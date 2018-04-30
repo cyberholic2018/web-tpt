@@ -48,7 +48,9 @@
           @foreach (PostView::all() as $key => $value)
               <div class="col-md-4 col-set">
                   <div class="embed-responsive embed-responsive-16by9 featureImage">
-                      <img src="{{$value->featureImage}}" alt=""/>
+                      <a href="/news/{{$value->guid}}">
+                          <img src="{{$value->featureImage}}" alt=""/>
+                      </a>
                   </div>
                   <div class="name">
                       {{-- <p title="{{$value->title}}"></p> --}}

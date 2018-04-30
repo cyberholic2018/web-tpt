@@ -24,6 +24,14 @@ input::-webkit-inner-spin-button {
     overflow: hidden;
 }
 
+ul.pagination {
+    li {
+        a, span {
+            margin: 5px;
+        }
+    }
+}
+
 .scroll-down-btn {
     position: absolute;
     text-align: center;

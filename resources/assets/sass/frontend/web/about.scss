@@ -57,6 +57,12 @@ section.numbertwo {
 		&.col-bigimg {
 			margin-top: 30px;
 			// margin-left: 70px;
+			text-align: center;
+
+			img {
+				max-width: 100%;
+				height: auto !important;
+			}
 		}
 	}
 	.word {
