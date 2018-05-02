@@ -24,13 +24,13 @@
                 @endforeach
             </ul>
         </div>
-        <div class="ws_bullets">
+        {{-- <div class="ws_bullets">
             <div>
                 @foreach (SiteMetaView::album() as $item)
                     <a href="#" title="{{$item->title}}"><span>1</span></a>
                 @endforeach
             </div>
-        </div>
+        </div> --}}
         <div class="ws_shadow"></div>
         <div class="scroll-down-btn">
             <div class="text">Scroll</div>

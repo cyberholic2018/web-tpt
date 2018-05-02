@@ -211,6 +211,7 @@ ul.pagination {
 
 .sub-page-header {
     position: relative;
+    overflow: hidden;
 
     .mask {
         position: absolute;
@@ -942,6 +943,19 @@ table.product-comment {
 @media screen and (max-width: 630px) {
     .checkout-thumbnail {
         display: none;
+    }
+
+    .sub-page-header {
+        height: 300px;
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 100% !important;
+            width: inherit !important;
+        }
     }
 }
 
