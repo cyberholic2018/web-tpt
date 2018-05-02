@@ -45,7 +45,7 @@ body {
 }
 
 p {
-	color: $black;
+	color: $color_chicago_approx;
 }
 .partner-list {
 	position: relative;
@@ -65,7 +65,6 @@ section {
 		// border-bottom: solid $color_quill_gray_approx;
 		padding-top: 70px;
 		padding-bottom: 70px;
-
 		.col-tittle {
 			text-align: center;
 			margin-bottom: 50px;
@@ -169,6 +168,7 @@ section {
 	}
 	&.numberfive {
 		// border-bottom: solid $color_quill_gray_approx;
+		margin-top: 80px;
 		color: $color_chicago_approx;
 		.col-md-12 {
 			&.col-tittle {
@@ -216,6 +216,7 @@ section {
 		}
 	}
 	&.numbersix {
+		margin-top: 80px;
 		text-align: center;
 		.col-md-12 {
 			&.col-tittle {
