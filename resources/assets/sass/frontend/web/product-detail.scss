@@ -62,10 +62,19 @@ section {
 			width: 100%;
 			height: 350px;
 			margin-bottom: 30px;
+			border: #666 solid 2px;
 
 			tr {
+				color: #666;
+				a {
+					color: #666;
+				}
 				&:first-child {
+					td {
+						border-right: solid 2px white;
+					}
 					background-color: $color_gravel_approx !important;
+					color: $color_cararra_approx;
 				}
 			}
 		}
@@ -80,19 +89,19 @@ section {
 			cursor: pointer;
 		}
 		td {
-			border-right: solid 2px $white;
+			border-right: solid 2px #666;
 			&:last-child {
 				border-right: none;
 			}
 		}
 		tr {
-			border-bottom: solid 2px $white;
+			border-bottom: solid 2px #666;
 			text-align: center;
 			&:nth-child(odd) {
-				background: $color_silver_approx;
+				// background: $color_silver_approx;
 			}
 			&:nth-child(even) {
-				background: $color_stack_approx;
+				// background: $color_stack_approx;
 			}
 		}
 	}
