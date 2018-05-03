@@ -24,13 +24,6 @@
                 @endforeach
             </ul>
         </div>
-        {{-- <div class="ws_bullets">
-            <div>
-                @foreach (SiteMetaView::album() as $item)
-                    <a href="#" title="{{$item->title}}"><span>1</span></a>
-                @endforeach
-            </div>
-        </div> --}}
         <div class="ws_shadow"></div>
         <div class="scroll-down-btn">
             <div class="text">Scroll</div>
@@ -42,12 +35,6 @@
     <div class="container-fluid">
 
 
-        {{-- <div class="row">
-            <div class="col-md-12">
-
-            </div>
-        </div> --}}
-        {{-- <img class="img-responsive" src="https://dummyimage.com/1920x1080/6C74FF/fff" alt=""/> --}}
     </div>
   </div>
   <section class="numbertwo">
@@ -72,6 +59,25 @@
             </a>
         @endforeach
       </div>
+
+      <div class="row product-list" style="margin-top: 65px;" data-aos="fade-up">
+          <div class="row">
+            <div class="col-md-12 col-tittle">
+              <p>關於帕太</p>
+              <p class="eng">About POWERTEK</p>
+              <hr/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-5 col-img"><img alt="" class="img-responsive" src="https://tpt.egith.net/photos/1/關於我們2.jpg" style="width: 640px; height: 420px;"></div>
+
+            <div class="col-md-7 col-p" style="text-align: left;">
+                <p>台灣帕太(Taiwan PowerTech, TPT)是全球主要的面板供應商，專精於工業面板，TPT的研發人員會根據市場的最新資訊，持續提供優質、便利的產品和服務以及最具競競爭力的價格；同時，我們不斷的優化我們的業務能力及團隊服務，為客戶創造最高的附加價值，滿足客戶的需求共創雙贏的商機。<br>
+                <br>
+                TPT is the world's leading panel supplier specializing in industrial panels. TPT's R&amp;D personnel will continue to provide high-quality, convenient products and services and the most competitive prices according to the latest market information; at the same time, we are constantly optimizing. Our business capabilities and team services create the highest added value for our customers and meet the needs of our customers to create a win-win business opportunity.</p>            </div>
+            </div>
+      </div>
+
     </div>
   </section>
   <section class="numberthree">

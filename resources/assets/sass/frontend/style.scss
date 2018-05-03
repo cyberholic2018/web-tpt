@@ -958,6 +958,28 @@ table.product-comment {
         }
     }
 }
+@media screen and (max-width: 450px) {
+    .checkout-thumbnail {
+        display: none;
+    }
+
+    .sub-page-header {
+        height: 200px;
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 100% !important;
+            width: inherit !important;
+        }
+    }
+    section {
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+    }
+}
 
 // ::-webkit-scrollbar {
 //     width: 10px;
