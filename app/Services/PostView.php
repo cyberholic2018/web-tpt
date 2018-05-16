@@ -8,7 +8,7 @@ class PostView
 {
     public static function all()
     {
-        return Post::paginate(9);
+        return Post::orderBy('id', 'desc')->paginate(9);
     }
 
     public static function get($id)
@@ -18,7 +18,7 @@ class PostView
 
     public static function news($locale)
     {
-        return Post::where('locale', $locale)->where('category', 'news')->paginate(15);
+        return Post::where('locale', $locale)->where('category', 'news')->orderBy('id', 'desc')->paginate(15);
     }
 
     public static function success($locale)
@@ -28,6 +28,6 @@ class PostView
 
     public static function take($num)
     {
-        return Post::take($num)->get();
+        return Post::orderBy('id', 'desc')->take($num)->get();
     }
 }

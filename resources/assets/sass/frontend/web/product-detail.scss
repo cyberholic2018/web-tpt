@@ -45,38 +45,80 @@ section {
 		font-size: 25px;
 	}
 	&.numberthree {
-		margin-left: 50px;
-		margin-right: 50px;
+		// margin-left: 50px;
+		// margin-right: 50px;
 		// border: solid 1px;
 		font-size: 18px;
-		color: $color_cararra_approx;
+		color: #666;
 		a {
-			text-decoration: none;
+			// text-decoration: underline;
 			color: $color_cararra_approx;
+			transition: all .2s ease-in-out;
+			font-size: 20px;
+
+			&:hover {
+				color: blue;
+			}
+		}
+		h2 {
+			// margin-left: 50px;
+			margin-top: 50px;
+			margin-bottom: 40px;
+			font-size: 25px;
+			color: #666;
+			font-weight: 600;
+		}
+		.table-container {
+			width: 100%;
+			overflow: auto;
 		}
 		table {
-			left: 50%;
-			right: 50%;
-			//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
-			transform: translateX(-50%);
 			width: 100%;
-			height: 350px;
-			margin-bottom: 30px;
-			border: #666 solid 2px;
+			font-weight: normal;
 
 			tr {
-				color: #666;
-				a {
+
+				td {
 					color: #666;
+					padding: 5px 10px;
+					border: #666 solid 2px;
+					font-weight: 400;
+					white-space:nowrap;
+
+					a {
+						color: #666;
+					}
 				}
 				&:first-child {
-					td {
-						border-right: solid 2px white;
-					}
 					background-color: $color_gravel_approx !important;
-					color: $color_cararra_approx;
+
+					td {
+						color: $color_cararra_approx;
+					}
 				}
 			}
+			// left: 50%;
+			// right: 50%;
+			// //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+			// transform: translateX(-50%);
+			// width: 100%;
+			// height: 350px;
+			// margin-bottom: 30px;
+			// border: #666 solid 2px;
+
+			// tr {
+			// 	color: #666;
+			// 	a {
+			// 		color: #666;
+			// 	}
+			// 	&:first-child {
+			// 		td {
+			// 			border-right: solid 2px white;
+			// 		}
+			// 		background-color: $color_gravel_approx !important;
+			// 		color: $color_cararra_approx;
+			// 	}
+			// }
 		}
 		// .first {
 		// 	background-color: $color_gravel_approx !important;
@@ -88,22 +130,23 @@ section {
 		.download {
 			cursor: pointer;
 		}
-		td {
-			border-right: solid 2px #666;
-			&:last-child {
-				border-right: none;
-			}
-		}
-		tr {
-			border-bottom: solid 2px #666;
-			text-align: center;
-			&:nth-child(odd) {
-				// background: $color_silver_approx;
-			}
-			&:nth-child(even) {
-				// background: $color_stack_approx;
-			}
-		}
+		// td {
+		// 	border-right: solid 2px #666;
+		// 	height: 50px;
+		// 	&:last-child {
+		// 		border-right: none;
+		// 	}
+		// }
+		// tr {
+		// 	border-bottom: solid 2px #666;
+		// 	text-align: center;
+		// 	&:nth-child(odd) {
+		// 		// background: $color_silver_approx;
+		// 	}
+		// 	&:nth-child(even) {
+		// 		// background: $color_stack_approx;
+		// 	}
+		// }
 	}
 }
 .col-md-12.col-copyright {

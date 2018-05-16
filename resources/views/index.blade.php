@@ -26,8 +26,12 @@
         </div>
         <div class="ws_shadow"></div>
         <div class="scroll-down-btn">
-            <div class="text">Scroll</div>
-            <div class="arrow"></div>
+            <div class="arrow-img animated flip infinite">
+                <img class="" src="/img/scroll-down-arrow.svg" width="100%" alt="">
+            </div>
+            <div class="dash"></div>
+            <div class="text">Scroll Down</div>
+            {{-- <div class="arrow"></div> --}}
         </div>
     </div>
 
@@ -43,7 +47,7 @@
           <div class="row">
             <div class="col-md-12 col-tittle">
               <p>產品介紹</p>
-              <p class="eng">Produc Information</p>
+              <p class="eng">Product Information</p>
               <hr/>
             </div>
           </div>
@@ -64,17 +68,21 @@
           <div class="row">
             <div class="col-md-12 col-tittle">
               <p>關於帕太</p>
-              <p class="eng">About POWERTEK</p>
+              <p class="eng">About TPT</p>
               <hr/>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-5 col-img"><img alt="" class="img-responsive" src="https://tpt.egith.net/photos/1/關於我們2.jpg" style="width: 640px; height: 420px;"></div>
+            <div class="col-md-5 col-img">
+                <a href="{{url('about')}}"><img alt="" class="img-responsive" src="{{PageView::get(2)['featureImage']}}" style="width: 640px; height: 420px;"></a>
+
+            </div>
 
             <div class="col-md-7 col-p" style="text-align: left; font-weight: 100">
-                <p  style="font-weight: 100">台灣帕太(Taiwan PowerTech, TPT)是全球主要的面板供應商，專精於工業面板，TPT的研發人員會根據市場的最新資訊，持續提供優質、便利的產品和服務以及最具競競爭力的價格；同時，我們不斷的優化我們的業務能力及團隊服務，為客戶創造最高的附加價值，滿足客戶的需求共創雙贏的商機。<br>
-                <br>
-                TPT is the world's leading panel supplier specializing in industrial panels. TPT's R&amp;D personnel will continue to provide high-quality, convenient products and services and the most competitive prices according to the latest market information; at the same time, we are constantly optimizing. Our business capabilities and team services create the highest added value for our customers and meet the needs of our customers to create a win-win business opportunity.</p>            </div>
+                {!!json_decode(PageView::get(2)['content'])->content!!}
+                <div class="col-md-4 col-md-offset-4" style="margin-top: 35px; text-align: center">
+                    <a class="btn btn-default btn-block" style="width: 80%; display: inline-block" href="{{url('about')}}">了解更多</a>
+                </div>
             </div>
       </div>
 
@@ -230,7 +238,7 @@
               <div class="row">
                 <div class="col-md-12 col-contact">
                   <h4>台灣帕太科技股份有限公司</h4>
-                  <h4>TAIWAN POWERTEK CO.,LTD.</h4>
+                  <h4><span style="color: rgb(192, 0, 0);">T</span>AIWAN <span style="color: rgb(0, 176, 80);">P</span>OWER<span style="color: rgb(85, 142, 213);">T</span>EK CO.,LTD.</h4>
                   <h4>地址：22161新北市汐止區大同路一段237號6樓之1</h4>
                   <h4>6F-1,No237,Sec. 1,Datong Rd.,Ximzhi Dist., New Taipei City 221, Taiwan</h4>
                   <h4>Tel：+886 2 8646-1681</h4>
@@ -247,7 +255,7 @@
               <div class="row">
                 <div class="col-md-12 col-contact">
                   <h4>蘇州曜邦電子科技有限公司 </h4>
-                  <h4>BONDTEK CORPORATION</h4>
+                  <h4><span style="color: rgb(192, 0, 0);">B</span>OND<span style="color: rgb(0, 176, 80);">T</span>EK <span style="color: rgb(85, 142, 213);">C</span>ORPORATION</h4>
                   <h4>地址：江蘇省蘇州市蘇州工業園區蘇雅路318號1904(天翔國際)</h4>
                   <h4>1904, No.318, Suya Rd., Suzhou Industrial Park, Suzhou City, Jiangsu Province, Chin</h4>
                   <h4>Tel：+86 512 67629496</h4>

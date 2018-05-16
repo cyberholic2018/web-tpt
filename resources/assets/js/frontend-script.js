@@ -34,6 +34,7 @@ $(function () {
         closeMenu($('#side-bar-btn'));
     }),
 
+    resizeHeader();
     //Check to see if the window is top if not then display button
     scrollupBtn();
 	$(window).scroll(function(){
@@ -74,7 +75,24 @@ $(function () {
                 $(this).find('ul').css("display","none")
             });
         }
+
+        resizeHeader();
     });
+
+    function resizeHeader() {
+        var deviceWidth = $(window).width();
+
+        if (deviceWidth < 613) {
+            $('.sub-page-header').find('img').removeClass('full-section');
+            $('.sub-page-header').removeClass('full-width');
+        } else if ((deviceWidth > 612) && (deviceWidth < 1400)) {
+            $('.sub-page-header').find('img').addClass('full-section');
+            $('.sub-page-header').removeClass('full-width');
+        } else {
+            $('.sub-page-header').find('img').removeClass('full-section');
+            $('.sub-page-header').addClass('full-width');
+        }
+    }
 
     $('ul.main-nav').find('li').on('click', function () {
         var list = $(this);

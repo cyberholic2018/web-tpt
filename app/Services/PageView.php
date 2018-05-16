@@ -7,12 +7,12 @@ use App;
 
 class PageView
 {
-    public static function get($guid)
+    public static function get($id)
     {
-        $page = Page::where('guid', $guid)->first();
+        $page = Page::where('id', $id)->first();
 
         $content = json_decode($page['content']);
-        return $content['content'];
+        return $page;
         // if ($content['locale']) {
         //     # code...
         // } else {

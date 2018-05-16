@@ -14,7 +14,7 @@
 @section('content')
 
   <div>
-      {!!PageView::show(3)!!}
+      {!!PageView::show(7)!!}
     {{-- <div class="container-fluid"><img src="https://dummyimage.com/1920x600/{{Helper::rc()}}/fff" alt=""/></div>
     <section class="numbertwo">
         <div class="container">

@@ -76,7 +76,7 @@
                         <a href="{{url('/about')}}">
                             <span>關於帕太</span>
                             <br>
-                            About POWERTECH
+                            About TPT
                         </a>
                     </li>
                     <li>

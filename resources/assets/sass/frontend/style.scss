@@ -41,6 +41,13 @@ ul.pagination {
     width: 70px;
     height: 70px;
     z-index: 20;
+    opacity: 0.6;
+    cursor: pointer;
+
+    .arrow-img {
+        width: 70px;
+        height: 135px;
+    }
 }
 
 .sub-page-content {
@@ -67,27 +74,37 @@ ul.pagination {
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
-    animation: arrow .8s infinite;
-    -webkit-animation: arrow .8s infinite;
-    -moz-animation: arrow .8s infinite;
-    -ms-animation: arrow .8s infinite;
-    -o-animation: arrow .8s infinite;
+    // animation: arrow .8s infinite;
+    // -webkit-animation: arrow .8s infinite;
+    // -moz-animation: arrow .8s infinite;
+    // -ms-animation: arrow .8s infinite;
+    // -o-animation: arrow .8s infinite;
+}
+
+.scroll-down-btn .dash {
+    position: absolute;
+    top: 70px;
+    width: 50px;
+    left: 50%;
+    height: 2px;
+    transform: translateX(-50%);
+    background: white;
 }
 
 .scroll-down-btn .text {
     position: absolute;
-    top: 0px;
+    top: 75px;
     left: 50%;
-    margin-left: -33px;
+    margin-left: -61px;
     color: #fff;
-    width: 70px;
-    letter-spacing: 4px;
+    width: 122px;
+    letter-spacing: 2px;
     text-align: center;
-    animation: arrow .8s infinite;
-    -webkit-animation: arrow .8s infinite;
-    -moz-animation: arrow .8s infinite;
-    -ms-animation: arrow .8s infinite;
-    -o-animation: arrow .8s infinite;
+    // animation: arrow .8s infinite;
+    // -webkit-animation: arrow .8s infinite;
+    // -moz-animation: arrow .8s infinite;
+    // -ms-animation: arrow .8s infinite;
+    // -o-animation: arrow .8s infinite;
 }
 
 @-webkit-keyframes arrow {
@@ -213,6 +230,14 @@ ul.pagination {
     position: relative;
     overflow: hidden;
 
+    img {
+
+
+        &.full-section {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    }
     .mask {
         position: absolute;
         top: 0;
@@ -232,6 +257,17 @@ ul.pagination {
             transform: translateY(-50%);
         }
     }
+    &.full-width {
+        height: 400px;
+        overflow: hidden;
+
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+    }
 }
 
 .menu-panel {
@@ -242,24 +278,6 @@ ul.pagination {
     bottom: 0;
     right: 0;
     z-index: 9999999;
-    // transition: all .2s ease-in-out;
-
-    // &.active {
-    //     top: 20px;
-    //     animation: fade_in_left .8s;
-    // }
-    //
-    // @keyframes fade_in_left {
-    //     0% {
-    //         top: 0px;
-    //     }
-    //     // 50% {
-    //     //     top: 10px;
-    //     // }
-    //     100% {
-    //         top: 20px;
-    //     }
-    // }
 
     .gray-layer {
         position: absolute;

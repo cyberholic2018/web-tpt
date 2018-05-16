@@ -10,7 +10,7 @@
         </div>
 
         <div class="col-md-3">
-            <!-- <div class="panel panel-default">
+            <div class="panel panel-default">
     			<div class="panel-heading">
     				<h3 class="panel-title">
     					代表圖片
@@ -24,7 +24,7 @@
                         <a @click="deleteFeatureImg()">刪除代表圖片</a>
                     </div>
     			</div>
-    		</div> -->
+    		</div>
             <div class="panel panel-default">
     			<div class="panel-heading">
     				<h3 class="panel-title">

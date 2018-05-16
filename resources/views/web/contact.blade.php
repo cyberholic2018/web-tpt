@@ -14,7 +14,7 @@
 @section('content')
 
   <div>
-      {!!PageView::show(5)!!}
+      {!!PageView::show(9)!!}
     {{-- <div class="container-fluid"><img src="https://dummyimage.com/1920x600/{{Helper::rc()}}/fff" alt=""/></div> --}}
   </div>
   <section class="numbersix">
@@ -117,7 +117,7 @@
                   <div class="row">
                     <div class="col-md-12 col-contact">
                       <h4>台灣帕太科技股份有限公司</h4>
-                      <h4>TAIWAN POWERTEK CO.,LTD.</h4>
+                      <h4><span style="color: rgb(192, 0, 0);">T</span>AIWAN <span style="color: rgb(0, 176, 80);">P</span>OWER<span style="color: rgb(85, 142, 213);">T</span>EK CO.,LTD.</h4>
                       <h4>地址：22161新北市汐止區大同路一段237號6樓之1</h4>
                       <h4>6F-1,No237,Sec. 1,Datong Rd.,Ximzhi Dist., New Taipei City 221, Taiwan</h4>
                       <h4>Tel：+886 2 8646-1681</h4>
@@ -134,7 +134,7 @@
                   <div class="row">
                     <div class="col-md-12 col-contact">
                       <h4>蘇州曜邦電子科技有限公司 </h4>
-                      <h4>BONDTEK CORPORATION</h4>
+                      <h4><span style="color: rgb(192, 0, 0);">B</span>OND<span style="color: rgb(0, 176, 80);">T</span>EK <span style="color: rgb(85, 142, 213);">C</span>ORPORATION</h4>
                       <h4>地址：江蘇省蘇州市蘇州工業園區蘇雅路318號1904(天翔國際)</h4>
                       <h4>1904, No.318, Suya Rd., Suzhou Industrial Park, Suzhou City, Jiangsu Province, Chin</h4>
                       <h4>Tel：+86 512 67629496</h4>

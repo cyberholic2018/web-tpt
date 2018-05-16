@@ -26,7 +26,7 @@
   </div> --}}
 
   <div class="news-description">
-      {!!PageView::show(2)!!}
+      {!!PageView::show(6)!!}
   </div>
 
 

@@ -1,6 +1,11 @@
 @extends('main')
 
 @section('custom-script')
+    <script>
+        $(document).ready(function() {
+            $('.table-container').html($('.numberthree').find('table'));
+        });
+    </script>
 @endsection
 
 @section('custom-style')
@@ -45,15 +50,20 @@
             <h1>{{ProductView::get($id)->title}}</h1>
         </div>
     </div>
-    <section class="numbertwo">
-      <p>{{ProductView::get($id)->title}}</p>
-    </section>
+    {{-- <section class="numbertwo">
+
+    </section> --}}
     <section class="numberthree">
-        <div class="content sub-page-content">
-            {!!ProductView::get($id)->shortDescription!!}
+        <div class="container">
+            <h2>{{ProductView::get($id)->title}}</h2>
+            <div class="content sub-page-content">
+                {!!ProductView::get($id)->shortDescription!!}
+            </div>
+            <hr>
+            <div class="table-container"></div>
+            {!!ProductView::get($id)->description!!}
         </div>
-        <hr>
-        {!!ProductView::get($id)->description!!}
+
 
     </section>
     <div class="row">
